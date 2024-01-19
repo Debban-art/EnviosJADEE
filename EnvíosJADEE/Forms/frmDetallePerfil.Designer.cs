@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cmbModulo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,18 +40,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePerfil)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnCancelar
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(186, 386);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 41);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(186, 386);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(111, 41);
+            this.btnCancelar.TabIndex = 53;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -75,6 +75,7 @@
             this.cmbModulo.Name = "cmbModulo";
             this.cmbModulo.Size = new System.Drawing.Size(228, 29);
             this.cmbModulo.TabIndex = 51;
+            this.cmbModulo.SelectedIndexChanged += new System.EventHandler(this.cmbModulo_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -142,7 +143,7 @@
             this.ClientSize = new System.Drawing.Size(1043, 537);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.dgvDetallePerfil);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cmbModulo);
             this.Controls.Add(this.label1);
@@ -151,6 +152,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Name = "frmDetallePerfil";
             this.Text = "frmDetallePerfil";
+            this.Load += new System.EventHandler(this.frmDetallePerfil_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePerfil)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -159,7 +161,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cmbModulo;
         private System.Windows.Forms.Label label1;

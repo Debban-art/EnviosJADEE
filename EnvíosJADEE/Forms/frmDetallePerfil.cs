@@ -25,5 +25,15 @@ namespace EnvíosJADEE.Forms
 
             cmbModulo.Focus();
         }
+
+        private void frmDetallePerfil_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbModulo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
