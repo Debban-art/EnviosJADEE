@@ -14,5 +14,7 @@ namespace EnvíosJADEE.Models
          public string Estatus { get; set; }
         public string FechaRegistro { get; set; }
         public int Usuario { get; set; }
+        public string Nombre { get; set; }
+
     }
 }

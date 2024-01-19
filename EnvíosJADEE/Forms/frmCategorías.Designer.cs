@@ -112,6 +112,7 @@
             this.dgvCategorías.Name = "dgvCategorías";
             this.dgvCategorías.Size = new System.Drawing.Size(643, 322);
             this.dgvCategorías.TabIndex = 31;
+            this.dgvCategorías.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellContentClick);
             // 
             // button1
             // 

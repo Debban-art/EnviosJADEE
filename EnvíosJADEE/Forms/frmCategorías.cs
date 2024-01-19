@@ -53,5 +53,10 @@ namespace EnvíosJADEE.Forms
             frmHome.Show();
             this.Close();
         }
+
+        private void dgvCategorías_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
