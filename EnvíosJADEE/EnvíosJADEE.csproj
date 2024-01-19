@@ -111,6 +111,7 @@
     <Compile Include="Models\TipoModel.cs" />
     <Compile Include="Models\VehiculoModel.cs" />
     <Compile Include="Network\CategoriasService.cs" />
+    <Compile Include="Network\DetallePerfilService.cs" />
     <Compile Include="Network\MarcasService.cs" />
     <Compile Include="Network\TipoService.cs" />
     <Compile Include="Network\VehiculosService.cs" />
