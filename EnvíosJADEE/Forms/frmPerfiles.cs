@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EnvíosJADEE.Models;
+using EnvíosJADEE.Network;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,17 +21,9 @@ namespace EnvíosJADEE.Forms
 
         private void frmPerfiles_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void lblCategoría_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbCategoría_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            PerfilService perfilService = new PerfilService();
+            dgvPerfiles.DataSource = perfilService.GetPerfiles();
+            dgvPerfiles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -37,6 +31,19 @@ namespace EnvíosJADEE.Forms
             txtNombre.Text = "";
             txtUsuarioRegistra.Text = "";
             txtNombre.Focus();
+        }
+
+        private void btnAñadir_Click(object sender, EventArgs e)
+        {
+            PerfilModel perfilModel = new PerfilModel();
+            perfilModel.Nombre = txtNombre.Text;
+            perfilModel.Usuario = int.Parse(txtUsuarioRegistra.Text);
+
+            PerfilService perfilService = new PerfilService();
+            perfilService.InsertPerfil(perfilModel);
+
+            dgvPerfiles.DataSource = null;
+            dgvPerfiles.DataSource = perfilService.GetPerfiles();
         }
     }
 }

@@ -35,7 +35,6 @@
             this.lblUsuarioRegistra = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.dgvCategorías = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorías)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,23 +113,12 @@
             this.dgvCategorías.TabIndex = 31;
             this.dgvCategorías.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellContentClick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 502);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // frmCategorías
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvCategorías);
             this.Controls.Add(this.lblUsuarioRegistra);
             this.Controls.Add(this.txtUsuario);
@@ -156,6 +144,5 @@
         private System.Windows.Forms.Label lblUsuarioRegistra;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.DataGridView dgvCategorías;
-        private System.Windows.Forms.Button button1;
     }
 }

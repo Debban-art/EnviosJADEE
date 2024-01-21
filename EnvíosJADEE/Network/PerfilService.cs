@@ -12,20 +12,20 @@ using TestLeoniWF;
 
 namespace EnvíosJADEE.Network
 {
-    internal class ModulosService
+    internal class PerfilService
     {
+            
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
-        public string InsertModulos(ModuloModel Modulos)
+        public string InsertPerfil(PerfilModel Perfil)
         {
             parametros = new ArrayList();
-            parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = Modulos.IdCategoria });
-            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Modulos.Nombre });
-            parametros.Add(new SqlParameter { ParameterName = "@pUsuarioRegistra", SqlDbType = System.Data.SqlDbType.Int, Value = Modulos.Usuario });
+            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Perfil.Nombre });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuarioRegistra", SqlDbType = System.Data.SqlDbType.Int, Value = Perfil.Usuario });
 
             try
             {
-                dac.ExecuteNonQuery("InsertModulos", parametros);
+                dac.ExecuteNonQuery("InsertPerfil", parametros);
                 return "Correcto";
             }
             catch (Exception ex)
@@ -35,23 +35,21 @@ namespace EnvíosJADEE.Network
             return "Correcto";
         }
 
-        public List<ModuloModel> GetModulos()
+        public List<PerfilModel> GetPerfiles()
         {
             parametros = new ArrayList();
-            List<ModuloModel> lista = new List<ModuloModel>();
+            List<PerfilModel> lista = new List<PerfilModel>();
             //parametros.Add(new SqlParameter { ParameterName = "@pIdUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = 1 });                                                                                                                                                                                                                                              
             try
             {
-                DataSet ds = dac.Fill("GetModulos", parametros);
+                DataSet ds = dac.Fill("GetPerfiles", parametros);
                 if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
-                                     .Select(dataRow => new ModuloModel
+                                     .Select(dataRow => new PerfilModel
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          Nombre = dataRow["Nombre"].ToString(),
-                                         IdCategoria = int.Parse(dataRow["IdCategoria"].ToString ()),
-                                         Categoria = dataRow["Categoria"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
                                          Usuario = int.Parse(dataRow["UsuarioRegistra"].ToString())

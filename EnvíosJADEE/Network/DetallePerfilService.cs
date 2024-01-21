@@ -42,7 +42,7 @@ namespace EnvíosJADEE.Network
             //parametros.Add(new SqlParameter { ParameterName = "@pIdUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = 1 });                                                                                                                                                                                                                                              
             try
             {
-                DataSet ds = dac.Fill("GetDetallePerfilModel", parametros);
+                DataSet ds = dac.Fill("GetDetallesPerfiles", parametros);
                 if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
@@ -50,9 +50,9 @@ namespace EnvíosJADEE.Network
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          IdModulo = int.Parse(dataRow["IdModulo"].ToString()),
-                                         Modulo = dataRow["Modulos.Nombre"].ToString(),
+                                         Modulo = dataRow["Modulo"].ToString(),
                                          IdPerfil = int.Parse(dataRow["IdPerfil"].ToString()),
-                                         Perfil = dataRow["Perfiles.Nombre"].ToString(),
+                                         Perfil = dataRow["Perfil"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
                                          Usuario = int.Parse(dataRow["UsuarioRegistra"].ToString())

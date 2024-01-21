@@ -110,6 +110,7 @@
             this.btnAñadir.TabIndex = 35;
             this.btnAñadir.Text = "Añadir";
             this.btnAñadir.UseVisualStyleBackColor = false;
+            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
             // frmPerfiles
             // 
