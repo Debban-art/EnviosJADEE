@@ -35,20 +35,36 @@ namespace EnvíosJADEE.Forms
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            //Llamar el insertModulo
-            ModulosService moduloService = new ModulosService();
-            ModuloModel modulo = new ModuloModel();
+            if (txtUsuario.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                //Llamar el insertModulo
+                ModulosService moduloService = new ModulosService();
+                ModuloModel modulo = new ModuloModel();
 
-            modulo.IdCategoria = int.Parse(cmbCategoria.SelectedValue.ToString());
-            modulo.Nombre = txtNombre.Text;
-            modulo.Usuario = int.Parse(txtUsuario.Text);
+                modulo.IdCategoria = int.Parse(cmbCategoria.SelectedValue.ToString());
+                modulo.Nombre = txtNombre.Text;
+                modulo.Usuario = int.Parse(txtUsuario.Text);
 
-            moduloService.InsertModulos(modulo);
+                moduloService.InsertModulos(modulo);
 
-            //Refresh la tabla de modulos
-            dgvModulos.DataSource = null;
-            dgvModulos.DataSource = moduloService.GetModulos();
+                //Refresh la tabla de modulos
+                dgvModulos.DataSource = null;
+                dgvModulos.DataSource = moduloService.GetModulos();
+            }
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            cmbCategoria.SelectedIndex = 0;
+            txtNombre.Text = "";
+            txtUsuario.Text = "";
+
+            cmbCategoria.Focus();
         }
     }
 }

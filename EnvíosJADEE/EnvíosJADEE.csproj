@@ -109,12 +109,14 @@
     <Compile Include="Models\PerfilModel.cs" />
     <Compile Include="Models\PersonaModel.cs" />
     <Compile Include="Models\TipoModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\VehiculoModel.cs" />
     <Compile Include="Network\CategoriasService.cs" />
     <Compile Include="Network\DetallePerfilService.cs" />
     <Compile Include="Network\MarcasService.cs" />
     <Compile Include="Network\ModulosService.cs" />
     <Compile Include="Network\PerfilService.cs" />
+    <Compile Include="Network\PersonaUsuarioService.cs" />
     <Compile Include="Network\TipoService.cs" />
     <Compile Include="Network\VehiculosService.cs" />
     <Compile Include="Program.cs" />

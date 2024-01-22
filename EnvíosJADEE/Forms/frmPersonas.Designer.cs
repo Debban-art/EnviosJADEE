@@ -43,6 +43,8 @@
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.cmbPerfiles = new System.Windows.Forms.ComboBox();
+            this.lblPerfil = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(42, 98);
+            this.txtNombre.Location = new System.Drawing.Point(57, 115);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(228, 26);
             this.txtNombre.TabIndex = 1;
@@ -64,7 +66,7 @@
             // 
             this.txtApPaterno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApPaterno.Location = new System.Drawing.Point(42, 170);
+            this.txtApPaterno.Location = new System.Drawing.Point(57, 168);
             this.txtApPaterno.Name = "txtApPaterno";
             this.txtApPaterno.Size = new System.Drawing.Size(228, 26);
             this.txtApPaterno.TabIndex = 2;
@@ -73,7 +75,7 @@
             // 
             this.txtApMaterno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApMaterno.Location = new System.Drawing.Point(42, 257);
+            this.txtApMaterno.Location = new System.Drawing.Point(57, 221);
             this.txtApMaterno.Name = "txtApMaterno";
             this.txtApMaterno.Size = new System.Drawing.Size(228, 26);
             this.txtApMaterno.TabIndex = 3;
@@ -82,7 +84,7 @@
             // 
             this.txtDirección.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtDirección.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirección.Location = new System.Drawing.Point(42, 336);
+            this.txtDirección.Location = new System.Drawing.Point(57, 274);
             this.txtDirección.Name = "txtDirección";
             this.txtDirección.Size = new System.Drawing.Size(228, 26);
             this.txtDirección.TabIndex = 4;
@@ -92,7 +94,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(159, 460);
+            this.btnCancelar.Location = new System.Drawing.Point(174, 432);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(111, 41);
             this.btnCancelar.TabIndex = 23;
@@ -106,18 +108,19 @@
             this.btnAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAñadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAñadir.ForeColor = System.Drawing.Color.White;
-            this.btnAñadir.Location = new System.Drawing.Point(42, 460);
+            this.btnAñadir.Location = new System.Drawing.Point(57, 432);
             this.btnAñadir.Name = "btnAñadir";
             this.btnAñadir.Size = new System.Drawing.Size(111, 41);
             this.btnAñadir.TabIndex = 22;
             this.btnAñadir.Text = "Añadir";
             this.btnAñadir.UseVisualStyleBackColor = false;
+            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(38, 74);
+            this.lblNombre.Location = new System.Drawing.Point(53, 91);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(68, 21);
             this.lblNombre.TabIndex = 24;
@@ -127,7 +130,7 @@
             // 
             this.lblApPaterno.AutoSize = true;
             this.lblApPaterno.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApPaterno.Location = new System.Drawing.Point(38, 146);
+            this.lblApPaterno.Location = new System.Drawing.Point(53, 144);
             this.lblApPaterno.Name = "lblApPaterno";
             this.lblApPaterno.Size = new System.Drawing.Size(125, 21);
             this.lblApPaterno.TabIndex = 25;
@@ -137,7 +140,7 @@
             // 
             this.lblApMaterno.AutoSize = true;
             this.lblApMaterno.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApMaterno.Location = new System.Drawing.Point(38, 233);
+            this.lblApMaterno.Location = new System.Drawing.Point(53, 197);
             this.lblApMaterno.Name = "lblApMaterno";
             this.lblApMaterno.Size = new System.Drawing.Size(130, 21);
             this.lblApMaterno.TabIndex = 26;
@@ -147,7 +150,7 @@
             // 
             this.lblDirección.AutoSize = true;
             this.lblDirección.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDirección.Location = new System.Drawing.Point(38, 312);
+            this.lblDirección.Location = new System.Drawing.Point(53, 250);
             this.lblDirección.Name = "lblDirección";
             this.lblDirección.Size = new System.Drawing.Size(75, 21);
             this.lblDirección.TabIndex = 27;
@@ -166,7 +169,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(38, 380);
+            this.label1.Location = new System.Drawing.Point(53, 354);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 52;
@@ -176,10 +179,30 @@
             // 
             this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(42, 404);
+            this.txtUsuario.Location = new System.Drawing.Point(57, 378);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(228, 26);
             this.txtUsuario.TabIndex = 51;
+            // 
+            // cmbPerfiles
+            // 
+            this.cmbPerfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbPerfiles.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPerfiles.FormattingEnabled = true;
+            this.cmbPerfiles.Location = new System.Drawing.Point(57, 322);
+            this.cmbPerfiles.Name = "cmbPerfiles";
+            this.cmbPerfiles.Size = new System.Drawing.Size(228, 29);
+            this.cmbPerfiles.TabIndex = 53;
+            // 
+            // lblPerfil
+            // 
+            this.lblPerfil.AutoSize = true;
+            this.lblPerfil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerfil.Location = new System.Drawing.Point(57, 302);
+            this.lblPerfil.Name = "lblPerfil";
+            this.lblPerfil.Size = new System.Drawing.Size(47, 21);
+            this.lblPerfil.TabIndex = 54;
+            this.lblPerfil.Text = "Perfil";
             // 
             // frmPersonas
             // 
@@ -187,6 +210,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.lblPerfil);
+            this.Controls.Add(this.cmbPerfiles);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.dgvMarcas);
@@ -202,6 +227,7 @@
             this.Controls.Add(this.txtNombre);
             this.Name = "frmPersonas";
             this.Text = "Personas";
+            this.Load += new System.EventHandler(this.frmPersonas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -224,5 +250,7 @@
         private System.Windows.Forms.DataGridView dgvMarcas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.ComboBox cmbPerfiles;
+        private System.Windows.Forms.Label lblPerfil;
     }
 }

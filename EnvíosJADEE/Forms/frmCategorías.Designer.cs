@@ -32,8 +32,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
-            this.lblUsuarioRegistra = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.dgvCategorías = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorías)).BeginInit();
             this.SuspendLayout();
@@ -84,25 +82,6 @@
             this.btnAñadir.UseVisualStyleBackColor = false;
             this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
-            // lblUsuarioRegistra
-            // 
-            this.lblUsuarioRegistra.AutoSize = true;
-            this.lblUsuarioRegistra.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioRegistra.Location = new System.Drawing.Point(68, 262);
-            this.lblUsuarioRegistra.Name = "lblUsuarioRegistra";
-            this.lblUsuarioRegistra.Size = new System.Drawing.Size(64, 21);
-            this.lblUsuarioRegistra.TabIndex = 30;
-            this.lblUsuarioRegistra.Text = "Usuario";
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(72, 286);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(228, 26);
-            this.txtUsuario.TabIndex = 29;
-            // 
             // dgvCategorías
             // 
             this.dgvCategorías.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
@@ -120,8 +99,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
             this.Controls.Add(this.dgvCategorías);
-            this.Controls.Add(this.lblUsuarioRegistra);
-            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.lblNombre);
@@ -141,8 +118,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
-        private System.Windows.Forms.Label lblUsuarioRegistra;
-        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.DataGridView dgvCategorías;
     }
 }

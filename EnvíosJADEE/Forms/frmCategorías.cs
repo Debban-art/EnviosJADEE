@@ -21,16 +21,23 @@ namespace EnvíosJADEE.Forms
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            CategoríaModel categoría = new CategoríaModel();
-            categoría.Nombre = txtNombre.Text;
-            categoría.Usuario = int.Parse(txtUsuario.Text);
-            CategoriasService service= new CategoriasService();
-            service.InsertCategorías(categoría);
+ 
+            if (txtNombre.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                CategoríaModel categoría = new CategoríaModel();
+                categoría.Nombre = txtNombre.Text;
+                CategoriasService service = new CategoriasService();
+                service.InsertCategorías(categoría);
 
-            dgvCategorías.DataSource = null;
-            CategoriasService Categoriaservice = new CategoriasService();
-            dgvCategorías.DataSource = Categoriaservice.GetCategorias();
-            dgvCategorías.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgvCategorías.DataSource = null;
+                CategoriasService Categoriaservice = new CategoriasService();
+                dgvCategorías.DataSource = Categoriaservice.GetCategorias();
+            }
+
         }
 
         private void frmCategorías_Load(object sender, EventArgs e)
@@ -43,7 +50,6 @@ namespace EnvíosJADEE.Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
-            txtUsuario.Text = "";
             txtNombre.Focus();
         }
 

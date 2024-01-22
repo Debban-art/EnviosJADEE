@@ -35,15 +35,23 @@ namespace EnvíosJADEE.Forms
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            PerfilModel perfilModel = new PerfilModel();
-            perfilModel.Nombre = txtNombre.Text;
-            perfilModel.Usuario = int.Parse(txtUsuarioRegistra.Text);
+            if (txtNombre.Text.Trim().Length == 0 || txtUsuarioRegistra.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                PerfilModel perfilModel = new PerfilModel();
+                perfilModel.Nombre = txtNombre.Text;
+                perfilModel.Usuario = int.Parse(txtUsuarioRegistra.Text);
 
-            PerfilService perfilService = new PerfilService();
-            perfilService.InsertPerfil(perfilModel);
+                PerfilService perfilService = new PerfilService();
+                perfilService.InsertPerfil(perfilModel);
 
-            dgvPerfiles.DataSource = null;
-            dgvPerfiles.DataSource = perfilService.GetPerfiles();
+                dgvPerfiles.DataSource = null;
+                dgvPerfiles.DataSource = perfilService.GetPerfiles();
+            }
+
         }
     }
 }

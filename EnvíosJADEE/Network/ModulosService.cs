@@ -50,7 +50,7 @@ namespace EnvíosJADEE.Network
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          Nombre = dataRow["Nombre"].ToString(),
-                                         IdCategoria = int.Parse(dataRow["IdCategoria"].ToString ()),
+                                         IdCategoria = int.Parse(dataRow["IdCategoria"].ToString()),
                                          Categoria = dataRow["Categoria"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
