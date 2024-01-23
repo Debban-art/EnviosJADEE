@@ -35,6 +35,7 @@
             this.lblModulo = new System.Windows.Forms.Label();
             this.dgvDetallePerfil = new System.Windows.Forms.DataGridView();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
+            this.btnRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,12 +115,23 @@
             this.cmbPerfil.Size = new System.Drawing.Size(228, 29);
             this.cmbPerfil.TabIndex = 55;
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(12, 12);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 56;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // frmDetallePerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.dgvDetallePerfil);
             this.Controls.Add(this.btnCancelar);
@@ -145,5 +157,6 @@
         private System.Windows.Forms.Label lblModulo;
         private System.Windows.Forms.DataGridView dgvDetallePerfil;
         private System.Windows.Forms.ComboBox cmbPerfil;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }
