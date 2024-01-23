@@ -35,6 +35,7 @@
             this.lblModulo = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.dgvModulos = new System.Windows.Forms.DataGridView();
+            this.btnRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,12 +114,23 @@
             this.dgvModulos.Size = new System.Drawing.Size(643, 322);
             this.dgvModulos.TabIndex = 54;
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(62, 48);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 55;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // frmModulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dgvModulos);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnCancelar);
@@ -143,5 +155,6 @@
         private System.Windows.Forms.Label lblModulo;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DataGridView dgvModulos;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }

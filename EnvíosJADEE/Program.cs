@@ -17,7 +17,7 @@ namespace EnvíosJADEE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCategorías());
+            Application.Run(new frmHome());
         }
     }
 }

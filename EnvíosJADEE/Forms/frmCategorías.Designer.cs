@@ -33,6 +33,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.dgvCategorías = new System.Windows.Forms.DataGridView();
+            this.btnRegresar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorías)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,12 +93,23 @@
             this.dgvCategorías.TabIndex = 31;
             this.dgvCategorías.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellContentClick);
             // 
+            // btnRegresar
+            // 
+            this.btnRegresar.Location = new System.Drawing.Point(36, 36);
+            this.btnRegresar.Name = "btnRegresar";
+            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegresar.TabIndex = 32;
+            this.btnRegresar.Text = "Regresar";
+            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
+            // 
             // frmCategorías
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.dgvCategorías);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
@@ -119,5 +131,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.DataGridView dgvCategorías;
+        private System.Windows.Forms.Button btnRegresar;
     }
 }
