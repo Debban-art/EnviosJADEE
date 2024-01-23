@@ -31,10 +31,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.lblUsuarioRegistra = new System.Windows.Forms.Label();
             this.lblPerfil = new System.Windows.Forms.Label();
             this.lblModulo = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.dgvModulos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModulos)).BeginInit();
@@ -72,26 +70,16 @@
             this.cmbCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbCategoria.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(69, 143);
+            this.cmbCategoria.Location = new System.Drawing.Point(69, 201);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(228, 29);
             this.cmbCategoria.TabIndex = 50;
-            // 
-            // lblUsuarioRegistra
-            // 
-            this.lblUsuarioRegistra.AutoSize = true;
-            this.lblUsuarioRegistra.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuarioRegistra.Location = new System.Drawing.Point(65, 278);
-            this.lblUsuarioRegistra.Name = "lblUsuarioRegistra";
-            this.lblUsuarioRegistra.Size = new System.Drawing.Size(125, 21);
-            this.lblUsuarioRegistra.TabIndex = 49;
-            this.lblUsuarioRegistra.Text = "Usuario Registra";
             // 
             // lblPerfil
             // 
             this.lblPerfil.AutoSize = true;
             this.lblPerfil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(65, 191);
+            this.lblPerfil.Location = new System.Drawing.Point(65, 249);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(68, 21);
             this.lblPerfil.TabIndex = 48;
@@ -101,26 +89,17 @@
             // 
             this.lblModulo.AutoSize = true;
             this.lblModulo.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModulo.Location = new System.Drawing.Point(65, 119);
+            this.lblModulo.Location = new System.Drawing.Point(65, 177);
             this.lblModulo.Name = "lblModulo";
             this.lblModulo.Size = new System.Drawing.Size(77, 21);
             this.lblModulo.TabIndex = 47;
             this.lblModulo.Text = "Categoría";
             // 
-            // txtUsuario
-            // 
-            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(69, 302);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(228, 26);
-            this.txtUsuario.TabIndex = 46;
-            // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(69, 215);
+            this.txtNombre.Location = new System.Drawing.Point(69, 273);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(228, 26);
             this.txtNombre.TabIndex = 53;
@@ -145,10 +124,8 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.cmbCategoria);
-            this.Controls.Add(this.lblUsuarioRegistra);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.lblModulo);
-            this.Controls.Add(this.txtUsuario);
             this.Name = "frmModulos";
             this.Text = "frmModulos";
             this.Load += new System.EventHandler(this.frmModulos_Load);
@@ -162,10 +139,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.ComboBox cmbCategoria;
-        private System.Windows.Forms.Label lblUsuarioRegistra;
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Label lblModulo;
-        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DataGridView dgvModulos;
     }

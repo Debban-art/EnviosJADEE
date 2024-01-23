@@ -21,7 +21,6 @@ namespace EnvíosJADEE.Network
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = Modulos.IdCategoria });
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Modulos.Nombre });
-            parametros.Add(new SqlParameter { ParameterName = "@pUsuarioRegistra", SqlDbType = System.Data.SqlDbType.Int, Value = Modulos.Usuario });
 
             try
             {

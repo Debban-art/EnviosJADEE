@@ -23,7 +23,6 @@ namespace EnvíosJADEE.Forms
         {
             cmbModulo.SelectedIndex = 0;
             cmbPerfil.SelectedIndex = 0;
-            txtUsuario.Text = "";
 
             cmbModulo.Focus();
         }
@@ -49,23 +48,16 @@ namespace EnvíosJADEE.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                DetallePerfilModel detallePerfil = new DetallePerfilModel();
-                detallePerfil.IdModulo = int.Parse(cmbModulo.SelectedValue.ToString());
-                detallePerfil.IdPerfil = int.Parse(cmbPerfil.SelectedValue.ToString());
-                detallePerfil.Usuario = int.Parse(txtUsuario.Text);
 
-                DetallePerfilService detallePerfilService = new DetallePerfilService();
-                detallePerfilService.InsertDetallePerfil(detallePerfil);
+            DetallePerfilModel detallePerfil = new DetallePerfilModel();
+            detallePerfil.IdModulo = int.Parse(cmbModulo.SelectedValue.ToString());
+            detallePerfil.IdPerfil = int.Parse(cmbPerfil.SelectedValue.ToString());
 
-                dgvDetallePerfil.DataSource = null;
-                dgvDetallePerfil.DataSource = detallePerfilService.GetDetallePerfil();
-            }
+            DetallePerfilService detallePerfilService = new DetallePerfilService();
+            detallePerfilService.InsertDetallePerfil(detallePerfil);
+
+            dgvDetallePerfil.DataSource = null;
+            dgvDetallePerfil.DataSource = detallePerfilService.GetDetallePerfil();
 
         }
     }

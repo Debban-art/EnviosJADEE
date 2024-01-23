@@ -29,13 +29,12 @@ namespace EnvíosJADEE.Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             txtNombre.Text = "";
-            txtUsuarioRegistra.Text = "";
             txtNombre.Focus();
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Trim().Length == 0 || txtUsuarioRegistra.Text.Trim().Length == 0)
+            if (txtNombre.Text.Trim().Length == 0)
             {
                 MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -43,7 +42,6 @@ namespace EnvíosJADEE.Forms
             {
                 PerfilModel perfilModel = new PerfilModel();
                 perfilModel.Nombre = txtNombre.Text;
-                perfilModel.Usuario = int.Parse(txtUsuarioRegistra.Text);
 
                 PerfilService perfilService = new PerfilService();
                 perfilService.InsertPerfil(perfilModel);

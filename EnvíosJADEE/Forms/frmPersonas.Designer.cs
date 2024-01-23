@@ -41,8 +41,6 @@
             this.lblApMaterno = new System.Windows.Forms.Label();
             this.lblDirección = new System.Windows.Forms.Label();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.cmbPerfiles = new System.Windows.Forms.ComboBox();
             this.lblPerfil = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
@@ -57,7 +55,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(57, 115);
+            this.txtNombre.Location = new System.Drawing.Point(57, 145);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(228, 26);
             this.txtNombre.TabIndex = 1;
@@ -66,7 +64,7 @@
             // 
             this.txtApPaterno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtApPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApPaterno.Location = new System.Drawing.Point(57, 168);
+            this.txtApPaterno.Location = new System.Drawing.Point(57, 198);
             this.txtApPaterno.Name = "txtApPaterno";
             this.txtApPaterno.Size = new System.Drawing.Size(228, 26);
             this.txtApPaterno.TabIndex = 2;
@@ -75,7 +73,7 @@
             // 
             this.txtApMaterno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtApMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApMaterno.Location = new System.Drawing.Point(57, 221);
+            this.txtApMaterno.Location = new System.Drawing.Point(57, 251);
             this.txtApMaterno.Name = "txtApMaterno";
             this.txtApMaterno.Size = new System.Drawing.Size(228, 26);
             this.txtApMaterno.TabIndex = 3;
@@ -84,7 +82,7 @@
             // 
             this.txtDirección.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtDirección.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirección.Location = new System.Drawing.Point(57, 274);
+            this.txtDirección.Location = new System.Drawing.Point(57, 304);
             this.txtDirección.Name = "txtDirección";
             this.txtDirección.Size = new System.Drawing.Size(228, 26);
             this.txtDirección.TabIndex = 4;
@@ -120,7 +118,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(53, 91);
+            this.lblNombre.Location = new System.Drawing.Point(53, 121);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(68, 21);
             this.lblNombre.TabIndex = 24;
@@ -130,7 +128,7 @@
             // 
             this.lblApPaterno.AutoSize = true;
             this.lblApPaterno.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApPaterno.Location = new System.Drawing.Point(53, 144);
+            this.lblApPaterno.Location = new System.Drawing.Point(53, 174);
             this.lblApPaterno.Name = "lblApPaterno";
             this.lblApPaterno.Size = new System.Drawing.Size(125, 21);
             this.lblApPaterno.TabIndex = 25;
@@ -140,7 +138,7 @@
             // 
             this.lblApMaterno.AutoSize = true;
             this.lblApMaterno.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApMaterno.Location = new System.Drawing.Point(53, 197);
+            this.lblApMaterno.Location = new System.Drawing.Point(53, 227);
             this.lblApMaterno.Name = "lblApMaterno";
             this.lblApMaterno.Size = new System.Drawing.Size(130, 21);
             this.lblApMaterno.TabIndex = 26;
@@ -150,7 +148,7 @@
             // 
             this.lblDirección.AutoSize = true;
             this.lblDirección.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDirección.Location = new System.Drawing.Point(53, 250);
+            this.lblDirección.Location = new System.Drawing.Point(53, 280);
             this.lblDirección.Name = "lblDirección";
             this.lblDirección.Size = new System.Drawing.Size(75, 21);
             this.lblDirección.TabIndex = 27;
@@ -165,31 +163,12 @@
             this.dgvMarcas.Size = new System.Drawing.Size(643, 322);
             this.dgvMarcas.TabIndex = 28;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 354);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
-            this.label1.TabIndex = 52;
-            this.label1.Text = "Usuario";
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(57, 378);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(228, 26);
-            this.txtUsuario.TabIndex = 51;
-            // 
             // cmbPerfiles
             // 
             this.cmbPerfiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbPerfiles.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerfiles.FormattingEnabled = true;
-            this.cmbPerfiles.Location = new System.Drawing.Point(57, 322);
+            this.cmbPerfiles.Location = new System.Drawing.Point(57, 352);
             this.cmbPerfiles.Name = "cmbPerfiles";
             this.cmbPerfiles.Size = new System.Drawing.Size(228, 29);
             this.cmbPerfiles.TabIndex = 53;
@@ -198,7 +177,7 @@
             // 
             this.lblPerfil.AutoSize = true;
             this.lblPerfil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(57, 302);
+            this.lblPerfil.Location = new System.Drawing.Point(57, 332);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(47, 21);
             this.lblPerfil.TabIndex = 54;
@@ -212,8 +191,6 @@
             this.ClientSize = new System.Drawing.Size(1043, 537);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.cmbPerfiles);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.dgvMarcas);
             this.Controls.Add(this.lblDirección);
             this.Controls.Add(this.lblApMaterno);
@@ -248,8 +225,6 @@
         private System.Windows.Forms.Label lblApMaterno;
         private System.Windows.Forms.Label lblDirección;
         private System.Windows.Forms.DataGridView dgvMarcas;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.ComboBox cmbPerfiles;
         private System.Windows.Forms.Label lblPerfil;
     }

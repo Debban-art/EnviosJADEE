@@ -35,7 +35,7 @@ namespace EnvíosJADEE.Forms
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text.Trim().Length == 0)
+            if (txtNombre.Text.Trim().Length == 0)
             {
                 MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -47,7 +47,6 @@ namespace EnvíosJADEE.Forms
 
                 modulo.IdCategoria = int.Parse(cmbCategoria.SelectedValue.ToString());
                 modulo.Nombre = txtNombre.Text;
-                modulo.Usuario = int.Parse(txtUsuario.Text);
 
                 moduloService.InsertModulos(modulo);
 
@@ -62,7 +61,6 @@ namespace EnvíosJADEE.Forms
         {
             cmbCategoria.SelectedIndex = 0;
             txtNombre.Text = "";
-            txtUsuario.Text = "";
 
             cmbCategoria.Focus();
         }

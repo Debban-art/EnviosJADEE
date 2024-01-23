@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvPerfiles = new System.Windows.Forms.DataGridView();
-            this.lblUsuario = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txtUsuarioRegistra = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
@@ -47,40 +45,21 @@
             this.dgvPerfiles.Size = new System.Drawing.Size(643, 322);
             this.dgvPerfiles.TabIndex = 20;
             // 
-            // lblUsuario
-            // 
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.Location = new System.Drawing.Point(47, 273);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(64, 21);
-            this.lblUsuario.TabIndex = 32;
-            this.lblUsuario.Text = "Usuario";
-            // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(47, 186);
+            this.lblNombre.Location = new System.Drawing.Point(47, 242);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(68, 21);
             this.lblNombre.TabIndex = 31;
             this.lblNombre.Text = "Nombre";
             // 
-            // txtUsuarioRegistra
-            // 
-            this.txtUsuarioRegistra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtUsuarioRegistra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuarioRegistra.Location = new System.Drawing.Point(51, 297);
-            this.txtUsuarioRegistra.Name = "txtUsuarioRegistra";
-            this.txtUsuarioRegistra.Size = new System.Drawing.Size(228, 26);
-            this.txtUsuarioRegistra.TabIndex = 29;
-            // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(51, 210);
+            this.txtNombre.Location = new System.Drawing.Point(51, 266);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(228, 26);
             this.txtNombre.TabIndex = 28;
@@ -120,9 +99,7 @@
             this.ClientSize = new System.Drawing.Size(1043, 537);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
-            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.txtUsuarioRegistra);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.dgvPerfiles);
             this.Name = "frmPerfiles";
@@ -137,9 +114,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPerfiles;
-        private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox txtUsuarioRegistra;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;

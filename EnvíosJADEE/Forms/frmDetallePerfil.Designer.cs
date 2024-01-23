@@ -31,10 +31,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.cmbModulo = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblPerfil = new System.Windows.Forms.Label();
             this.lblModulo = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.dgvDetallePerfil = new System.Windows.Forms.DataGridView();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePerfil)).BeginInit();
@@ -72,26 +70,16 @@
             this.cmbModulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbModulo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbModulo.FormattingEnabled = true;
-            this.cmbModulo.Location = new System.Drawing.Point(69, 133);
+            this.cmbModulo.Location = new System.Drawing.Point(69, 201);
             this.cmbModulo.Name = "cmbModulo";
             this.cmbModulo.Size = new System.Drawing.Size(228, 29);
             this.cmbModulo.TabIndex = 51;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 268);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "Usuario";
             // 
             // lblPerfil
             // 
             this.lblPerfil.AutoSize = true;
             this.lblPerfil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(65, 181);
+            this.lblPerfil.Location = new System.Drawing.Point(65, 249);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(47, 21);
             this.lblPerfil.TabIndex = 49;
@@ -101,20 +89,11 @@
             // 
             this.lblModulo.AutoSize = true;
             this.lblModulo.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblModulo.Location = new System.Drawing.Point(65, 109);
+            this.lblModulo.Location = new System.Drawing.Point(65, 177);
             this.lblModulo.Name = "lblModulo";
             this.lblModulo.Size = new System.Drawing.Size(64, 21);
             this.lblModulo.TabIndex = 48;
             this.lblModulo.Text = "Modulo";
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(69, 292);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(228, 26);
-            this.txtUsuario.TabIndex = 47;
             // 
             // dgvDetallePerfil
             // 
@@ -130,7 +109,7 @@
             this.cmbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbPerfil.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerfil.FormattingEnabled = true;
-            this.cmbPerfil.Location = new System.Drawing.Point(69, 205);
+            this.cmbPerfil.Location = new System.Drawing.Point(69, 273);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(228, 29);
             this.cmbPerfil.TabIndex = 55;
@@ -146,10 +125,8 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.cmbModulo);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.lblModulo);
-            this.Controls.Add(this.txtUsuario);
             this.Name = "frmDetallePerfil";
             this.Text = "frmDetallePerfil";
             this.Load += new System.EventHandler(this.frmDetallePerfil_Load);
@@ -164,10 +141,8 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.ComboBox cmbModulo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Label lblModulo;
-        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.DataGridView dgvDetallePerfil;
         private System.Windows.Forms.ComboBox cmbPerfil;
     }
