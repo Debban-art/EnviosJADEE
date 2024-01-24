@@ -237,6 +237,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseUp);

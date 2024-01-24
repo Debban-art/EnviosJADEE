@@ -1,4 +1,5 @@
 ﻿using EnvíosJADEE.Forms;
+using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,7 +66,8 @@ namespace EnvíosJADEE
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text.Length > 0 && txtContraseña.Text.Length > 0)
+            LoginService login = new LoginService();
+            if (login.Login(txtUsuario.Text, txtContraseña.Text))
             {
                 frmHome frmHome = new frmHome();
                 frmHome.Show();
@@ -76,6 +78,11 @@ namespace EnvíosJADEE
                 MessageBox.Show("Usuario o contraseña inválido", "Credenciales inválidas", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
 
         }
     }
