@@ -61,5 +61,12 @@ namespace EnvíosJADEE.Forms
             cmbPerfiles.DisplayMember = "Nombre";
             cmbPerfiles.ValueMember = "Id";
         }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            frmHome frmHome = new frmHome();
+            frmHome.Show();
+            this.Close();
+        }
     }
 }
