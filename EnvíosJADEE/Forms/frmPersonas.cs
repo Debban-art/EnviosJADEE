@@ -50,6 +50,8 @@ namespace EnvíosJADEE.Forms
                 PersonaUsuarioService service = new PersonaUsuarioService();
                 service.InsertPersonaUsuario(persona, usuario);
 
+                dgvPersonas.DataSource = null;
+                dgvPersonas.DataSource = service.GetPersonasUsuario();
 
             }
         }
@@ -60,6 +62,10 @@ namespace EnvíosJADEE.Forms
             cmbPerfiles.DataSource = perfilService.GetPerfiles();
             cmbPerfiles.DisplayMember = "Nombre";
             cmbPerfiles.ValueMember = "Id";
+
+            PersonaUsuarioService personaService = new PersonaUsuarioService();
+            dgvPersonas.DataSource = personaService.GetPersonasUsuario();
+            dgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)

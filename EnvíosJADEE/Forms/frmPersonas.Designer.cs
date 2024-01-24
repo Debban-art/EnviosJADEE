@@ -40,11 +40,15 @@
             this.lblApPaterno = new System.Windows.Forms.Label();
             this.lblApMaterno = new System.Windows.Forms.Label();
             this.lblDirección = new System.Windows.Forms.Label();
-            this.dgvMarcas = new System.Windows.Forms.DataGridView();
+            this.dgvPersonas = new System.Windows.Forms.DataGridView();
             this.cmbPerfiles = new System.Windows.Forms.ComboBox();
             this.lblPerfil = new System.Windows.Forms.Label();
+
             this.btnRegresar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
+           
+
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).BeginInit();
+
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -155,14 +159,14 @@
             this.lblDirección.TabIndex = 27;
             this.lblDirección.Text = "Dirección";
             // 
-            // dgvMarcas
+            // dgvPersonas
             // 
-            this.dgvMarcas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMarcas.Location = new System.Drawing.Point(367, 112);
-            this.dgvMarcas.Name = "dgvMarcas";
-            this.dgvMarcas.Size = new System.Drawing.Size(643, 322);
-            this.dgvMarcas.TabIndex = 28;
+            this.dgvPersonas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonas.Location = new System.Drawing.Point(367, 112);
+            this.dgvPersonas.Name = "dgvPersonas";
+            this.dgvPersonas.Size = new System.Drawing.Size(643, 322);
+            this.dgvPersonas.TabIndex = 28;
             // 
             // cmbPerfiles
             // 
@@ -203,7 +207,7 @@
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.cmbPerfiles);
-            this.Controls.Add(this.dgvMarcas);
+            this.Controls.Add(this.dgvPersonas);
             this.Controls.Add(this.lblDirección);
             this.Controls.Add(this.lblApMaterno);
             this.Controls.Add(this.lblApPaterno);
@@ -217,7 +221,7 @@
             this.Name = "frmPersonas";
             this.Text = "Personas";
             this.Load += new System.EventHandler(this.frmPersonas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -236,7 +240,7 @@
         private System.Windows.Forms.Label lblApPaterno;
         private System.Windows.Forms.Label lblApMaterno;
         private System.Windows.Forms.Label lblDirección;
-        private System.Windows.Forms.DataGridView dgvMarcas;
+        private System.Windows.Forms.DataGridView dgvPersonas;
         private System.Windows.Forms.ComboBox cmbPerfiles;
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Button btnRegresar;
