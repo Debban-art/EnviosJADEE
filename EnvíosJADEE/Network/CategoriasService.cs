@@ -65,5 +65,24 @@ namespace EnvíosJADEE.Network
 
         }
 
+        public void UpdateCategorías(CategoríaModel categoría)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = categoría.Id });
+            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = categoría.Nombre });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = categoría.Estatus == "Activo" ? 1 : 0});
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdateCategorias", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
+        }
+
     }
 }

@@ -71,5 +71,17 @@ namespace EnvíosJADEE.Forms
             frmHome.Show();
             this.Close();
         }
+
+        private void dgvCategorías_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            CategoriasService service= new CategoriasService();
+            CategoríaModel categoría = new CategoríaModel();
+            var row = dgvCategorías.Rows[e.RowIndex];
+
+            categoría.Id = int.Parse(row.Cells[0].Value.ToString());
+            categoría.Nombre = row.Cells[1].Value.ToString();
+            categoría.Estatus = row.Cells[2].Value.ToString();
+            service.UpdateCategorías(categoría);
+        }
     }
 }
