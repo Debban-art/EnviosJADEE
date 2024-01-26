@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestLeoniWF;
+using EnvíosJADEE.Clases;
 
 namespace EnvíosJADEE.Network
 {
@@ -21,6 +22,7 @@ namespace EnvíosJADEE.Network
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pIdModulo", SqlDbType = System.Data.SqlDbType.Int, Value = detallePerfil.IdModulo });
             parametros.Add(new SqlParameter { ParameterName = "@pIdPerfil", SqlDbType = System.Data.SqlDbType.Int, Value = detallePerfil.IdPerfil });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
 
             try
             {

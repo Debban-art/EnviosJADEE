@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestLeoniWF;
+using EnvíosJADEE.Clases;
 
 namespace EnvíosJADEE.Network
 {
@@ -31,6 +32,7 @@ namespace EnvíosJADEE.Network
                                      .Select(dataRow => new UsuarioModel
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
+                                         IdPerfil = int.Parse(dataRow["IdPerfil"].ToString()),
                                          NombreUsuario = dataRow["NombreUsuario"].ToString()
                                      }).ToList();
                     if (lista[0].Id == 0)
@@ -39,6 +41,10 @@ namespace EnvíosJADEE.Network
                     }
                     else
                     {
+                        SesionClass.IdUsuario = lista[0].Id;
+                        SesionClass.NombreUsuario = lista[0].NombreUsuario;
+                        SesionClass.IdPerfil = lista[0].IdPerfil;
+
                         return true;
                     }
                 }

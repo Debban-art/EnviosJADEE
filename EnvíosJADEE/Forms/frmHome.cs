@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnvíosJADEE.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -71,6 +72,11 @@ namespace EnvíosJADEE.Forms
             frmPersonas.Show();
 
             this.Hide();
+        }
+
+        private void frmHome_Load(object sender, EventArgs e)
+        {
+            lblNombreUsuario.Text = SesionClass.NombreUsuario;
         }
     }
 }

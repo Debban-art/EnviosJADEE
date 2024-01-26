@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\SesionClass.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -113,6 +114,7 @@
     <Compile Include="Models\VehiculoModel.cs" />
     <Compile Include="Network\CategoriasService.cs" />
     <Compile Include="Network\DetallePerfilService.cs" />
+    <Compile Include="Network\LoginService.cs" />
     <Compile Include="Network\MarcasService.cs" />
     <Compile Include="Network\ModulosService.cs" />
     <Compile Include="Network\PerfilService.cs" />
