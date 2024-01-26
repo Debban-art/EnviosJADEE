@@ -68,5 +68,18 @@ namespace EnvíosJADEE.Forms
             this.Close();
 
         }
+
+        private void dgvDetallePerfil_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DetallePerfilService service = new DetallePerfilService();
+            DetallePerfilModel DetallePerfil = new DetallePerfilModel();
+            var row = dgvDetallePerfil.Rows[e.RowIndex];
+
+            DetallePerfil.Id = int.Parse(row.Cells[0].Value.ToString());
+            DetallePerfil.IdModulo = int.Parse(row.Cells[1].Value.ToString());
+            DetallePerfil.IdPerfil = int.Parse(row.Cells[3].Value.ToString());
+            DetallePerfil.Estatus = row.Cells[5].Value.ToString();
+            service.UpdateDetallePerfil(DetallePerfil);
+        }
     }
 }
