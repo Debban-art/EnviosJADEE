@@ -86,7 +86,8 @@ namespace EnvíosJADEE.Forms
 
             Modulos.Id = int.Parse(row.Cells[0].Value.ToString());
             Modulos.Nombre = row.Cells[1].Value.ToString();
-            Modulos.Estatus = row.Cells[2].Value.ToString();
+            Modulos.IdCategoria = int.Parse(row.Cells[2].Value.ToString());
+            Modulos.Estatus = row.Cells[4].Value.ToString();
             service.UpdateModulos(Modulos);
             dgvModulos.DataSource = null;
             ModulosService Modulosservice = new ModulosService();
