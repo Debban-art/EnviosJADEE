@@ -80,6 +80,9 @@ namespace EnvíosJADEE.Forms
             DetallePerfil.IdPerfil = int.Parse(row.Cells[3].Value.ToString());
             DetallePerfil.Estatus = row.Cells[5].Value.ToString();
             service.UpdateDetallePerfil(DetallePerfil);
+
+            dgvDetallePerfil.DataSource = null;
+            dgvDetallePerfil.DataSource = service.GetDetallePerfil();
         }
     }
 }
