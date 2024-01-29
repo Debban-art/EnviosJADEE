@@ -104,6 +104,7 @@
             this.dgvDetallePerfil.Name = "dgvDetallePerfil";
             this.dgvDetallePerfil.Size = new System.Drawing.Size(643, 322);
             this.dgvDetallePerfil.TabIndex = 54;
+            this.dgvDetallePerfil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePerfil_CellContentClick);
             this.dgvDetallePerfil.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePerfil_CellEndEdit);
             // 
             // cmbPerfil
