@@ -68,5 +68,26 @@ namespace EnvíosJADEE.Network
             return lista;
 
         }
+
+        public void UpdateDetallePerfil(DetallePerfilModel DetallePerfil)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.Id });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdModulo", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.IdModulo });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdPerfil", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.IdPerfil });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.Estatus == "Activo" ? 1 : 0 });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdateDetallePerfil", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
+        }
     }
 }
