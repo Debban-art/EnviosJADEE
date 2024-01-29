@@ -113,6 +113,8 @@
             this.dgvModulos.Name = "dgvModulos";
             this.dgvModulos.Size = new System.Drawing.Size(643, 322);
             this.dgvModulos.TabIndex = 54;
+            this.dgvModulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModulos_CellContentClick);
+            this.dgvModulos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModulos_CellEndEdit);
             // 
             // btnRegresar
             // 

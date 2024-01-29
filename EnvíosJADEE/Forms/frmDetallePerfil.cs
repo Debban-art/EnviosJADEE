@@ -44,6 +44,13 @@ namespace EnvíosJADEE.Forms
             cmbPerfil.DataSource = perfilService.GetPerfiles();
             cmbPerfil.DisplayMember = "Nombre";
             cmbPerfil.ValueMember = "Id";
+
+            dgvDetallePerfil.Columns[0].ReadOnly = true;
+            dgvDetallePerfil.Columns[2].ReadOnly = true;
+            dgvDetallePerfil.Columns[4].ReadOnly = true;
+            dgvDetallePerfil.Columns[6].ReadOnly = true;
+            dgvDetallePerfil.Columns[7].ReadOnly = true;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -83,6 +90,11 @@ namespace EnvíosJADEE.Forms
 
             dgvDetallePerfil.DataSource = null;
             dgvDetallePerfil.DataSource = service.GetDetallePerfil();
+        }
+
+        private void dgvDetallePerfil_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

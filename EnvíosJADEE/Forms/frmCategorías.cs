@@ -36,6 +36,7 @@ namespace EnvíosJADEE.Forms
                 dgvCategorías.DataSource = null;
                 CategoriasService Categoriaservice = new CategoriasService();
                 dgvCategorías.DataSource = Categoriaservice.GetCategorias();
+
             }
 
         }
@@ -45,6 +46,9 @@ namespace EnvíosJADEE.Forms
             CategoriasService service = new CategoriasService();
             dgvCategorías.DataSource= service.GetCategorias();
             dgvCategorías.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCategorías.Columns[0].ReadOnly = true;
+            dgvCategorías.Columns[3].ReadOnly = true;
+            dgvCategorías.Columns[4].ReadOnly = true;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -82,9 +86,9 @@ namespace EnvíosJADEE.Forms
             categoría.Nombre = row.Cells[1].Value.ToString();
             categoría.Estatus = row.Cells[2].Value.ToString();
             service.UpdateCategorías(categoría);
+
             dgvCategorías.DataSource = null;
-            CategoriasService Categoriaservice = new CategoriasService();
-            dgvCategorías.DataSource = Categoriaservice.GetCategorias();
+            dgvCategorías.DataSource = service.GetCategorias();
         }
     }
 }

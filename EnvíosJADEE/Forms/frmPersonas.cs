@@ -53,6 +53,8 @@ namespace EnvíosJADEE.Forms
                 dgvPersonas.DataSource = null;
                 dgvPersonas.DataSource = service.GetPersonasUsuario();
 
+
+
             }
         }
 
@@ -66,6 +68,9 @@ namespace EnvíosJADEE.Forms
             PersonaUsuarioService personaService = new PersonaUsuarioService();
             dgvPersonas.DataSource = personaService.GetPersonasUsuario();
             dgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPersonas.Columns[0].ReadOnly= true;
+            dgvPersonas.Columns[4].ReadOnly = true;
+            dgvPersonas.Columns[7].ReadOnly = true;
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -89,8 +94,12 @@ namespace EnvíosJADEE.Forms
             persona.Estatus = row.Cells[6].Value.ToString();
             service.UpdatePersonasUsuario(persona);
             dgvPersonas.DataSource = null;
-            CategoriasService Categoriaservice = new CategoriasService();
-            dgvPersonas.DataSource = Categoriaservice.GetCategorias();
+            dgvPersonas.DataSource = service.GetPersonasUsuario();
+        }
+
+        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
