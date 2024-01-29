@@ -70,5 +70,26 @@ namespace EnvíosJADEE.Network
             return lista;
 
         }
+
+        public void UpdatePersonasUsuario(PersonaModel persona)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.Nombre });
+            parametros.Add(new SqlParameter { ParameterName = "@pApelldioPaterno", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.ApellidoPaterno });
+            parametros.Add(new SqlParameter { ParameterName = "@pApellidoMaterno", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.ApellidoMaterno });
+            parametros.Add(new SqlParameter { ParameterName = "pDirección", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.Dirección });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdatePersonasUsuarios", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
+        }
     }
 }

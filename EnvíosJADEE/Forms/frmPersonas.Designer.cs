@@ -43,12 +43,8 @@
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
             this.cmbPerfiles = new System.Windows.Forms.ComboBox();
             this.lblPerfil = new System.Windows.Forms.Label();
-
             this.btnRegresar = new System.Windows.Forms.Button();
-           
-
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonas)).BeginInit();
-
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -167,6 +163,7 @@
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.Size = new System.Drawing.Size(643, 322);
             this.dgvPersonas.TabIndex = 28;
+            this.dgvPersonas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellEndEdit);
             // 
             // cmbPerfiles
             // 
