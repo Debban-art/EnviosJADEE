@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -70,6 +71,27 @@ namespace EnvíosJADEE.Forms
             frmHome frmHome = new frmHome();
             frmHome.Show();
             this.Close();
+        }
+
+        private void dgvModulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvModulos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            ModulosService service = new ModulosService();
+            ModuloModel Modulos = new ModuloModel();
+            var row = dgvModulos.Rows[e.RowIndex];
+
+            Modulos.Id = int.Parse(row.Cells[0].Value.ToString());
+            Modulos.Nombre = row.Cells[1].Value.ToString();
+            Modulos.IdCategoria = int.Parse(row.Cells[2].Value.ToString());
+            Modulos.Estatus = row.Cells[4].Value.ToString();
+            service.UpdateModulos(Modulos);
+            dgvModulos.DataSource = null;
+            ModulosService Modulosservice = new ModulosService();
+            dgvModulos.DataSource = service.GetModulos();
         }
     }
 }
