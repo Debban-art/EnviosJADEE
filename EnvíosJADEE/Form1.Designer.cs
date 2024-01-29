@@ -162,6 +162,7 @@
             this.lnklblCrearCuenta.TabIndex = 8;
             this.lnklblCrearCuenta.TabStop = true;
             this.lnklblCrearCuenta.Text = "Crear nueva cuenta";
+            this.lnklblCrearCuenta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblCrearCuenta_LinkClicked);
             // 
             // lblNombreEmpresa
             // 

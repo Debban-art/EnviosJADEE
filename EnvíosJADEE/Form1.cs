@@ -85,5 +85,12 @@ namespace EnvíosJADEE
         {
 
         }
+
+        private void lnklblCrearCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmPersonas frmPersonas = new frmPersonas();
+            frmPersonas.Show();
+            this.Hide();
+        }
     }
 }
