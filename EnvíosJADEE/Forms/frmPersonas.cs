@@ -74,5 +74,23 @@ namespace EnvíosJADEE.Forms
             frmHome.Show();
             this.Close();
         }
+
+        private void dgvPersonas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            PersonaUsuarioService service = new PersonaUsuarioService();
+            PersonaModel persona = new PersonaModel();
+            var row = dgvPersonas.Rows[e.RowIndex];
+
+            persona.Id = int.Parse(row.Cells[0].Value.ToString());
+            persona.Nombre = row.Cells[1].Value.ToString();
+            persona.ApellidoPaterno = row.Cells[2].Value.ToString();
+            persona.ApellidoMaterno = row.Cells[3].Value.ToString();
+            persona.Dirección = row.Cells[5].Value.ToString();
+            persona.Estatus = row.Cells[6].Value.ToString();
+            service.UpdatePersonasUsuario(persona);
+            dgvPersonas.DataSource = null;
+            CategoriasService Categoriaservice = new CategoriasService();
+            dgvPersonas.DataSource = Categoriaservice.GetCategorias();
+        }
     }
 }
