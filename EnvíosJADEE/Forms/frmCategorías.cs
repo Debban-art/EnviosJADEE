@@ -82,6 +82,9 @@ namespace EnvíosJADEE.Forms
             categoría.Nombre = row.Cells[1].Value.ToString();
             categoría.Estatus = row.Cells[2].Value.ToString();
             service.UpdateCategorías(categoría);
+            dgvCategorías.DataSource = null;
+            CategoriasService Categoriaservice = new CategoriasService();
+            dgvCategorías.DataSource = Categoriaservice.GetCategorias();
         }
     }
 }
