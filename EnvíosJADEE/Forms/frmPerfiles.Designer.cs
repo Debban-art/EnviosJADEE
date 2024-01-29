@@ -45,6 +45,7 @@
             this.dgvPerfiles.Name = "dgvPerfiles";
             this.dgvPerfiles.Size = new System.Drawing.Size(643, 322);
             this.dgvPerfiles.TabIndex = 20;
+            this.dgvPerfiles.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPerfiles_CellEndEdit);
             // 
             // lblNombre
             // 
