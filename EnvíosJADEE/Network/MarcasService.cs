@@ -1,8 +1,10 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +42,26 @@ namespace EnvíosJADEE.Network
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
+        }
+
+        public void UpdateMarcas(MarcaModel Marcas)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = Marcas.Id });
+            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Marcas.marca });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = Marcas.estatus == "Activo" ? 1 : 0 });
+
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdateMarcas", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
         }
     }
 }

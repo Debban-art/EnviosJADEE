@@ -70,6 +70,7 @@
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.Size = new System.Drawing.Size(643, 322);
             this.dgvMarcas.TabIndex = 19;
+            this.dgvMarcas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMarcas_CellEndEdit);
             // 
             // txtMarca
             // 
