@@ -78,6 +78,7 @@ namespace EnvíosJADEE.Forms
 
         private void dgvCategorías_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+
             CategoriasService service= new CategoriasService();
             CategoríaModel categoría = new CategoríaModel();
             var row = dgvCategorías.Rows[e.RowIndex];

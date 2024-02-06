@@ -88,8 +88,8 @@ namespace EnvíosJADEE
 
         private void lnklblCrearCuenta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmPersonas frmPersonas = new frmPersonas();
-            frmPersonas.Show();
+            frmCrearCuenta frmCrearCuenta = new frmCrearCuenta();
+            frmCrearCuenta.Show();
             this.Hide();
         }
     }
