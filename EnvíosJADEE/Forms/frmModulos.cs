@@ -32,6 +32,11 @@ namespace EnvíosJADEE.Forms
             cmbCategoria.DataSource = categoriasService.GetCategorias();
             cmbCategoria.DisplayMember = "Nombre";
             cmbCategoria.ValueMember = "Id";
+            dgvModulos.Columns[0].ReadOnly = true;
+            dgvModulos.Columns[3].ReadOnly = true;
+            dgvModulos.Columns[5].ReadOnly = true;
+            dgvModulos.Columns[6].ReadOnly = true;
+
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)

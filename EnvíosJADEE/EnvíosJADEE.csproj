@@ -61,6 +61,12 @@
     <Compile Include="Forms\frmCategorías.Designer.cs">
       <DependentUpon>frmCategorías.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCrearCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCrearCuenta.Designer.cs">
+      <DependentUpon>frmCrearCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmDetallePerfil.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmCategorías.resx">
       <DependentUpon>frmCategorías.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCrearCuenta.resx">
+      <DependentUpon>frmCrearCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDetallePerfil.resx">
       <DependentUpon>frmDetallePerfil.cs</DependentUpon>

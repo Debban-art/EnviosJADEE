@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestLeoniWF;
 using EnvíosJADEE.Clases;
+using System.Security.Cryptography;
 
 namespace EnvíosJADEE.Network
 {
@@ -51,7 +52,7 @@ namespace EnvíosJADEE.Network
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             return false;
         }

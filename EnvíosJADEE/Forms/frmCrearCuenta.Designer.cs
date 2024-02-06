@@ -38,6 +38,10 @@
             this.txtApMaterno = new System.Windows.Forms.TextBox();
             this.txtApPaterno = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.btnCrearCuenta = new System.Windows.Forms.Button();
+            this.lblNombreEmpresa = new System.Windows.Forms.Label();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPerfil
@@ -94,7 +98,7 @@
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(97, 129);
+            this.lblNombre.Location = new System.Drawing.Point(97, 157);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(68, 21);
             this.lblNombre.TabIndex = 59;
@@ -132,10 +136,45 @@
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombre.Location = new System.Drawing.Point(67, 153);
+            this.txtNombre.Location = new System.Drawing.Point(67, 181);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(300, 19);
             this.txtNombre.TabIndex = 55;
+            // 
+            // btnCrearCuenta
+            // 
+            this.btnCrearCuenta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnCrearCuenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearCuenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearCuenta.ForeColor = System.Drawing.Color.White;
+            this.btnCrearCuenta.Location = new System.Drawing.Point(67, 464);
+            this.btnCrearCuenta.Name = "btnCrearCuenta";
+            this.btnCrearCuenta.Size = new System.Drawing.Size(300, 36);
+            this.btnCrearCuenta.TabIndex = 65;
+            this.btnCrearCuenta.Text = "Crear cuenta";
+            this.btnCrearCuenta.UseVisualStyleBackColor = false;
+            this.btnCrearCuenta.Click += new System.EventHandler(this.btnCrearCuenta_Click);
+            // 
+            // lblNombreEmpresa
+            // 
+            this.lblNombreEmpresa.AutoSize = true;
+            this.lblNombreEmpresa.Font = new System.Drawing.Font("Times New Roman", 25F);
+            this.lblNombreEmpresa.ForeColor = System.Drawing.Color.White;
+            this.lblNombreEmpresa.Location = new System.Drawing.Point(117, 104);
+            this.lblNombreEmpresa.Name = "lblNombreEmpresa";
+            this.lblNombreEmpresa.Size = new System.Drawing.Size(222, 39);
+            this.lblNombreEmpresa.TabIndex = 67;
+            this.lblNombreEmpresa.Text = "Envíos JADEE";
+            // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Image = global::EnvíosJADEE.Properties.Resources.package_122391;
+            this.pbxLogo.Location = new System.Drawing.Point(172, 12);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(92, 89);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 66;
+            this.pbxLogo.TabStop = false;
             // 
             // frmCrearCuenta
             // 
@@ -143,6 +182,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(432, 538);
+            this.Controls.Add(this.lblNombreEmpresa);
+            this.Controls.Add(this.pbxLogo);
+            this.Controls.Add(this.btnCrearCuenta);
             this.Controls.Add(this.lblPerfil);
             this.Controls.Add(this.cmbPerfiles);
             this.Controls.Add(this.lblDirección);
@@ -155,6 +197,7 @@
             this.Controls.Add(this.txtNombre);
             this.Name = "frmCrearCuenta";
             this.Text = "frmCrearCuenta";
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +215,8 @@
         private System.Windows.Forms.TextBox txtApMaterno;
         private System.Windows.Forms.TextBox txtApPaterno;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Button btnCrearCuenta;
+        private System.Windows.Forms.Label lblNombreEmpresa;
+        private System.Windows.Forms.PictureBox pbxLogo;
     }
 }

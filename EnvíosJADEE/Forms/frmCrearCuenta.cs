@@ -16,5 +16,10 @@ namespace EnvíosJADEE.Forms
         {
             InitializeComponent();
         }
+
+        private void btnCrearCuenta_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
