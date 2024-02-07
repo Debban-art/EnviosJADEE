@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,25 @@ namespace EnvíosJADEE.Network
     {
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
+
+        public string InsertMarcas(MarcaModel Marca)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Marca.marca });
+
+            try
+            {
+                dac.ExecuteNonQuery("InsertMarcas", parametros);
+                return "Correcto";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return "Correcto";
+        }
+
+
         public List<MarcaModel> GetMarcas()
         {
             parametros = new ArrayList();

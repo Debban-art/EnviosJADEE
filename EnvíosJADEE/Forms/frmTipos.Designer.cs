@@ -1,6 +1,6 @@
 ﻿namespace EnvíosJADEE.Forms
 {
-    partial class frmMarcas
+    partial class frmTipos
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,11 @@
         {
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
-            this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.txtMarca = new System.Windows.Forms.TextBox();
-            this.lblMarca = new System.Windows.Forms.Label();
+            this.dgvTipos = new System.Windows.Forms.DataGridView();
+            this.txtTipo = new System.Windows.Forms.TextBox();
+            this.lblTipo = new System.Windows.Forms.Label();
             this.btnRegresar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -45,7 +45,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(168, 407);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(111, 41);
-            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.TabIndex = 26;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -59,52 +59,50 @@
             this.btnAñadir.Location = new System.Drawing.Point(51, 407);
             this.btnAñadir.Name = "btnAñadir";
             this.btnAñadir.Size = new System.Drawing.Size(111, 41);
-            this.btnAñadir.TabIndex = 20;
+            this.btnAñadir.TabIndex = 25;
             this.btnAñadir.Text = "Añadir";
             this.btnAñadir.UseVisualStyleBackColor = false;
-            this.btnAñadir.Click += new System.EventHandler(this.btnAñadir_Click);
             // 
-            // dgvMarcas
+            // dgvTipos
             // 
-            this.dgvMarcas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMarcas.Location = new System.Drawing.Point(352, 88);
-            this.dgvMarcas.Name = "dgvMarcas";
-            this.dgvMarcas.Size = new System.Drawing.Size(643, 322);
-            this.dgvMarcas.TabIndex = 19;
-            this.dgvMarcas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMarcas_CellEndEdit);
+            this.dgvTipos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.dgvTipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTipos.Location = new System.Drawing.Point(352, 88);
+            this.dgvTipos.Name = "dgvTipos";
+            this.dgvTipos.Size = new System.Drawing.Size(643, 322);
+            this.dgvTipos.TabIndex = 24;
             // 
-            // txtMarca
+            // txtTipo
             // 
-            this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtMarca.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMarca.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMarca.Location = new System.Drawing.Point(51, 223);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(228, 22);
-            this.txtMarca.TabIndex = 18;
+            this.txtTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtTipo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTipo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipo.Location = new System.Drawing.Point(51, 223);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(228, 22);
+            this.txtTipo.TabIndex = 23;
             // 
-            // lblMarca
+            // lblTipo
             // 
-            this.lblMarca.AutoSize = true;
-            this.lblMarca.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMarca.Location = new System.Drawing.Point(47, 199);
-            this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(53, 21);
-            this.lblMarca.TabIndex = 17;
-            this.lblMarca.Text = "Marca";
+            this.lblTipo.AutoSize = true;
+            this.lblTipo.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipo.Location = new System.Drawing.Point(47, 199);
+            this.lblTipo.Name = "lblTipo";
+            this.lblTipo.Size = new System.Drawing.Size(40, 21);
+            this.lblTipo.TabIndex = 22;
+            this.lblTipo.Text = "Tipo";
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(12, 12);
+            this.btnRegresar.Location = new System.Drawing.Point(26, 22);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegresar.TabIndex = 22;
+            this.btnRegresar.TabIndex = 27;
             this.btnRegresar.Text = "Regresar";
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
-            // frmMarcas
+            // frmTipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,13 +111,13 @@
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
-            this.Controls.Add(this.dgvMarcas);
-            this.Controls.Add(this.txtMarca);
-            this.Controls.Add(this.lblMarca);
-            this.Name = "frmMarcas";
-            this.Text = "Marcas";
-            this.Load += new System.EventHandler(this.frmMarcas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
+            this.Controls.Add(this.dgvTipos);
+            this.Controls.Add(this.txtTipo);
+            this.Controls.Add(this.lblTipo);
+            this.Name = "frmTipos";
+            this.Text = "frmTipos";
+            this.Load += new System.EventHandler(this.frmTipos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,9 +127,9 @@
 
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
-        private System.Windows.Forms.DataGridView dgvMarcas;
-        private System.Windows.Forms.TextBox txtMarca;
-        private System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.DataGridView dgvTipos;
+        private System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.Label lblTipo;
         private System.Windows.Forms.Button btnRegresar;
     }
 }

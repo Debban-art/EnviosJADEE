@@ -50,5 +50,30 @@ namespace EnvíosJADEE.Forms
 
             dgvMarcas.DataSource = service.GetMarcas();
         }
+
+        private void btnAñadir_Click(object sender, EventArgs e)
+        {
+            if (txtMarca.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {   
+                MarcaModel Marca = new MarcaModel();
+                Marca.marca = txtMarca.Text;
+                MarcasService service = new MarcasService();
+                service.InsertMarcas(Marca);
+
+                dgvMarcas.DataSource = null;
+                dgvMarcas.DataSource = service.GetMarcas();
+
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtMarca.Text = "";
+            txtMarca.Focus();
+        }
     }
 }

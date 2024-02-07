@@ -103,6 +103,12 @@
     <Compile Include="Forms\frmPersonas.Designer.cs">
       <DependentUpon>frmPersonas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmTipos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTipos.Designer.cs">
+      <DependentUpon>frmTipos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmVehículos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonas.resx">
       <DependentUpon>frmPersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTipos.resx">
+      <DependentUpon>frmTipos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmVehículos.resx">
       <DependentUpon>frmVehículos.cs</DependentUpon>

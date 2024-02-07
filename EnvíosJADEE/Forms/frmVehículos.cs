@@ -45,5 +45,10 @@ namespace EnvíosJADEE.Forms
             frmHome.Show();
             this.Close();
         }
+
+        private void btnAñadir_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
