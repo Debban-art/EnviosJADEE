@@ -1,4 +1,5 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,31 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
+        public string InsertVehiculo(VehiculoModel Vehiculo)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pMatricula", SqlDbType = System.Data.SqlDbType.VarChar, Value = Vehiculo.matricula });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdMarca", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.idMarca });
+            parametros.Add(new SqlParameter { ParameterName = "@pModelo", SqlDbType = System.Data.SqlDbType.VarChar, Value = Vehiculo.modelo });
+            parametros.Add(new SqlParameter { ParameterName = "@pNoSerie", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.NoSerie });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdTipo", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.idTipo });
+            
+
+            try
+            {
+                dac.ExecuteNonQuery("InsertVehiculo", parametros);
+                return "Correcto";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return "Correcto";
+        }
+
         public List<VehiculoModel> GetVehiculos()
+
+
         {
             parametros = new ArrayList();
             List <VehiculoModel> lista = new List<VehiculoModel>();
@@ -53,5 +78,31 @@ namespace EnvíosJADEE.Network
             }
             return lista;
         }
+        public void UpdateVehiculo(VehiculoModel vehiculo)
+        {
+            parametros = new ArrayList();
+
+            parametros.Add(new SqlParameter { ParameterName = "@pMatricula", SqlDbType = System.Data.SqlDbType.VarChar, Value = vehiculo.matricula });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdMarca", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.idMarca });
+            parametros.Add(new SqlParameter { ParameterName = "@pModelo", SqlDbType = System.Data.SqlDbType.VarChar, Value = vehiculo.modelo });
+            parametros.Add(new SqlParameter { ParameterName = "@pNoSerie", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.NoSerie });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdTipo", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.idTipo });
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.id});
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdateVehiculo", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
+        }
     }
 }
+
+
+
+

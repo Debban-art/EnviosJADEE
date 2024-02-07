@@ -11,11 +11,12 @@ namespace EnvíosJADEE.Models
         public int id { get; set; }
 
         public int idTipo {  get; set; }
+        public int IdTipo { get; internal set; }
         public string tipo { get; set; }
         public string matricula { get; set; }
 
         public int idMarca { get; set; }
-
+        public int IdMarca { get; internal set; }
         public string marca { get; set; }
         public string modelo { get; set; }
 

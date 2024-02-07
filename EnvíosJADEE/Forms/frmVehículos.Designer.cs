@@ -154,6 +154,8 @@
             this.dgvVehiculos.Name = "dgvVehiculos";
             this.dgvVehiculos.Size = new System.Drawing.Size(643, 322);
             this.dgvVehiculos.TabIndex = 14;
+            this.dgvVehiculos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehiculos_CellContentClick);
+            this.dgvVehiculos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehiculos_CellEndEdit);
             // 
             // btnAñadir
             // 
@@ -180,6 +182,7 @@
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnRegresar
             // 
