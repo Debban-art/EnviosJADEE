@@ -42,6 +42,7 @@
             this.txtApPaterno = new System.Windows.Forms.TextBox();
             this.txtApMaterno = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.lnklblIniciarSesión = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -184,12 +185,25 @@
             this.txtDireccion.Size = new System.Drawing.Size(300, 22);
             this.txtDireccion.TabIndex = 71;
             // 
+            // lnklblIniciarSesión
+            // 
+            this.lnklblIniciarSesión.AutoSize = true;
+            this.lnklblIniciarSesión.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.lnklblIniciarSesión.Location = new System.Drawing.Point(163, 516);
+            this.lnklblIniciarSesión.Name = "lnklblIniciarSesión";
+            this.lnklblIniciarSesión.Size = new System.Drawing.Size(70, 13);
+            this.lnklblIniciarSesión.TabIndex = 72;
+            this.lnklblIniciarSesión.TabStop = true;
+            this.lnklblIniciarSesión.Text = "Iniciar Sesión";
+            this.lnklblIniciarSesión.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblIniciarSesión_LinkClicked);
+            // 
             // frmCrearCuenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(432, 538);
+            this.Controls.Add(this.lnklblIniciarSesión);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtApMaterno);
             this.Controls.Add(this.txtApPaterno);
@@ -228,5 +242,6 @@
         private System.Windows.Forms.TextBox txtApPaterno;
         private System.Windows.Forms.TextBox txtApMaterno;
         private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.LinkLabel lnklblIniciarSesión;
     }
 }

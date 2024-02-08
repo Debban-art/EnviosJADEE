@@ -57,6 +57,8 @@ namespace EnvíosJADEE.Network
                                          ApellidoMaterno = dataRow["ApellidoMaterno"].ToString(),
                                          NombreUsuario = dataRow["NombreUsuario"].ToString(),
                                          Dirección = dataRow["Direccion"].ToString(),
+                                         IdPerfil = int.Parse(dataRow["IdPerfil"].ToString()),
+                                         Perfil = dataRow["Perfil"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
 

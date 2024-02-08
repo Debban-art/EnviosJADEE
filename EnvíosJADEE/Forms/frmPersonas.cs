@@ -72,6 +72,7 @@ namespace EnvíosJADEE.Forms
             dgvPersonas.Columns[0].ReadOnly= true;
             dgvPersonas.Columns[4].ReadOnly = true;
             dgvPersonas.Columns[7].ReadOnly = true;
+            dgvPersonas.Columns[9].ReadOnly = true;
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -92,7 +93,7 @@ namespace EnvíosJADEE.Forms
             persona.ApellidoPaterno = row.Cells[2].Value.ToString();
             persona.ApellidoMaterno = row.Cells[3].Value.ToString();
             persona.Dirección = row.Cells[5].Value.ToString();
-            persona.Estatus = row.Cells[6].Value.ToString();
+            persona.Estatus = row.Cells[8].Value.ToString();
             service.UpdatePersonasUsuario(persona);
             dgvPersonas.DataSource = null;
             dgvPersonas.DataSource = service.GetPersonasUsuario();

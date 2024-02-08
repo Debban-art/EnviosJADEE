@@ -1,4 +1,5 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,11 @@ namespace EnvíosJADEE.Forms
             cmbPerfiles.DataSource = perfilService.GetPerfiles();
             cmbPerfiles.DisplayMember = "Nombre";
             cmbPerfiles.ValueMember = "Id";
+        }
+
+        private void lnklblIniciarSesión_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmLogin(), this);
         }
     }
 }
