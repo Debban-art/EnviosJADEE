@@ -1,4 +1,5 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
@@ -90,6 +91,47 @@ namespace EnvíosJADEE.Forms
 
             dgvCategorías.DataSource = null;
             dgvCategorías.DataSource = service.GetCategorias();
+        }
+
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmHome(), this);
+
+        }
+
+        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmModulos(), this);
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPerfiles(), this);
+        }
+
+        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new DetallePerfil(), this);
+        }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPersonas(), this);
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmTipos(), this);
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmMarcas(), this);
+        }
+
+        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmVehículos(), this);
         }
     }
 }

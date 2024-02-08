@@ -1,14 +1,7 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
@@ -74,6 +67,7 @@ namespace EnvíosJADEE.Forms
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             frmHome frmHome = new frmHome();
+
             frmHome.Show();
             this.Close();
         }
@@ -98,5 +92,47 @@ namespace EnvíosJADEE.Forms
             ModulosService Modulosservice = new ModulosService();
             dgvModulos.DataSource = service.GetModulos();
         }
+
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmHome(), this);
+
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPerfiles(), this);
+        }
+
+        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new DetallePerfil(), this);
+        }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPersonas(), this);
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmTipos(), this);
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmMarcas(), this);
+        }
+
+        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmVehículos(), this);
+        }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmCategorías(), this);
+        }
+
     }
 }

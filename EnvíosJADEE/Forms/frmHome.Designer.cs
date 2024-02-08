@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cátalogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vehículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +53,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inicioToolStripMenuItem,
             this.cátalogoToolStripMenuItem,
             this.administraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -58,15 +62,40 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // inicioToolStripMenuItem
+            // 
+            this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inicioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(73, 29);
+            this.inicioToolStripMenuItem.Text = "Inicio";
+            // 
             // cátalogoToolStripMenuItem
             // 
             this.cátalogoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vehículosToolStripMenuItem,
-            this.marcasToolStripMenuItem});
-            this.cátalogoToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.tiposToolStripMenuItem,
+            this.marcasToolStripMenuItem,
+            this.vehículosToolStripMenuItem});
+            this.cátalogoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.cátalogoToolStripMenuItem.Name = "cátalogoToolStripMenuItem";
             this.cátalogoToolStripMenuItem.Size = new System.Drawing.Size(100, 29);
             this.cátalogoToolStripMenuItem.Text = "Cátalogo";
+            // 
+            // tiposToolStripMenuItem
+            // 
+            this.tiposToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
+            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
+            this.tiposToolStripMenuItem.Text = "Medios";
+            this.tiposToolStripMenuItem.Click += new System.EventHandler(this.tiposToolStripMenuItem_Click);
+            // 
+            // marcasToolStripMenuItem
+            // 
+            this.marcasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
+            this.marcasToolStripMenuItem.Text = "Marcas";
+            this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // vehículosToolStripMenuItem
             // 
@@ -75,13 +104,6 @@
             this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
             this.vehículosToolStripMenuItem.Text = "Vehículos";
             this.vehículosToolStripMenuItem.Click += new System.EventHandler(this.vehículosToolStripMenuItem_Click);
-            // 
-            // marcasToolStripMenuItem
-            // 
-            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
-            this.marcasToolStripMenuItem.Text = "Marcas";
-            this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // administraciónToolStripMenuItem
             // 
@@ -97,6 +119,7 @@
             // 
             // categoríasToolStripMenuItem
             // 
+            this.categoríasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
             this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.categoríasToolStripMenuItem.Text = "Categorías";
@@ -104,6 +127,7 @@
             // 
             // modulosToolStripMenuItem
             // 
+            this.modulosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
             this.modulosToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.modulosToolStripMenuItem.Text = "Modulos";
@@ -111,6 +135,7 @@
             // 
             // perfilToolStripMenuItem
             // 
+            this.perfilToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
             this.perfilToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.perfilToolStripMenuItem.Text = "Perfil";
@@ -118,6 +143,7 @@
             // 
             // detallesPerfilToolStripMenuItem
             // 
+            this.detallesPerfilToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.detallesPerfilToolStripMenuItem.Name = "detallesPerfilToolStripMenuItem";
             this.detallesPerfilToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.detallesPerfilToolStripMenuItem.Text = "Detalles de Perfil";
@@ -125,6 +151,7 @@
             // 
             // personasToolStripMenuItem
             // 
+            this.personasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
             this.personasToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
             this.personasToolStripMenuItem.Text = "Personas";
@@ -142,22 +169,24 @@
             // 
             // lblBienvenido
             // 
-            this.lblBienvenido.AutoSize = true;
             this.lblBienvenido.Font = new System.Drawing.Font("Yu Gothic UI", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBienvenido.Location = new System.Drawing.Point(332, 248);
             this.lblBienvenido.Name = "lblBienvenido";
+            this.lblBienvenido.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblBienvenido.Size = new System.Drawing.Size(361, 86);
             this.lblBienvenido.TabIndex = 2;
             this.lblBienvenido.Text = "Bienvenido";
+            this.lblBienvenido.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblNombreUsuario
             // 
-            this.lblNombreUsuario.AutoSize = true;
+            this.lblNombreUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblNombreUsuario.Font = new System.Drawing.Font("Yu Gothic", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreUsuario.Location = new System.Drawing.Point(342, 345);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(0, 413);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
-            this.lblNombreUsuario.Size = new System.Drawing.Size(0, 124);
+            this.lblNombreUsuario.Size = new System.Drawing.Size(1043, 124);
             this.lblNombreUsuario.TabIndex = 3;
+            this.lblNombreUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmHome
             // 
@@ -169,9 +198,10 @@
             this.Controls.Add(this.lblBienvenido);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmHome";
-            this.Text = "Home";
+            this.Text = "Inicio";
             this.Load += new System.EventHandler(this.frmHome_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -196,5 +226,7 @@
         private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
         private System.Windows.Forms.Label lblBienvenido;
         private System.Windows.Forms.Label lblNombreUsuario;
+        private System.Windows.Forms.ToolStripMenuItem tiposToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
     }
 }

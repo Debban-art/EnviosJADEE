@@ -1,14 +1,10 @@
-﻿using EnvíosJADEE.Clases;
-using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestLeoniWF;
 
@@ -27,11 +23,11 @@ namespace EnvíosJADEE.Network
             parametros.Add(new SqlParameter { ParameterName = "@pModelo", SqlDbType = System.Data.SqlDbType.VarChar, Value = Vehiculo.modelo });
             parametros.Add(new SqlParameter { ParameterName = "@pNoSerie", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.NoSerie });
             parametros.Add(new SqlParameter { ParameterName = "@pIdTipo", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.idTipo });
-            
+
 
             try
             {
-                dac.ExecuteNonQuery("InsertVehiculo", parametros);
+                dac.ExecuteNonQuery("InsertVehiculoS", parametros);
                 return "Correcto";
             }
             catch (Exception ex)
@@ -46,12 +42,12 @@ namespace EnvíosJADEE.Network
 
         {
             parametros = new ArrayList();
-            List <VehiculoModel> lista = new List<VehiculoModel>();
+            List<VehiculoModel> lista = new List<VehiculoModel>();
             //parametros.Add(new SqlParameter { ParameterName = "@pIdUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = 1 });                                                                                                                                                                                                                                              
             try
             {
                 DataSet ds = dac.Fill("SelectVehiculos", parametros);
-                if (ds.Tables.Count > 0 )
+                if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
                                      .Select(dataRow => new VehiculoModel
@@ -87,11 +83,12 @@ namespace EnvíosJADEE.Network
             parametros.Add(new SqlParameter { ParameterName = "@pModelo", SqlDbType = System.Data.SqlDbType.VarChar, Value = vehiculo.modelo });
             parametros.Add(new SqlParameter { ParameterName = "@pNoSerie", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.NoSerie });
             parametros.Add(new SqlParameter { ParameterName = "@pIdTipo", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.idTipo });
-            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.id});
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.id });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = vehiculo.estatus == "Activo" ? 1 : 0 });
 
             try
             {
-                dac.ExecuteNonQuery("UpdateVehiculo", parametros);
+                dac.ExecuteNonQuery("UpdateVehiculos", parametros);
                 return;
             }
             catch (Exception ex)

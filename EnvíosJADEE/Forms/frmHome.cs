@@ -20,63 +20,47 @@ namespace EnvíosJADEE.Forms
 
         private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmVehículos frmVehículos = new frmVehículos();
-            frmVehículos.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new frmVehículos(), this);
         }
 
         private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMarcas frmMarcas = new frmMarcas();
-            frmMarcas.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new frmMarcas(), this); ;
         }
 
         private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCategorías frmCategorías = new frmCategorías();
-            frmCategorías.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new frmCategorías(), this);
         }
 
         private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmModulos frmModulos = new frmModulos();
-            frmModulos.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new frmModulos(), this);
         }
 
         private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPerfiles frmPerfiles = new frmPerfiles();
-            frmPerfiles.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new frmPerfiles(), this);
         }
 
         private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDetallePerfil frmDetalle= new frmDetallePerfil();
-            frmDetalle.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new DetallePerfil(), this);
         }
 
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPersonas frmPersonas = new frmPersonas();
-            frmPersonas.Show();
-
-            this.Hide();
+            ChangePages.ChangeWindow(new frmPersonas(), this);
         }
 
         private void frmHome_Load(object sender, EventArgs e)
         {
             lblNombreUsuario.Text = SesionClass.NombreUsuario;
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmTipos(), this);
         }
     }
 }

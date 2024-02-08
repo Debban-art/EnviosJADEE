@@ -1,4 +1,5 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
@@ -97,9 +98,51 @@ namespace EnvíosJADEE.Forms
             dgvPersonas.DataSource = service.GetPersonasUsuario();
         }
 
-        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ChangePages.ChangeWindow(new frmHome(), this);
 
+        }
+
+        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmModulos(), this);
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmTipos(), this);
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmMarcas(), this);
+        }
+
+        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmVehículos(), this);
+        }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmCategorías(), this);
+        }
+
+        private void modulosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmModulos(), this);
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPerfiles(), this);
+        }
+
+        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new DetallePerfil(), this);
+            
         }
     }
 }

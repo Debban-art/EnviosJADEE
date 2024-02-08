@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCrearCuenta));
             this.lblPerfil = new System.Windows.Forms.Label();
             this.cmbPerfiles = new System.Windows.Forms.ComboBox();
             this.lblDirección = new System.Windows.Forms.Label();
@@ -202,8 +203,9 @@
             this.Controls.Add(this.lblApMaterno);
             this.Controls.Add(this.lblApPaterno);
             this.Controls.Add(this.lblNombre);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCrearCuenta";
-            this.Text = "frmCrearCuenta";
+            this.Text = "Registrarse";
             this.Load += new System.EventHandler(this.frmCrearCuenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);

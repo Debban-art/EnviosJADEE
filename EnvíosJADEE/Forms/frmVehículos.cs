@@ -1,13 +1,7 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
@@ -23,6 +17,10 @@ namespace EnvíosJADEE.Forms
         {
             VehiculosService service = new VehiculosService();
             dgvVehiculos.DataSource = service.GetVehiculos();
+            dgvVehiculos.Columns[0].ReadOnly = true;
+            dgvVehiculos.Columns[2].ReadOnly = true;
+            dgvVehiculos.Columns[5].ReadOnly = true;
+            dgvVehiculos.Columns[8].ReadOnly = true;
 
             MarcasService marcasService = new MarcasService();
             cmbMarca.DataSource = marcasService.GetMarcas();
@@ -33,6 +31,7 @@ namespace EnvíosJADEE.Forms
             cmbTipo.DataSource = tipoService.GetTipos();
             cmbTipo.DisplayMember = "Tipo";
             cmbTipo.ValueMember = "Id";
+
         }
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,8 +57,8 @@ namespace EnvíosJADEE.Forms
                 VehiculoModel Vehiculo = new VehiculoModel();
                 Vehiculo.modelo = txtModelo.Text;
                 Vehiculo.matricula = txtMatrícula.Text;
-                Vehiculo.IdMarca = int.Parse(cmbMarca.SelectedValue.ToString());
-                Vehiculo.IdTipo = int.Parse(cmbTipo.SelectedValue.ToString());
+                Vehiculo.idMarca = int.Parse(cmbMarca.SelectedValue.ToString());
+                Vehiculo.idTipo = int.Parse(cmbTipo.SelectedValue.ToString());
                 Vehiculo.NoSerie = int.Parse(txtNoId.Text.Trim());
 
 
@@ -89,29 +88,67 @@ namespace EnvíosJADEE.Forms
 
         }
 
-        private void dgvVehiculos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void dgvVehiculos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             VehiculosService service = new VehiculosService();
             VehiculoModel vehiculo = new VehiculoModel();
             var row = dgvVehiculos.Rows[e.RowIndex];
 
-            vehiculo.IdTipo = int.Parse(row.Cells[0].Value.ToString());
-            vehiculo.matricula = row.Cells[1].Value.ToString();
-            vehiculo.modelo = row.Cells[3].Value.ToString();
-            vehiculo.IdMarca = int.Parse(row.Cells[2].Value.ToString());
-            vehiculo.NoSerie = int.Parse(row.Cells[4].Value.ToString()); 
+            vehiculo.id = int.Parse(row.Cells[0].Value.ToString());
+            vehiculo.idTipo = int.Parse(row.Cells[1].Value.ToString());
+            vehiculo.matricula = row.Cells[3].Value.ToString();
+            vehiculo.modelo = row.Cells[6].Value.ToString();
+            vehiculo.idMarca = int.Parse(row.Cells[4].Value.ToString());
+            vehiculo.NoSerie = int.Parse(row.Cells[7].Value.ToString());
+            vehiculo.estatus = row.Cells[9].Value.ToString();
             service.UpdateVehiculo(vehiculo);
+
             dgvVehiculos.DataSource = null;
             dgvVehiculos.DataSource = service.GetVehiculos();
+        }
+
+        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmHome(), this);
+
+        }
+
+        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmCategorías(), this);
+        }
+
+        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmModulos(), this);
+        }
+
+        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPerfiles(), this);
+        }
+
+        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new DetallePerfil(), this);
+        }
+
+        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmPersonas(), this);
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmTipos(), this);
+        }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePages.ChangeWindow(new frmMarcas(), this);
         }
     }
 }
 
 
 
-  
