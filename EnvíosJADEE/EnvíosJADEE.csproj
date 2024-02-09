@@ -104,6 +104,12 @@
     <Compile Include="Forms\frmPersonas.Designer.cs">
       <DependentUpon>frmPersonas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRegistroEnvío.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRegistroEnvío.Designer.cs">
+      <DependentUpon>frmRegistroEnvío.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmTipos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmPersonas.resx">
       <DependentUpon>frmPersonas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRegistroEnvío.resx">
+      <DependentUpon>frmRegistroEnvío.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTipos.resx">
       <DependentUpon>frmTipos.cs</DependentUpon>
