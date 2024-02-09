@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
 {
-    public partial class frmRegistroEnvío : Form
+    public partial class frmClientes : Form
     {
-        public frmRegistroEnvío()
+        public frmClientes()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
