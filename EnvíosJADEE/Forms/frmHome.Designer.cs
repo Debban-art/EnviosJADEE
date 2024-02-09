@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.msNavegación = new System.Windows.Forms.MenuStrip();
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cátalogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,23 +44,23 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBienvenido = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
+            this.msNavegación.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // msNavegación
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.msNavegación.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.msNavegación.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msNavegación.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
             this.cátalogoToolStripMenuItem,
             this.administraciónToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1043, 33);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.msNavegación.Location = new System.Drawing.Point(0, 0);
+            this.msNavegación.Name = "msNavegación";
+            this.msNavegación.Size = new System.Drawing.Size(1043, 33);
+            this.msNavegación.TabIndex = 0;
+            this.msNavegación.Text = "menuStrip1";
             // 
             // inicioToolStripMenuItem
             // 
@@ -197,14 +197,14 @@
             this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.lblBienvenido);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.msNavegación);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.msNavegación;
             this.Name = "frmHome";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.frmHome_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.msNavegación.ResumeLayout(false);
+            this.msNavegación.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -213,7 +213,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip msNavegación;
         private System.Windows.Forms.ToolStripMenuItem cátalogoToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem vehículosToolStripMenuItem;

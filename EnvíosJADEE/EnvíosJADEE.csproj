@@ -135,6 +135,7 @@
     <Compile Include="Network\DetallePerfilService.cs" />
     <Compile Include="Network\LoginService.cs" />
     <Compile Include="Network\MarcasService.cs" />
+    <Compile Include="Network\ModulosPorPerfilService.cs" />
     <Compile Include="Network\ModulosService.cs" />
     <Compile Include="Network\PerfilService.cs" />
     <Compile Include="Network\PersonaUsuarioService.cs" />

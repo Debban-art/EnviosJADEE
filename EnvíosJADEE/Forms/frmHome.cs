@@ -1,4 +1,6 @@
 ﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
+using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,6 +58,12 @@ namespace EnvíosJADEE.Forms
         private void frmHome_Load(object sender, EventArgs e)
         {
             lblNombreUsuario.Text = SesionClass.NombreUsuario;
+            ModulosPorPerfilService service = new ModulosPorPerfilService();
+            List<ModuloModel> modulos = new List<ModuloModel>();
+            List<CategoríaModel> categorias = new List<CategoríaModel>();
+
+            modulos = service.GetModulosPorPerfil(SesionClass.IdPerfil);
+
         }
 
         private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
