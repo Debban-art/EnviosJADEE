@@ -3,6 +3,7 @@ using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
@@ -14,44 +15,11 @@ namespace EnvíosJADEE.Forms
             InitializeComponent();
         }
 
-        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmVehículos(), this);
-        }
-
-        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmMarcas(), this); ;
-        }
-
-        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmCategorías(), this);
-        }
-
-        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmModulos(), this);
-        }
-
-        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmPerfiles(), this);
-        }
-
-        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new DetallePerfil(), this);
-        }
-
-        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmPersonas(), this);
-        }
-
         private void frmHome_Load(object sender, EventArgs e)
         {
             lblNombreUsuario.Text = SesionClass.NombreUsuario;
+
+
             ModulosPorPerfilService service = new ModulosPorPerfilService();
             List<CategoríaModel> categorias = new List<CategoríaModel>();
             List<ModuloModel> modulos = new List<ModuloModel>();
@@ -59,6 +27,8 @@ namespace EnvíosJADEE.Forms
             categorias = service.GetCategoriasPorPerfil(SesionClass.IdPerfil);
 
             ToolStrip menu = new ToolStrip();
+            ToolStripMenuItem inicio = new ToolStripMenuItem("Inicio");
+            menu.Items.Add(inicio);
             foreach (CategoríaModel categoria in categorias)
             {
                 ToolStripDropDownButton categoriaItem = new ToolStripDropDownButton(categoria.Nombre);
@@ -67,17 +37,24 @@ namespace EnvíosJADEE.Forms
                 foreach (ModuloModel modulo in modulos)
                 {
                     ToolStripMenuItem moduloItem = new ToolStripMenuItem(modulo.Nombre);
+                    moduloItem.BackColor = Color.FromArgb(0, 75, 69);
+                    moduloItem.Font = new Font("Segoe UI", 14.5f, FontStyle.Regular);
                     categoriaItem.DropDownItems.Add(moduloItem);
                 }
                 menu.Items.Add(categoriaItem);
 
             }
             Controls.Add(menu);
+
+            menu.BackColor = Color.FromArgb(0, 75, 69);
+            menu.Font = new Font("Segoe UI", 14.5f, FontStyle.Regular);
+            menu.GripStyle = ToolStripGripStyle.Hidden;
+            menu.RenderMode = ToolStripRenderMode.ManagerRenderMode;
         }
 
-        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Item_Click(object sender, EventArgs e, Form nextPage)
         {
-            ChangePages.ChangeWindow(new frmTipos(), this);
+            ChangePages.ChangeWindow(nextPage, this);
         }
     }
 }
