@@ -3,12 +3,6 @@ using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
@@ -59,11 +53,26 @@ namespace EnvíosJADEE.Forms
         {
             lblNombreUsuario.Text = SesionClass.NombreUsuario;
             ModulosPorPerfilService service = new ModulosPorPerfilService();
-            List<ModuloModel> modulos = new List<ModuloModel>();
             List<CategoríaModel> categorias = new List<CategoríaModel>();
+            List<ModuloModel> modulos = new List<ModuloModel>();
 
-            modulos = service.GetModulosPorPerfil(SesionClass.IdPerfil);
+            categorias = service.GetCategoriasPorPerfil(SesionClass.IdPerfil);
 
+            ToolStrip menu = new ToolStrip();
+            foreach (CategoríaModel categoria in categorias)
+            {
+                ToolStripDropDownButton categoriaItem = new ToolStripDropDownButton(categoria.Nombre);
+                
+                modulos = service.GetModulosPorPerfil(categoria.Id);
+                foreach (ModuloModel modulo in modulos)
+                {
+                    ToolStripMenuItem moduloItem = new ToolStripMenuItem(modulo.Nombre);
+                    categoriaItem.DropDownItems.Add(moduloItem);
+                }
+                menu.Items.Add(categoriaItem);
+
+            }
+            Controls.Add(menu);
         }
 
         private void tiposToolStripMenuItem_Click(object sender, EventArgs e)

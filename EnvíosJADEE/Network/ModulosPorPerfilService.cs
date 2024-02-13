@@ -18,10 +18,10 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
-        public List<ModuloModel> GetModulosPorPerfil(int idPerfil)
+        public List<ModuloModel> GetModulosPorPerfil(int idCategoría)
         {
             parametros = new ArrayList();
-            parametros.Add(new SqlParameter { ParameterName = "@pIdPerfil", SqlDbType = System.Data.SqlDbType.Int, Value = idPerfil });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = idCategoría });
 
             List<ModuloModel> lista = new List<ModuloModel>();
 
@@ -33,9 +33,8 @@ namespace EnvíosJADEE.Network
                     lista = ds.Tables[0].AsEnumerable()
                                      .Select(dataRow => new ModuloModel
                                      {
-                                         Id = int.Parse(dataRow["IdModulo"].ToString()),
-                                         Nombre = dataRow["Modulo.Nombre"].ToString(),
-                                         IdCategoria = int.Parse(dataRow["IdCategoria"].ToString())
+                                         Id = int.Parse(dataRow["Id"].ToString()),
+                                         Nombre = dataRow["Nombre"].ToString(),
                                      }).ToList();
                 }
             }
@@ -46,21 +45,22 @@ namespace EnvíosJADEE.Network
             return lista;
         }
 
-        public List<CategoríaModel> GetCategoriaPorModulo(int idCategoria)
+        public List<CategoríaModel> GetCategoriasPorPerfil(int idPerfil)
         {
             parametros = new ArrayList();
-            parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = idCategoria });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdPerfil", SqlDbType = System.Data.SqlDbType.Int, Value = idPerfil });
 
             List<CategoríaModel> lista = new List<CategoríaModel>();
 
             try
             {
-                DataSet ds = dac.Fill("GetCategoriasPorModulo", parametros);
+                DataSet ds = dac.Fill("GetCategoriasPorModulos", parametros);
                 if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
                                      .Select(dataRow => new CategoríaModel
                                      {
+                                         Id = int.Parse(dataRow["Id"].ToString()),
                                          Nombre = dataRow["Categoria"].ToString(),
                                      }).ToList();
                 }
