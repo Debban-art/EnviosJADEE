@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EnvíosJADEE.Models
 {
@@ -15,6 +16,8 @@ namespace EnvíosJADEE.Models
          public string Estatus { get; set; }
         public string FechaRegistro { get; set; }
         public int Usuario { get; set; }
+
+        public Form FormularioType { get; set; }
         
 
     }

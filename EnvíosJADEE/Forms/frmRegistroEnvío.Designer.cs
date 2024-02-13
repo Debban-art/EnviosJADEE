@@ -505,6 +505,7 @@
             this.Controls.Add(this.cmbIdCliente);
             this.Name = "frmRegistroEnvío";
             this.Text = "Ordenes";
+            this.Load += new System.EventHandler(this.frmRegistroEnvío_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroEnvio)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

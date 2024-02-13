@@ -71,10 +71,10 @@ namespace EnvíosJADEE.Forms
 
 
                 RegistroEnvioService service = new RegistroEnvioService();
-                service.InsertRegistroEnvio(envio);
+                //service.InsertRegistroEnvio(envio);
 
                 dgvRegistroEnvio.DataSource = null;
-                dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
+                //dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
 
 
 
@@ -109,12 +109,15 @@ namespace EnvíosJADEE.Forms
 
 
 
-            envio.UpdateRegistroEnvio(Ordenes);
+            //envio.UpdateRegistroEnvio(Ordenes);
             dgvRegistroEnvio.DataSource = null;
             RegistroEnvioService RegistroEnvioService = new RegistroEnvioService();
-            dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
+            //dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
         }
 
+        private void frmRegistroEnvío_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
