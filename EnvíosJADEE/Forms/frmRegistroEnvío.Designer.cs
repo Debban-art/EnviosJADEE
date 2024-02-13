@@ -31,17 +31,17 @@
             this.cmbIdCliente = new System.Windows.Forms.ComboBox();
             this.cmbIdEstatusOrden = new System.Windows.Forms.ComboBox();
             this.cmbIdProducto = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtCostoTotal = new System.Windows.Forms.TextBox();
+            this.txtNoCasa = new System.Windows.Forms.TextBox();
+            this.txtCalle = new System.Windows.Forms.TextBox();
+            this.txtDomicilio = new System.Windows.Forms.TextBox();
+            this.txtCodigoPostal = new System.Windows.Forms.TextBox();
+            this.txtCiudad = new System.Windows.Forms.TextBox();
+            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.txtFechaEntrega = new System.Windows.Forms.TextBox();
+            this.txtFechaSalida = new System.Windows.Forms.TextBox();
+            this.txtPeso = new System.Windows.Forms.TextBox();
             this.dgvRegistroEnvio = new System.Windows.Forms.DataGridView();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -59,7 +59,20 @@
             this.lblDomicilio = new System.Windows.Forms.Label();
             this.lblCalle = new System.Windows.Forms.Label();
             this.lblNoCasa = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cátalogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.perfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detallesPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroEnvio)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbIdCliente
@@ -86,82 +99,82 @@
             this.cmbIdProducto.Size = new System.Drawing.Size(211, 21);
             this.cmbIdProducto.TabIndex = 2;
             // 
-            // textBox1
+            // txtCostoTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(65, 230);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 20);
-            this.textBox1.TabIndex = 3;
+            this.txtCostoTotal.Location = new System.Drawing.Point(65, 230);
+            this.txtCostoTotal.Name = "txtCostoTotal";
+            this.txtCostoTotal.Size = new System.Drawing.Size(210, 20);
+            this.txtCostoTotal.TabIndex = 3;
             // 
-            // textBox2
+            // txtNoCasa
             // 
-            this.textBox2.Location = new System.Drawing.Point(64, 678);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(210, 20);
-            this.textBox2.TabIndex = 4;
+            this.txtNoCasa.Location = new System.Drawing.Point(64, 678);
+            this.txtNoCasa.Name = "txtNoCasa";
+            this.txtNoCasa.Size = new System.Drawing.Size(210, 20);
+            this.txtNoCasa.TabIndex = 4;
             // 
-            // textBox3
+            // txtCalle
             // 
-            this.textBox3.Location = new System.Drawing.Point(64, 629);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(210, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtCalle.Location = new System.Drawing.Point(64, 629);
+            this.txtCalle.Name = "txtCalle";
+            this.txtCalle.Size = new System.Drawing.Size(210, 20);
+            this.txtCalle.TabIndex = 5;
             // 
-            // textBox4
+            // txtDomicilio
             // 
-            this.textBox4.Location = new System.Drawing.Point(64, 584);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(210, 20);
-            this.textBox4.TabIndex = 6;
+            this.txtDomicilio.Location = new System.Drawing.Point(64, 584);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Size = new System.Drawing.Size(210, 20);
+            this.txtDomicilio.TabIndex = 6;
             // 
-            // textBox5
+            // txtCodigoPostal
             // 
-            this.textBox5.Location = new System.Drawing.Point(65, 538);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(210, 20);
-            this.textBox5.TabIndex = 7;
+            this.txtCodigoPostal.Location = new System.Drawing.Point(65, 538);
+            this.txtCodigoPostal.Name = "txtCodigoPostal";
+            this.txtCodigoPostal.Size = new System.Drawing.Size(210, 20);
+            this.txtCodigoPostal.TabIndex = 7;
             // 
-            // textBox6
+            // txtCiudad
             // 
-            this.textBox6.Location = new System.Drawing.Point(65, 493);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(210, 20);
-            this.textBox6.TabIndex = 8;
+            this.txtCiudad.Location = new System.Drawing.Point(65, 493);
+            this.txtCiudad.Name = "txtCiudad";
+            this.txtCiudad.Size = new System.Drawing.Size(210, 20);
+            this.txtCiudad.TabIndex = 8;
             // 
-            // textBox7
+            // txtEstado
             // 
-            this.textBox7.Location = new System.Drawing.Point(64, 450);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(210, 20);
-            this.textBox7.TabIndex = 9;
+            this.txtEstado.Location = new System.Drawing.Point(64, 450);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(210, 20);
+            this.txtEstado.TabIndex = 9;
             // 
-            // textBox8
+            // txtPais
             // 
-            this.textBox8.Location = new System.Drawing.Point(64, 407);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(210, 20);
-            this.textBox8.TabIndex = 10;
+            this.txtPais.Location = new System.Drawing.Point(64, 407);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(210, 20);
+            this.txtPais.TabIndex = 10;
             // 
-            // textBox9
+            // txtFechaEntrega
             // 
-            this.textBox9.Location = new System.Drawing.Point(64, 365);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(210, 20);
-            this.textBox9.TabIndex = 11;
+            this.txtFechaEntrega.Location = new System.Drawing.Point(64, 365);
+            this.txtFechaEntrega.Name = "txtFechaEntrega";
+            this.txtFechaEntrega.Size = new System.Drawing.Size(210, 20);
+            this.txtFechaEntrega.TabIndex = 11;
             // 
-            // textBox10
+            // txtFechaSalida
             // 
-            this.textBox10.Location = new System.Drawing.Point(64, 322);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(210, 20);
-            this.textBox10.TabIndex = 12;
+            this.txtFechaSalida.Location = new System.Drawing.Point(64, 322);
+            this.txtFechaSalida.Name = "txtFechaSalida";
+            this.txtFechaSalida.Size = new System.Drawing.Size(210, 20);
+            this.txtFechaSalida.TabIndex = 12;
             // 
-            // textBox11
+            // txtPeso
             // 
-            this.textBox11.Location = new System.Drawing.Point(64, 273);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(210, 20);
-            this.textBox11.TabIndex = 13;
+            this.txtPeso.Location = new System.Drawing.Point(64, 273);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(210, 20);
+            this.txtPeso.TabIndex = 13;
             // 
             // dgvRegistroEnvio
             // 
@@ -201,10 +214,9 @@
             this.lblIdCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdCliente.Location = new System.Drawing.Point(68, 64);
             this.lblIdCliente.Name = "lblIdCliente";
-            this.lblIdCliente.Size = new System.Drawing.Size(72, 20);
+            this.lblIdCliente.Size = new System.Drawing.Size(58, 20);
             this.lblIdCliente.TabIndex = 17;
-            this.lblIdCliente.Text = "IdCliente";
-            this.lblIdCliente.Click += new System.EventHandler(this.label1_Click);
+            this.lblIdCliente.Text = "Cliente";
             // 
             // lblIdProducto
             // 
@@ -212,9 +224,9 @@
             this.lblIdProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdProducto.Location = new System.Drawing.Point(68, 114);
             this.lblIdProducto.Name = "lblIdProducto";
-            this.lblIdProducto.Size = new System.Drawing.Size(87, 20);
+            this.lblIdProducto.Size = new System.Drawing.Size(73, 20);
             this.lblIdProducto.TabIndex = 18;
-            this.lblIdProducto.Text = "IdProducto";
+            this.lblIdProducto.Text = "Producto";
             // 
             // lblIdEstatusOrden
             // 
@@ -222,9 +234,9 @@
             this.lblIdEstatusOrden.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIdEstatusOrden.Location = new System.Drawing.Point(68, 163);
             this.lblIdEstatusOrden.Name = "lblIdEstatusOrden";
-            this.lblIdEstatusOrden.Size = new System.Drawing.Size(122, 20);
+            this.lblIdEstatusOrden.Size = new System.Drawing.Size(108, 20);
             this.lblIdEstatusOrden.TabIndex = 19;
-            this.lblIdEstatusOrden.Text = "IdEstatusOrden";
+            this.lblIdEstatusOrden.Text = "EstatusOrden";
             // 
             // lblCostoTotal
             // 
@@ -336,12 +348,130 @@
             this.lblNoCasa.TabIndex = 30;
             this.lblNoCasa.Text = "No de Casa";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.inicioToolStripMenuItem,
+            this.cátalogoToolStripMenuItem,
+            this.administraciónToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1161, 33);
+            this.menuStrip1.TabIndex = 59;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // inicioToolStripMenuItem
+            // 
+            this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inicioToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
+            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
+            this.inicioToolStripMenuItem.Text = "Inicio";
+            // 
+            // cátalogoToolStripMenuItem
+            // 
+            this.cátalogoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tiposToolStripMenuItem,
+            this.marcasToolStripMenuItem,
+            this.vehículosToolStripMenuItem});
+            this.cátalogoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.cátalogoToolStripMenuItem.Name = "cátalogoToolStripMenuItem";
+            this.cátalogoToolStripMenuItem.Size = new System.Drawing.Size(100, 29);
+            this.cátalogoToolStripMenuItem.Text = "Cátalogo";
+            // 
+            // tiposToolStripMenuItem
+            // 
+            this.tiposToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.tiposToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tiposToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
+            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
+            this.tiposToolStripMenuItem.Text = "Medios";
+            // 
+            // marcasToolStripMenuItem
+            // 
+            this.marcasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.marcasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.marcasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
+            this.marcasToolStripMenuItem.Text = "Marcas";
+            // 
+            // vehículosToolStripMenuItem
+            // 
+            this.vehículosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.vehículosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vehículosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.vehículosToolStripMenuItem.Name = "vehículosToolStripMenuItem";
+            this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
+            this.vehículosToolStripMenuItem.Text = "Vehículos";
+            // 
+            // administraciónToolStripMenuItem
+            // 
+            this.administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.categoríasToolStripMenuItem,
+            this.modulosToolStripMenuItem,
+            this.perfilToolStripMenuItem,
+            this.detallesPerfilToolStripMenuItem,
+            this.personasToolStripMenuItem});
+            this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
+            this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(151, 29);
+            this.administraciónToolStripMenuItem.Text = "Administración";
+            // 
+            // categoríasToolStripMenuItem
+            // 
+            this.categoríasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.categoríasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoríasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
+            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
+            this.categoríasToolStripMenuItem.Text = "Categorías";
+            // 
+            // modulosToolStripMenuItem
+            // 
+            this.modulosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.modulosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modulosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
+            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
+            this.modulosToolStripMenuItem.Text = "Modulos";
+            // 
+            // perfilToolStripMenuItem
+            // 
+            this.perfilToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.perfilToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.perfilToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
+            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
+            this.perfilToolStripMenuItem.Text = "Perfil";
+            // 
+            // detallesPerfilToolStripMenuItem
+            // 
+            this.detallesPerfilToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.detallesPerfilToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detallesPerfilToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.detallesPerfilToolStripMenuItem.Name = "detallesPerfilToolStripMenuItem";
+            this.detallesPerfilToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
+            this.detallesPerfilToolStripMenuItem.Text = "Detalles de Perfil";
+            // 
+            // personasToolStripMenuItem
+            // 
+            this.personasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.personasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.personasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
+            this.personasToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
+            this.personasToolStripMenuItem.Text = "Personas";
+            // 
             // frmRegistroEnvío
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1161, 736);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lblNoCasa);
             this.Controls.Add(this.lblCalle);
             this.Controls.Add(this.lblDomicilio);
@@ -359,23 +489,25 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.dgvRegistroEnvio);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPeso);
+            this.Controls.Add(this.txtFechaSalida);
+            this.Controls.Add(this.txtFechaEntrega);
+            this.Controls.Add(this.txtPais);
+            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.txtCiudad);
+            this.Controls.Add(this.txtCodigoPostal);
+            this.Controls.Add(this.txtDomicilio);
+            this.Controls.Add(this.txtCalle);
+            this.Controls.Add(this.txtNoCasa);
+            this.Controls.Add(this.txtCostoTotal);
             this.Controls.Add(this.cmbIdProducto);
             this.Controls.Add(this.cmbIdEstatusOrden);
             this.Controls.Add(this.cmbIdCliente);
             this.Name = "frmRegistroEnvío";
             this.Text = "Ordenes";
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroEnvio)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,17 +518,17 @@
         private System.Windows.Forms.ComboBox cmbIdCliente;
         private System.Windows.Forms.ComboBox cmbIdEstatusOrden;
         private System.Windows.Forms.ComboBox cmbIdProducto;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtCostoTotal;
+        private System.Windows.Forms.TextBox txtNoCasa;
+        private System.Windows.Forms.TextBox txtCalle;
+        private System.Windows.Forms.TextBox txtDomicilio;
+        private System.Windows.Forms.TextBox txtCodigoPostal;
+        private System.Windows.Forms.TextBox txtCiudad;
+        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox txtPais;
+        private System.Windows.Forms.TextBox txtFechaEntrega;
+        private System.Windows.Forms.TextBox txtFechaSalida;
+        private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.DataGridView dgvRegistroEnvio;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.Button btnCancelar;
@@ -414,5 +546,17 @@
         private System.Windows.Forms.Label lblDomicilio;
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.Label lblNoCasa;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cátalogoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tiposToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vehículosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modulosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem perfilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem detallesPerfilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
     }
 }
