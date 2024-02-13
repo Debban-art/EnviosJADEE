@@ -134,5 +134,9 @@ namespace EnvíosJADEE.Forms
             ChangePages.ChangeWindow(new frmCategorías(), this);
         }
 
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

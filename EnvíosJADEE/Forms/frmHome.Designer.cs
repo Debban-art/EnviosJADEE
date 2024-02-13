@@ -29,34 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
-            this.msNavegación = new System.Windows.Forms.MenuStrip();
-            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblBienvenido = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
-            this.msNavegación.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // msNavegación
-            // 
-            this.msNavegación.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.msNavegación.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.msNavegación.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioToolStripMenuItem});
-            this.msNavegación.Location = new System.Drawing.Point(0, 0);
-            this.msNavegación.Name = "msNavegación";
-            this.msNavegación.Size = new System.Drawing.Size(1043, 33);
-            this.msNavegación.TabIndex = 0;
-            this.msNavegación.Text = "menuStrip1";
-            // 
-            // inicioToolStripMenuItem
-            // 
-            this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inicioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(73, 29);
-            this.inicioToolStripMenuItem.Text = "Inicio";
             // 
             // pictureBox1
             // 
@@ -98,26 +75,18 @@
             this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.lblBienvenido);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.msNavegación);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.msNavegación;
             this.Name = "frmHome";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.frmHome_Load);
-            this.msNavegación.ResumeLayout(false);
-            this.msNavegación.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip msNavegación;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblBienvenido;
         private System.Windows.Forms.Label lblNombreUsuario;
-        private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
     }
 }
