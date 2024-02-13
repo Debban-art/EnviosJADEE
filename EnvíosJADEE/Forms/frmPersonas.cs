@@ -145,5 +145,10 @@ namespace EnvíosJADEE.Forms
             ChangePages.ChangeWindow(new DetallePerfil(), this);
             
         }
+
+        private void dgvPersonas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
