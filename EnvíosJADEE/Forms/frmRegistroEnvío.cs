@@ -71,7 +71,7 @@ namespace EnvíosJADEE.Forms
 
 
                 RegistroEnvioService service = new RegistroEnvioService();
-                service.InsertRegistroEnvio(envio);
+                service.InsertOrdenes(envio);
 
                 dgvRegistroEnvio.DataSource = null;
                 dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
