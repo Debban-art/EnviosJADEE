@@ -1,6 +1,6 @@
 ﻿namespace EnvíosJADEE.Forms
 {
-    partial class frmRegistroEnvío
+    partial class frmEnvíos
     {
         /// <summary>
         /// Required designer variable.
@@ -43,8 +43,6 @@
             this.txtFechaSalida = new System.Windows.Forms.TextBox();
             this.txtPeso = new System.Windows.Forms.TextBox();
             this.dgvRegistroEnvio = new System.Windows.Forms.DataGridView();
-            this.btnAñadir = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.lblIdCliente = new System.Windows.Forms.Label();
             this.lblIdProducto = new System.Windows.Forms.Label();
             this.lblIdEstatusOrden = new System.Windows.Forms.Label();
@@ -59,121 +57,124 @@
             this.lblDomicilio = new System.Windows.Forms.Label();
             this.lblCalle = new System.Windows.Forms.Label();
             this.lblNoCasa = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cátalogoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vehículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.perfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.detallesPerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.personasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAñadir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroEnvio)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbIdCliente
             // 
+            this.cmbIdCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbIdCliente.FormattingEnabled = true;
             this.cmbIdCliente.Location = new System.Drawing.Point(64, 87);
             this.cmbIdCliente.Name = "cmbIdCliente";
-            this.cmbIdCliente.Size = new System.Drawing.Size(211, 21);
+            this.cmbIdCliente.Size = new System.Drawing.Size(228, 21);
             this.cmbIdCliente.TabIndex = 0;
             // 
             // cmbIdEstatusOrden
             // 
+            this.cmbIdEstatusOrden.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbIdEstatusOrden.FormattingEnabled = true;
             this.cmbIdEstatusOrden.Location = new System.Drawing.Point(64, 186);
             this.cmbIdEstatusOrden.Name = "cmbIdEstatusOrden";
-            this.cmbIdEstatusOrden.Size = new System.Drawing.Size(211, 21);
+            this.cmbIdEstatusOrden.Size = new System.Drawing.Size(228, 21);
             this.cmbIdEstatusOrden.TabIndex = 1;
             // 
             // cmbIdProducto
             // 
+            this.cmbIdProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbIdProducto.FormattingEnabled = true;
             this.cmbIdProducto.Location = new System.Drawing.Point(64, 137);
             this.cmbIdProducto.Name = "cmbIdProducto";
-            this.cmbIdProducto.Size = new System.Drawing.Size(211, 21);
+            this.cmbIdProducto.Size = new System.Drawing.Size(228, 21);
             this.cmbIdProducto.TabIndex = 2;
             // 
             // txtCostoTotal
             // 
+            this.txtCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtCostoTotal.Location = new System.Drawing.Point(65, 230);
             this.txtCostoTotal.Name = "txtCostoTotal";
-            this.txtCostoTotal.Size = new System.Drawing.Size(210, 20);
+            this.txtCostoTotal.Size = new System.Drawing.Size(228, 20);
             this.txtCostoTotal.TabIndex = 3;
             // 
             // txtNoCasa
             // 
+            this.txtNoCasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNoCasa.Location = new System.Drawing.Point(64, 678);
             this.txtNoCasa.Name = "txtNoCasa";
-            this.txtNoCasa.Size = new System.Drawing.Size(210, 20);
+            this.txtNoCasa.Size = new System.Drawing.Size(228, 20);
             this.txtNoCasa.TabIndex = 4;
             // 
             // txtCalle
             // 
+            this.txtCalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtCalle.Location = new System.Drawing.Point(64, 629);
             this.txtCalle.Name = "txtCalle";
-            this.txtCalle.Size = new System.Drawing.Size(210, 20);
+            this.txtCalle.Size = new System.Drawing.Size(228, 20);
             this.txtCalle.TabIndex = 5;
             // 
             // txtDomicilio
             // 
+            this.txtDomicilio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtDomicilio.Location = new System.Drawing.Point(64, 584);
             this.txtDomicilio.Name = "txtDomicilio";
-            this.txtDomicilio.Size = new System.Drawing.Size(210, 20);
+            this.txtDomicilio.Size = new System.Drawing.Size(228, 20);
             this.txtDomicilio.TabIndex = 6;
             // 
             // txtCodigoPostal
             // 
+            this.txtCodigoPostal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtCodigoPostal.Location = new System.Drawing.Point(65, 538);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
-            this.txtCodigoPostal.Size = new System.Drawing.Size(210, 20);
+            this.txtCodigoPostal.Size = new System.Drawing.Size(228, 20);
             this.txtCodigoPostal.TabIndex = 7;
             // 
             // txtCiudad
             // 
+            this.txtCiudad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtCiudad.Location = new System.Drawing.Point(65, 493);
             this.txtCiudad.Name = "txtCiudad";
-            this.txtCiudad.Size = new System.Drawing.Size(210, 20);
+            this.txtCiudad.Size = new System.Drawing.Size(228, 20);
             this.txtCiudad.TabIndex = 8;
             // 
             // txtEstado
             // 
+            this.txtEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtEstado.Location = new System.Drawing.Point(64, 450);
             this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(210, 20);
+            this.txtEstado.Size = new System.Drawing.Size(228, 20);
             this.txtEstado.TabIndex = 9;
             // 
             // txtPais
             // 
+            this.txtPais.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtPais.Location = new System.Drawing.Point(64, 407);
             this.txtPais.Name = "txtPais";
-            this.txtPais.Size = new System.Drawing.Size(210, 20);
+            this.txtPais.Size = new System.Drawing.Size(228, 20);
             this.txtPais.TabIndex = 10;
             // 
             // txtFechaEntrega
             // 
+            this.txtFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtFechaEntrega.Location = new System.Drawing.Point(64, 365);
             this.txtFechaEntrega.Name = "txtFechaEntrega";
-            this.txtFechaEntrega.Size = new System.Drawing.Size(210, 20);
+            this.txtFechaEntrega.Size = new System.Drawing.Size(228, 20);
             this.txtFechaEntrega.TabIndex = 11;
             // 
             // txtFechaSalida
             // 
+            this.txtFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtFechaSalida.Location = new System.Drawing.Point(64, 322);
             this.txtFechaSalida.Name = "txtFechaSalida";
-            this.txtFechaSalida.Size = new System.Drawing.Size(210, 20);
+            this.txtFechaSalida.Size = new System.Drawing.Size(228, 20);
             this.txtFechaSalida.TabIndex = 12;
             // 
             // txtPeso
             // 
+            this.txtPeso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtPeso.Location = new System.Drawing.Point(64, 273);
             this.txtPeso.Name = "txtPeso";
-            this.txtPeso.Size = new System.Drawing.Size(210, 20);
+            this.txtPeso.Size = new System.Drawing.Size(228, 20);
             this.txtPeso.TabIndex = 13;
             // 
             // dgvRegistroEnvio
@@ -185,28 +186,6 @@
             this.dgvRegistroEnvio.Name = "dgvRegistroEnvio";
             this.dgvRegistroEnvio.Size = new System.Drawing.Size(742, 362);
             this.dgvRegistroEnvio.TabIndex = 14;
-            // 
-            // btnAñadir
-            // 
-            this.btnAñadir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnAñadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAñadir.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnAñadir.Location = new System.Drawing.Point(333, 494);
-            this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(111, 35);
-            this.btnAñadir.TabIndex = 15;
-            this.btnAñadir.Text = "Añadir";
-            this.btnAñadir.UseVisualStyleBackColor = false;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(475, 494);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(107, 35);
-            this.btnCancelar.TabIndex = 16;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // lblIdCliente
             // 
@@ -348,130 +327,39 @@
             this.lblNoCasa.TabIndex = 30;
             this.lblNoCasa.Text = "No de Casa";
             // 
-            // menuStrip1
+            // btnCancelar
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioToolStripMenuItem,
-            this.cátalogoToolStripMenuItem,
-            this.administraciónToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1161, 33);
-            this.menuStrip1.TabIndex = 59;
-            this.menuStrip1.Text = "menuStrip1";
+            this.btnCancelar.BackColor = System.Drawing.Color.White;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(438, 657);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(111, 41);
+            this.btnCancelar.TabIndex = 32;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // inicioToolStripMenuItem
+            // btnAñadir
             // 
-            this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inicioToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(70, 29);
-            this.inicioToolStripMenuItem.Text = "Inicio";
+            this.btnAñadir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAñadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAñadir.ForeColor = System.Drawing.Color.White;
+            this.btnAñadir.Location = new System.Drawing.Point(321, 657);
+            this.btnAñadir.Name = "btnAñadir";
+            this.btnAñadir.Size = new System.Drawing.Size(111, 41);
+            this.btnAñadir.TabIndex = 31;
+            this.btnAñadir.Text = "Añadir";
+            this.btnAñadir.UseVisualStyleBackColor = false;
             // 
-            // cátalogoToolStripMenuItem
-            // 
-            this.cátalogoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tiposToolStripMenuItem,
-            this.marcasToolStripMenuItem,
-            this.vehículosToolStripMenuItem});
-            this.cátalogoToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.cátalogoToolStripMenuItem.Name = "cátalogoToolStripMenuItem";
-            this.cátalogoToolStripMenuItem.Size = new System.Drawing.Size(100, 29);
-            this.cátalogoToolStripMenuItem.Text = "Cátalogo";
-            // 
-            // tiposToolStripMenuItem
-            // 
-            this.tiposToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.tiposToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tiposToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.tiposToolStripMenuItem.Name = "tiposToolStripMenuItem";
-            this.tiposToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
-            this.tiposToolStripMenuItem.Text = "Medios";
-            // 
-            // marcasToolStripMenuItem
-            // 
-            this.marcasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.marcasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.marcasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
-            this.marcasToolStripMenuItem.Text = "Marcas";
-            // 
-            // vehículosToolStripMenuItem
-            // 
-            this.vehículosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.vehículosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vehículosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.vehículosToolStripMenuItem.Name = "vehículosToolStripMenuItem";
-            this.vehículosToolStripMenuItem.Size = new System.Drawing.Size(165, 30);
-            this.vehículosToolStripMenuItem.Text = "Vehículos";
-            // 
-            // administraciónToolStripMenuItem
-            // 
-            this.administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.categoríasToolStripMenuItem,
-            this.modulosToolStripMenuItem,
-            this.perfilToolStripMenuItem,
-            this.detallesPerfilToolStripMenuItem,
-            this.personasToolStripMenuItem});
-            this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
-            this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(151, 29);
-            this.administraciónToolStripMenuItem.Text = "Administración";
-            // 
-            // categoríasToolStripMenuItem
-            // 
-            this.categoríasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.categoríasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoríasToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.categoríasToolStripMenuItem.Text = "Categorías";
-            // 
-            // modulosToolStripMenuItem
-            // 
-            this.modulosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.modulosToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.modulosToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.modulosToolStripMenuItem.Name = "modulosToolStripMenuItem";
-            this.modulosToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.modulosToolStripMenuItem.Text = "Modulos";
-            // 
-            // perfilToolStripMenuItem
-            // 
-            this.perfilToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.perfilToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.perfilToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.perfilToolStripMenuItem.Name = "perfilToolStripMenuItem";
-            this.perfilToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.perfilToolStripMenuItem.Text = "Perfil";
-            // 
-            // detallesPerfilToolStripMenuItem
-            // 
-            this.detallesPerfilToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.detallesPerfilToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detallesPerfilToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.detallesPerfilToolStripMenuItem.Name = "detallesPerfilToolStripMenuItem";
-            this.detallesPerfilToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.detallesPerfilToolStripMenuItem.Text = "Detalles de Perfil";
-            // 
-            // personasToolStripMenuItem
-            // 
-            this.personasToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.personasToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.personasToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.personasToolStripMenuItem.Name = "personasToolStripMenuItem";
-            this.personasToolStripMenuItem.Size = new System.Drawing.Size(225, 30);
-            this.personasToolStripMenuItem.Text = "Personas";
-            // 
-            // frmRegistroEnvío
+            // frmEnvíos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1161, 736);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.lblNoCasa);
             this.Controls.Add(this.lblCalle);
             this.Controls.Add(this.lblDomicilio);
@@ -486,8 +374,6 @@
             this.Controls.Add(this.lblIdEstatusOrden);
             this.Controls.Add(this.lblIdProducto);
             this.Controls.Add(this.lblIdCliente);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.dgvRegistroEnvio);
             this.Controls.Add(this.txtPeso);
             this.Controls.Add(this.txtFechaSalida);
@@ -503,12 +389,10 @@
             this.Controls.Add(this.cmbIdProducto);
             this.Controls.Add(this.cmbIdEstatusOrden);
             this.Controls.Add(this.cmbIdCliente);
-            this.Name = "frmRegistroEnvío";
+            this.Name = "frmEnvíos";
             this.Text = "Ordenes";
             this.Load += new System.EventHandler(this.frmRegistroEnvío_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistroEnvio)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -531,8 +415,6 @@
         private System.Windows.Forms.TextBox txtFechaSalida;
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.DataGridView dgvRegistroEnvio;
-        private System.Windows.Forms.Button btnAñadir;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblIdCliente;
         private System.Windows.Forms.Label lblIdProducto;
         private System.Windows.Forms.Label lblIdEstatusOrden;
@@ -547,17 +429,7 @@
         private System.Windows.Forms.Label lblDomicilio;
         private System.Windows.Forms.Label lblCalle;
         private System.Windows.Forms.Label lblNoCasa;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cátalogoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tiposToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem vehículosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administraciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoríasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modulosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem perfilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem detallesPerfilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem personasToolStripMenuItem;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAñadir;
     }
 }

@@ -15,6 +15,8 @@ namespace EnvíosJADEE.Forms
 
         private void frmModulos_Load(object sender, EventArgs e)
         {
+            MenuBuilder.BuildMenu(this);
+
             //Mostrar en la dgv la tabla de modulos
             ModulosService service = new ModulosService();
             dgvModulos.DataSource = service.GetModulos();
@@ -106,7 +108,7 @@ namespace EnvíosJADEE.Forms
 
         private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new DetallePerfil(), this);
+            ChangePages.ChangeWindow(new frmDetallePerfil(), this);
         }
 
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,7 +118,7 @@ namespace EnvíosJADEE.Forms
 
         private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new frmTipos(), this);
+            ChangePages.ChangeWindow(new frmMedios(), this);
         }
 
         private void marcasToolStripMenuItem_Click(object sender, EventArgs e)

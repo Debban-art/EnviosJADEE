@@ -15,6 +15,8 @@ namespace EnvíosJADEE.Forms
 
         private void frmVehículos_Load(object sender, EventArgs e)
         {
+            MenuBuilder.BuildMenu(this);
+
             VehiculosService service = new VehiculosService();
             dgvVehiculos.DataSource = service.GetVehiculos();
             dgvVehiculos.Columns[0].ReadOnly = true;
@@ -130,7 +132,7 @@ namespace EnvíosJADEE.Forms
 
         private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new DetallePerfil(), this);
+            ChangePages.ChangeWindow(new frmDetallePerfil(), this);
         }
 
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,7 +142,7 @@ namespace EnvíosJADEE.Forms
 
         private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new frmTipos(), this);
+            ChangePages.ChangeWindow(new frmMedios(), this);
         }
 
         private void marcasToolStripMenuItem_Click(object sender, EventArgs e)

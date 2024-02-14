@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
 {
-    public partial class DetallePerfil : Form
+    public partial class frmDetallePerfil : Form
     {
-        public DetallePerfil()
+        public frmDetallePerfil()
         {
             InitializeComponent();
         }
@@ -31,6 +31,7 @@ namespace EnvíosJADEE.Forms
         private void frmDetallePerfil_Load(object sender, EventArgs e)
         {
             DetallePerfilService service = new DetallePerfilService();
+            MenuBuilder.BuildMenu(this);
 
             dgvDetallePerfil.DataSource = service.GetDetallePerfil();
             dgvDetallePerfil.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -115,7 +116,7 @@ namespace EnvíosJADEE.Forms
 
         private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new frmTipos(), this);
+            ChangePages.ChangeWindow(new frmMedios(), this);
         }
 
         private void marcasToolStripMenuItem_Click(object sender, EventArgs e)

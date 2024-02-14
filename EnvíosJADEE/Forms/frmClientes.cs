@@ -39,18 +39,18 @@ namespace EnvíosJADEE.Forms
                 Cliente.Domicilio = txtDomicilio.Text;
                 Cliente.NoCasa = txtNoCasa.Text;
                 ClientesService service = new ClientesService();
-                service.InsertClientes(Cliente);
+                //service.InsertClientes(Cliente);
 
                 dgvClientes.DataSource = null;
                 ClientesService Clienteservice = new ClientesService();
-                dgvClientes.DataSource = Clienteservice.GetClientes();
+                //dgvClientes.DataSource = Clienteservice.GetClientes();
 
             }
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
-
+            MenuBuilder.BuildMenu(this);
         }
     }
 }

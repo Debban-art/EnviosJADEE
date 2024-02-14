@@ -6,15 +6,17 @@ using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
 {
-    public partial class frmTipos : Form
+    public partial class frmMedios : Form
     {
-        public frmTipos()
+        public frmMedios()
         {
             InitializeComponent();
         }
 
         private void frmTipos_Load(object sender, EventArgs e)
         {
+            MenuBuilder.BuildMenu(this);
+
             TipoService service = new TipoService();
             dgvTipos.DataSource = service.GetTipos();
             dgvTipos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -86,7 +88,7 @@ namespace EnvíosJADEE.Forms
 
         private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new DetallePerfil(), this);
+            ChangePages.ChangeWindow(new frmDetallePerfil(), this);
         }
 
         private void personasToolStripMenuItem_Click(object sender, EventArgs e)

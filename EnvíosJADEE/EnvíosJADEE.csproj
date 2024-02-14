@@ -136,6 +136,7 @@
       <DependentUpon>frmVehículos.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoríaModel.cs" />
+    <Compile Include="Models\ClientesModel.cs" />
     <Compile Include="Models\DetallePerfilModel.cs" />
     <Compile Include="Models\MarcaModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\VehiculoModel.cs" />
     <Compile Include="Network\CategoriasService.cs" />
+    <Compile Include="Network\ClientesService.cs" />
     <Compile Include="Network\DetallePerfilService.cs" />
     <Compile Include="Network\LoginService.cs" />
     <Compile Include="Network\MarcasService.cs" />
