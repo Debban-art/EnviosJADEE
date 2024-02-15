@@ -3,6 +3,7 @@ using EnvíosJADEE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -17,6 +18,36 @@ namespace EnvíosJADEE.Network
     {
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
+
+        //public List<RegistroEnvioModel> GetOrdenes()
+        //{
+        //    //parametros = new ArrayList();
+        //    //List<RegistroEnvioModel> lista = new List<RegistroEnvioModel>();
+        //    //try
+        //    //{
+        //    //    DataSet ds = dac.Fill("GetPerfiles", parametros);
+        //    //    if (ds.Tables.Count > 0)
+        //    //    {
+        //    //        lista = ds.Tables[0].AsEnumerable()
+        //    //                         .Select(dataRow => new RegistroEnvioModel
+        //    //                         {
+        //    //                             Id = int.Parse(dataRow["Id"].ToString()),
+        //    //                             IdCliente = int.Parse(dataRow["IdCliente"]).ToString()),
+        //    //                             Nombre = dataRow["Nombre"].ToString(),
+        //    //                             Estatus = dataRow["Estatus"].ToString(),
+        //    //                             FechaRegistro = dataRow["FechaRegistro"].ToString(),
+        //    //                             Usuario = int.Parse(dataRow["UsuarioRegistra"].ToString())
+
+        //    //                         }).ToList();
+        //    //    }
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    //}
+        //    //return lista;
+
+        //}
         public string InsertOrdenes(RegistroEnvioModel Ordenes)
         {
             parametros = new ArrayList();

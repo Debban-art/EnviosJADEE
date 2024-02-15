@@ -10,10 +10,11 @@ namespace EnvíosJADEE.Models
     {
         public int Id { get; set; }
         public int IdCliente { get; set; }
+        public string NombreCliente { get; set; }
 
         public int IdProducto { get; set; } 
+        public string Producto { get; set; } 
 
-        public int IdEstatusOrden { get; set; }
 
         public float CostoTotal { get; set; }
 
@@ -36,7 +37,14 @@ namespace EnvíosJADEE.Models
         public string Calle { get; set; }
 
         public string NoCasa { get; set; }
+        public int IdEstatusOrden { get; set; }
 
-        public int Estatus { get; set; }
+        public string EstatusDeOrden { get; set; }
+
+        public int UsuarioRegistra { get; set; }
+
+        public string FechaRegistro { get; set; }
+
+        public string Estatus { get; set; }
     }
 }
