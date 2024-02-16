@@ -13,7 +13,10 @@ namespace EnvíosJADEE.Forms
         ProductosService productosService = new ProductosService();
         DireccionesService direccionesService = new DireccionesService();
 
-        Dictionary<ProductosModel, int> ProductosTemporales = new Dictionary<ProductosModel, int>();
+        float costoTotal = 0;
+        float pesoTotal = 0;
+
+        Dictionary<int, int> ProductosTemporales = new Dictionary<int, int>();
         //crear una lista temporal para los productos
         public frmEnvíos()
         {
@@ -31,18 +34,6 @@ namespace EnvíosJADEE.Forms
             cmbPaís.DataSource = direccionesService.GetPais();
             cmbPaís.DisplayMember = "Nombre";
             cmbPaís.ValueMember = "Id";
-
-            cmbEstado.DataSource = direccionesService.GetEstados(int.Parse(cmbPaís.SelectedValue.ToString()));
-            cmbEstado.DisplayMember = "Nombre";
-            cmbEstado.ValueMember = "Id";
-
-            cmbMunicipio.DataSource = direccionesService.GetMunicipios(int.Parse(cmbEstado.SelectedValue.ToString()));
-            cmbMunicipio.DisplayMember = "Nombre";
-            cmbMunicipio.ValueMember = "Id";
-
-            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
-            cmbColonia.DisplayMember = "Nombre";
-            cmbColonia.ValueMember = "Id";
             #endregion
 
             txtCostoTotal.ReadOnly = true;
@@ -54,10 +45,6 @@ namespace EnvíosJADEE.Forms
 
 
         }
-
-
-
-
 
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -161,32 +148,23 @@ namespace EnvíosJADEE.Forms
         }
 
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             int idProducto = int.Parse(cmbProducto.SelectedValue.ToString());
-            
-            ProductosModel producto = ordenesService.GetProductoById(idProducto)[0];
-            if (!ProductosTemporales.ContainsKey(producto)){
-                ProductosTemporales.Add(producto, 1);
+
+
+            if (!ProductosTemporales.ContainsKey(idProducto )){
+                ProductosTemporales.Add(idProducto, 1);
+
             }
             else
             {
-                ProductosTemporales[producto]++;
+                ProductosTemporales[idProducto]++;
             }
 
-            float costoTotal = 0;
-            float pesoTotal = 0;
-            foreach (ProductosModel productoModel in ProductosTemporales.Keys)
-            {
-                costoTotal += productoModel.Precio;
-                pesoTotal += productoModel.Peso;
-            }
+            ProductosModel producto = ordenesService.GetProductoById(idProducto)[0];
+            costoTotal += producto.Precio;
+            pesoTotal += producto.Peso;
 
             txtCostoTotal.Text = costoTotal.ToString();
             txtPeso.Text = pesoTotal.ToString();
@@ -223,13 +201,60 @@ namespace EnvíosJADEE.Forms
                 {
                     MessageBox.Show("Orden insertada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvOrdenes.DataSource = null;
-                    dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios(); // Suponiendo que GetOrdenes() devuelve las órdenes desde la base de datos
+                    dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
+
+                    foreach (int id in ProductosTemporales.Keys)
+                    {
+                        ordenesService.InsertDetallesOrdenes(id, ProductosTemporales[id]);
+                    }
+
+                    costoTotal = 0;
+                    pesoTotal = 0;
                 }
                 else
                 {
                     MessageBox.Show("Error al insertar la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void cmbPaís_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbEstado.DataSource = null;
+            cmbEstado.DataSource = direccionesService.GetEstados(int.Parse(cmbPaís.SelectedValue.ToString()));
+            cmbEstado.DisplayMember = "Nombre";
+            cmbEstado.ValueMember = "Id";
+
+            cmbMunicipio.DataSource = null;
+            cmbMunicipio.DataSource = direccionesService.GetMunicipios(int.Parse(cmbEstado.SelectedValue.ToString()));
+            cmbMunicipio.DisplayMember = "Nombre";
+            cmbMunicipio.ValueMember = "Id";
+
+            cmbColonia.DataSource = null;
+            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
+            cmbColonia.DisplayMember = "Nombre";
+            cmbColonia.ValueMember = "Id";
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbMunicipio.DataSource = null;
+            cmbMunicipio.DataSource = direccionesService.GetMunicipios(int.Parse(cmbEstado.SelectedValue.ToString()));
+            cmbMunicipio.DisplayMember = "Nombre";
+            cmbMunicipio.ValueMember = "Id";
+
+            cmbColonia.DataSource = null;
+            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
+            cmbColonia.DisplayMember = "Nombre";
+            cmbColonia.ValueMember = "Id";
+        }
+
+        private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbColonia.DataSource = null;
+            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
+            cmbColonia.DisplayMember = "Nombre";
+            cmbColonia.ValueMember = "Id";
         }
     }
 }

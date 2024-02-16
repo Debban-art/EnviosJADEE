@@ -51,7 +51,8 @@ namespace EnvíosJADEE.Network
                                          FechaEntrega = dataRow["FechaEntrega"].ToString(),
                                          EstatusDeOrden = dataRow["EstatusDeOrden"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
-                                         UsuarioRegistra = int.Parse(dataRow["UsuarioRegistra"].ToString())
+                                         UsuarioRegistra = int.Parse(dataRow["UsuarioRegistra"].ToString()),
+                                         Estatus = dataRow["Estatus"].ToString()
 
                                      }).ToList();
                 }
@@ -122,6 +123,25 @@ namespace EnvíosJADEE.Network
             return lista;
 
         }
-        
+
+        public string InsertDetallesOrdenes(int IdProducto, int Cantidad)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pIdProducto", SqlDbType = System.Data.SqlDbType.Int, Value = IdProducto });
+            parametros.Add(new SqlParameter { ParameterName = "@pCantidad", SqlDbType = SqlDbType.Int, Value = Cantidad });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuarioRegistra", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
+
+            try
+            {
+                dac.ExecuteNonQuery("InsertDetallesOrdenes", parametros);
+                return "Correcto";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "Error";
+            }
+        }
+
     }
 }

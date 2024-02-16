@@ -234,7 +234,6 @@
             this.lblNombre.Size = new System.Drawing.Size(52, 15);
             this.lblNombre.TabIndex = 59;
             this.lblNombre.Text = "Nombre";
-            this.lblNombre.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtApellidoPatDestinatario
             // 
@@ -283,6 +282,7 @@
             this.cmbPaís.Name = "cmbPaís";
             this.cmbPaís.Size = new System.Drawing.Size(267, 23);
             this.cmbPaís.TabIndex = 67;
+            this.cmbPaís.SelectedIndexChanged += new System.EventHandler(this.cmbPaís_SelectedIndexChanged);
             // 
             // cmbEstado
             // 
@@ -293,6 +293,7 @@
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(267, 23);
             this.cmbEstado.TabIndex = 68;
+            this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
             // 
             // cmbMunicipio
             // 
@@ -411,6 +412,7 @@
             this.cmbColonia.Name = "cmbColonia";
             this.cmbColonia.Size = new System.Drawing.Size(267, 23);
             this.cmbColonia.TabIndex = 78;
+            this.cmbColonia.SelectedIndexChanged += new System.EventHandler(this.cmbColonia_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -477,7 +479,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
-            this.ClientSize = new System.Drawing.Size(1364, 749);
+            this.ClientSize = new System.Drawing.Size(1364, 766);
             this.Controls.Add(this.gpbDatosDestinatario);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);
