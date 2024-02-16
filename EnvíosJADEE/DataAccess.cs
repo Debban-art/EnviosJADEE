@@ -25,7 +25,7 @@ namespace TestLeoniWF
             //var appSettings = ConfigurationManager.AppSettings;
             //string result = appSettings["Estacion"] ?? "Not Found";
             //return System.Configuration.ConfigurationManager.ConnectionStrings["Conexion"].ConnectionString;
-            return "Data Source=104.254.247.128; Initial Catalog=EnviosJADEE; User Id=sa;password=ABC1238f47!;";
+            return "Data Source=104.254.247.128; Initial Catalog=EnviosJADEE_Debbany; User Id=sa;password=ABC1238f47!;";
 
         }
 

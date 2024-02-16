@@ -1,6 +1,8 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
@@ -8,6 +10,11 @@ namespace EnvíosJADEE.Forms
     public partial class frmEnvíos : Form
     {
         RegistroEnvioService ordenesService = new RegistroEnvioService();
+        ProductosService productosService = new ProductosService();
+        DireccionesService direccionesService = new DireccionesService();
+
+        Dictionary<ProductosModel, int> ProductosTemporales = new Dictionary<ProductosModel, int>();
+        //crear una lista temporal para los productos
         public frmEnvíos()
         {
             InitializeComponent();
@@ -16,7 +23,36 @@ namespace EnvíosJADEE.Forms
         {
             MenuBuilder.BuildMenu(this);
 
-            //dgvOrdenes.DataSource = ordenesService.GetOrdenes();
+            #region combo boxs
+            cmbProducto.DataSource = productosService.GetProductos();
+            cmbProducto.DisplayMember = "Nombre";
+            cmbProducto.ValueMember = "Id";
+
+            cmbPaís.DataSource = direccionesService.GetPais();
+            cmbPaís.DisplayMember = "Nombre";
+            cmbPaís.ValueMember = "Id";
+
+            cmbEstado.DataSource = direccionesService.GetEstados(int.Parse(cmbPaís.SelectedValue.ToString()));
+            cmbEstado.DisplayMember = "Nombre";
+            cmbEstado.ValueMember = "Id";
+
+            cmbMunicipio.DataSource = direccionesService.GetMunicipios(int.Parse(cmbEstado.SelectedValue.ToString()));
+            cmbMunicipio.DisplayMember = "Nombre";
+            cmbMunicipio.ValueMember = "Id";
+
+            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
+            cmbColonia.DisplayMember = "Nombre";
+            cmbColonia.ValueMember = "Id";
+            #endregion
+
+            txtCostoTotal.ReadOnly = true;
+            txtPeso.ReadOnly = true;
+
+
+
+            dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
+
+
         }
 
 
@@ -42,6 +78,8 @@ namespace EnvíosJADEE.Forms
             //txtNoCasa.Text = "";
 
             //cmbIdCliente.Focus();
+
+            //Se reinicia la lista
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -84,6 +122,8 @@ namespace EnvíosJADEE.Forms
 
 
             //}
+
+            //
         }
 
         private void dgvRegistroEnvio_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -125,6 +165,71 @@ namespace EnvíosJADEE.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            int idProducto = int.Parse(cmbProducto.SelectedValue.ToString());
+            
+            ProductosModel producto = ordenesService.GetProductoById(idProducto)[0];
+            if (!ProductosTemporales.ContainsKey(producto)){
+                ProductosTemporales.Add(producto, 1);
+            }
+            else
+            {
+                ProductosTemporales[producto]++;
+            }
+
+            float costoTotal = 0;
+            float pesoTotal = 0;
+            foreach (ProductosModel productoModel in ProductosTemporales.Keys)
+            {
+                costoTotal += productoModel.Precio;
+                pesoTotal += productoModel.Peso;
+            }
+
+            txtCostoTotal.Text = costoTotal.ToString();
+            txtPeso.Text = pesoTotal.ToString();
+        }
+
+        private void btnAñadir_Click_1(object sender, EventArgs e)
+        {
+            if (txtNombreEmisor.Text.Trim().Length == 0 || txtApellidoPatDestinatario.Text.Trim().Length == 0 || txtApellidoMatDestinatario.Text.Trim().Length == 0 || txtNombreDestinatario.Text.Trim().Length == 0 || txtCodigoPostal.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                OrdenModel orden = new OrdenModel();
+                orden.CostoTotal = float.Parse(txtCostoTotal.Text);
+                orden.Peso = float.Parse(txtPeso.Text);
+                orden.NombreEmisor = txtNombreEmisor.Text;
+                orden.IdPais = int.Parse(cmbPaís.SelectedValue.ToString());
+                orden.IdEstado = int.Parse(cmbEstado.SelectedValue.ToString());
+                orden.IdMunicipio = int.Parse(cmbMunicipio.SelectedValue.ToString());
+                orden.idColonia = int.Parse(cmbColonia.SelectedValue.ToString());
+                orden.Calle = txtCalle.Text;
+                orden.NoCasa = int.Parse(txtNoCasa.Text);
+                orden.CodigoPostal = int.Parse(txtCodigoPostal.Text);
+                orden.NombreDestinatario = txtNombreDestinatario.Text;
+                orden.ApellidoPatDestinatario = txtApellidoPatDestinatario.Text;
+                orden.ApellidoMatDestinatario = txtApellidoMatDestinatario.Text;
+                orden.TelefonoDestinatario = txtTelefonoDestinatario.Text;
+
+              
+                string resultado = ordenesService.InsertOrdenes(orden);
+
+                if (resultado == "Correcto")
+                {
+                    MessageBox.Show("Orden insertada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvOrdenes.DataSource = null;
+                    dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios(); // Suponiendo que GetOrdenes() devuelve las órdenes desde la base de datos
+                }
+                else
+                {
+                    MessageBox.Show("Error al insertar la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

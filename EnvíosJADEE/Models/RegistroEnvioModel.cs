@@ -9,35 +9,28 @@ namespace EnvíosJADEE.Models
     internal class RegistroEnvioModel
     {
         public int Id { get; set; }
-        public int IdCliente { get; set; }
-        public string NombreCliente { get; set; }
 
-        public int IdProducto { get; set; } 
-        public string Producto { get; set; } 
+        public string Clave { get; set; }
 
+        public string NombreEmisor { get; set; }
 
         public float CostoTotal { get; set; }
 
         public float Peso { get; set; }
-
+        public int CodigoPostal { get; set; }
+        public string NoCasa { get; set; }
+        public string Calle { get; set; }
+        public string Colonia { get; set; }
+        public string Municipio { get; set; }
+        public string Estado { get; set; }
+        public string Pais { get; set; }
+        public string NombreDestinatario { get; set; }
+        public string ApellidoPatDestinatario { get; set; }
+        public string ApellidoMatDestinatario { get; set; }
+        public string TelefonoDestinatario { get; set; }
         public string FechaSalida { get; set; }
 
         public string FechaEntrega { get; set; }
-
-        public string Pais { get; set; }
-
-        public string Estado { get; set; }
-
-        public string Ciudad { get; set; }
-
-        public string CodigoPostal { get; set; }
-
-        public string Domicilio { get; set; }
-
-        public string Calle { get; set; }
-
-        public string NoCasa { get; set; }
-        public int IdEstatusOrden { get; set; }
 
         public string EstatusDeOrden { get; set; }
 
