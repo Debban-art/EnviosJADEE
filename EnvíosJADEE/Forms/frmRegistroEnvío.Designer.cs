@@ -192,6 +192,7 @@
             this.btnCancelar.TabIndex = 32;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
             // btnAñadir
             // 
@@ -282,7 +283,6 @@
             this.cmbPaís.Name = "cmbPaís";
             this.cmbPaís.Size = new System.Drawing.Size(267, 23);
             this.cmbPaís.TabIndex = 67;
-            this.cmbPaís.SelectedIndexChanged += new System.EventHandler(this.cmbPaís_SelectedIndexChanged);
             // 
             // cmbEstado
             // 
@@ -293,7 +293,6 @@
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(267, 23);
             this.cmbEstado.TabIndex = 68;
-            this.cmbEstado.SelectedIndexChanged += new System.EventHandler(this.cmbEstado_SelectedIndexChanged);
             // 
             // cmbMunicipio
             // 
@@ -304,6 +303,7 @@
             this.cmbMunicipio.Name = "cmbMunicipio";
             this.cmbMunicipio.Size = new System.Drawing.Size(267, 23);
             this.cmbMunicipio.TabIndex = 69;
+            this.cmbMunicipio.SelectedIndexChanged += new System.EventHandler(this.cmbMunicipio_SelectedIndexChanged);
             // 
             // cmbProducto
             // 
@@ -341,6 +341,7 @@
             this.txtCodigoPostal.Name = "txtCodigoPostal";
             this.txtCodigoPostal.Size = new System.Drawing.Size(267, 21);
             this.txtCodigoPostal.TabIndex = 70;
+            this.txtCodigoPostal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCodigoPostal_KeyDown);
             // 
             // txtCalle
             // 
@@ -412,7 +413,6 @@
             this.cmbColonia.Name = "cmbColonia";
             this.cmbColonia.Size = new System.Drawing.Size(267, 23);
             this.cmbColonia.TabIndex = 78;
-            this.cmbColonia.SelectedIndexChanged += new System.EventHandler(this.cmbColonia_SelectedIndexChanged);
             // 
             // groupBox2
             // 
@@ -436,12 +436,16 @@
             // 
             // btnAgregarProducto
             // 
-            this.btnAgregarProducto.Location = new System.Drawing.Point(584, 55);
+            this.btnAgregarProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnAgregarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAgregarProducto.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarProducto.Location = new System.Drawing.Point(584, 51);
             this.btnAgregarProducto.Name = "btnAgregarProducto";
-            this.btnAgregarProducto.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregarProducto.Size = new System.Drawing.Size(150, 34);
             this.btnAgregarProducto.TabIndex = 81;
-            this.btnAgregarProducto.Text = "button1";
-            this.btnAgregarProducto.UseVisualStyleBackColor = true;
+            this.btnAgregarProducto.Text = "Añadir producto";
+            this.btnAgregarProducto.UseVisualStyleBackColor = false;
             this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
             // 
             // gpbDatosDestinatario
@@ -471,6 +475,7 @@
             this.dgvOrdenes.Name = "dgvOrdenes";
             this.dgvOrdenes.Size = new System.Drawing.Size(627, 362);
             this.dgvOrdenes.TabIndex = 14;
+            this.dgvOrdenes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrdenes_CellEndEdit);
             // 
             // frmEnvíos
             // 
@@ -479,7 +484,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
-            this.ClientSize = new System.Drawing.Size(1364, 766);
+            this.ClientSize = new System.Drawing.Size(1364, 749);
             this.Controls.Add(this.gpbDatosDestinatario);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);

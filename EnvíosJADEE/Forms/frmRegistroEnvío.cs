@@ -1,14 +1,15 @@
-﻿using EnvíosJADEE.Clases;
-using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace EnvíosJADEE.Forms
 {
     public partial class frmEnvíos : Form
     {
+        #region variables
         RegistroEnvioService ordenesService = new RegistroEnvioService();
         ProductosService productosService = new ProductosService();
         DireccionesService direccionesService = new DireccionesService();
@@ -17,10 +18,14 @@ namespace EnvíosJADEE.Forms
         float pesoTotal = 0;
 
         Dictionary<int, int> ProductosTemporales = new Dictionary<int, int>();
-        //crear una lista temporal para los productos
+        #endregion
+
         public frmEnvíos()
         {
             InitializeComponent();
+
+            cmbPaís.SelectedIndexChanged += CmbPais_SelectedIndexChanged;
+            cmbEstado.SelectedIndexChanged += CmbEstado_SelectedIndexChanged;
         }
         private void frmRegistroEnvío_Load(object sender, EventArgs e)
         {
@@ -43,117 +48,37 @@ namespace EnvíosJADEE.Forms
 
             dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
 
-
+            dgvOrdenes.Columns[0].ReadOnly = true;
+            dgvOrdenes.Columns[1].ReadOnly = true;
+            dgvOrdenes.Columns[2].ReadOnly = true;
+            dgvOrdenes.Columns[3].ReadOnly = true;
+            dgvOrdenes.Columns[4].ReadOnly = true;
+            dgvOrdenes.Columns[5].ReadOnly = true;
+            dgvOrdenes.Columns[6].ReadOnly = true;
+            dgvOrdenes.Columns[7].ReadOnly = true;
+            dgvOrdenes.Columns[8].ReadOnly = true;
+            dgvOrdenes.Columns[9].ReadOnly = true;
+            dgvOrdenes.Columns[10].ReadOnly = true;
+            dgvOrdenes.Columns[11].ReadOnly = true;
+            dgvOrdenes.Columns[12].ReadOnly = true;
+            dgvOrdenes.Columns[13].ReadOnly = true;
+            dgvOrdenes.Columns[14].ReadOnly = true;
+            dgvOrdenes.Columns[15].ReadOnly = true;
+            dgvOrdenes.Columns[16].ReadOnly = true;
+            dgvOrdenes.Columns[17].ReadOnly = true;
+            dgvOrdenes.Columns[19].ReadOnly = true;
+            dgvOrdenes.Columns[20].ReadOnly = true;
         }
 
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            //cmbIdCliente.SelectedIndex = 0;
-            //cmbIdEstatusOrden.SelectedIndex = 0;
-            //cmbIdProducto.SelectedIndex = 0;
-            //txtCostoTotal.Text = "";
-            //txtPeso.Text = "";
-            //txtFechaSalida.Text = "";
-            //txtFechaEntrega.Text = "";
-            //txtPais.Text = "";
-            //txtEstado.Text = "";
-            //txtCiudad.Text = "";
-            //txtCodigoPostal.Text = "";
-            //txtDomicilio.Text = "";
-            //txtCalle.Text = "";
-            //txtNoCasa.Text = "";
-
-            //cmbIdCliente.Focus();
-
-            //Se reinicia la lista
-        }
-
-        private void btnAñadir_Click(object sender, EventArgs e)
-        {
-            //if (txtCostoTotal.Text.Trim().Length == 0 || txtPeso.Text.Trim().Length == 0 || txtFechaSalida.Text.Trim().Length == 0 || txtFechaEntrega.Text.Trim().Length == 0
-            //    || txtPais.Text.Trim().Length == 0 || txtEstado.Text.Trim().Length == 0 || txtCiudad.Text.Trim().Length == 0 || txtCodigoPostal.Text.Trim().Length == 0
-            //    || txtDomicilio.Text.Trim().Length == 0 || txtCalle.Text.Trim().Length == 0 || txtNoCasa.Text.Trim().Length == 0)
-            //{
-            //    MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else
-            //{
-            //    RegistroEnvioModel envio = new RegistroEnvioModel();
-            //    envio.CostoTotal = float.Parse(txtCostoTotal.ToString());
-            //    envio.Peso = float.Parse(txtPeso.ToString());
-            //    envio.FechaSalida = txtFechaSalida.Text;
-            //    envio.FechaEntrega = txtFechaEntrega.Text;
-            //    envio.Pais = txtPais.Text;
-            //    envio.Estado = txtEstado.Text;
-            //    envio.Ciudad = txtCiudad.Text;
-            //    envio.CodigoPostal = txtCodigoPostal.Text;
-            //    envio.Domicilio = txtDomicilio.Text;
-            //    envio.Calle = txtCalle.Text;
-            //    envio.NoCasa = txtNoCasa.Text;
-            //    envio.IdCliente = int.Parse(cmbIdCliente.SelectedValue.ToString());
-            //    envio.IdEstatusOrden = int.Parse(envio.IdEstatusOrden.ToString());
-            //    envio.IdProducto = int.Parse(envio.IdProducto.ToString());
-
-
-
-            //    RegistroEnvioService service = new RegistroEnvioService();
-            //    //service.InsertRegistroEnvio(envio);
-
-            //    service.InsertOrdenes(envio);
-
-
-            //    dgvOrdenes.DataSource = null;
-            //    //dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
-
-
-
-            //}
-
-            //
-        }
-
-        private void dgvRegistroEnvio_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvRegistroEnvio_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            //RegistroEnvioService service = new RegistroEnvioService();
-            //RegistroEnvioModel envio = new RegistroEnvioModel();
-            //var row = dgvOrdenes.Rows[e.RowIndex];
-
-            //envio.IdCliente = int.Parse(row.Cells[1].Value.ToString());
-            //envio.IdProducto = int.Parse(row.Cells[2].Value.ToString());
-            //envio.IdEstatusOrden = int.Parse(row.Cells[3].Value.ToString());
-            //envio.CostoTotal = float.Parse(row.Cells[4].Value.ToString());
-            //envio.Peso = float.Parse(row.Cells[5].Value.ToString());
-            //envio.FechaSalida = row.Cells[6].Value.ToString();
-            //envio.FechaEntrega = row.Cells[7].Value.ToString();
-            //envio.Pais = row.Cells[8].Value.ToString();
-            //envio.Estado = row.Cells[9].Value.ToString();
-            //envio.Ciudad = row.Cells[10].Value.ToString();
-            //envio.CodigoPostal = row.Cells[11].Value.ToString();
-            //envio.Domicilio = row.Cells[12].Value.ToString();
-            //envio.Calle = row.Cells[13].Value.ToString();
-            //envio.NoCasa = row.Cells[14].Value.ToString();
-
-
-
-            ////envio.UpdateRegistroEnvio(Ordenes);
-            //dgvOrdenes.DataSource = null;
-            //RegistroEnvioService RegistroEnvioService = new RegistroEnvioService();
-            ////dgvRegistroEnvio.DataSource = service.GetRegistroEnvio();
-        }
-
-
+        #region Sección de productos
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             int idProducto = int.Parse(cmbProducto.SelectedValue.ToString());
 
 
-            if (!ProductosTemporales.ContainsKey(idProducto )){
+            if (!ProductosTemporales.ContainsKey(idProducto))
+            {
                 ProductosTemporales.Add(idProducto, 1);
 
             }
@@ -169,12 +94,86 @@ namespace EnvíosJADEE.Forms
             txtCostoTotal.Text = costoTotal.ToString();
             txtPeso.Text = pesoTotal.ToString();
         }
+        #endregion
 
+        #region sección de dirección
+        private void CmbPais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int paisId = ((PaisModels)cmbPaís.SelectedItem).Id;
+
+            cmbEstado.DataSource = null;
+            cmbEstado.DisplayMember = "Nombre";
+            cmbEstado.ValueMember = "Id";
+            cmbEstado.DataSource = direccionesService.GetEstados(paisId);
+
+        }
+
+        private void CmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEstado.SelectedItem != null)
+            {
+                int estadoId = ((EstadosModel)cmbEstado.SelectedItem).Id;
+
+                cmbMunicipio.DataSource = null;
+                cmbMunicipio.DisplayMember = "Nombre";
+                cmbMunicipio.ValueMember = "Id";
+                cmbMunicipio.DataSource = direccionesService.GetMunicipios(estadoId);
+
+            }
+        }
+
+        private void cmbMunicipio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMunicipio.SelectedItem != null)
+            {
+                int municipioId = ((MunicipioModel)cmbMunicipio.SelectedItem).Id;
+                cmbColonia.DataSource = null;
+                cmbColonia.DisplayMember = "Nombre";
+                cmbColonia.ValueMember = "Id";
+                cmbColonia.DataSource = direccionesService.GetColonias(municipioId);
+
+                txtCodigoPostal.Text = ((ColoniaModel)cmbColonia.SelectedItem).CodigoPostal.ToString();
+            }
+
+        }
+
+        private void txtCodigoPostal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (txtCodigoPostal.Text.Trim() != "")
+                {
+                    int CodigoPostal = int.Parse(txtCodigoPostal.Text);
+
+                    DirecciónModel dirección = direccionesService.GetDireccionPorCodigoPostal(CodigoPostal)[0];
+
+                    if (dirección != null)
+                    {
+                        cmbPaís.SelectedValue = dirección.IdPais;
+                        cmbEstado.SelectedValue = dirección.IdEstado;
+                        cmbMunicipio.SelectedValue = dirección.IdMunicipio;
+                    }
+                }
+
+            }
+        }
+        #endregion
+
+        #region sección botones
         private void btnAñadir_Click_1(object sender, EventArgs e)
         {
-            if (txtNombreEmisor.Text.Trim().Length == 0 || txtApellidoPatDestinatario.Text.Trim().Length == 0 || txtApellidoMatDestinatario.Text.Trim().Length == 0 || txtNombreDestinatario.Text.Trim().Length == 0 || txtCodigoPostal.Text.Trim().Length == 0)
+            if (txtNombreEmisor.Text.Trim() == "" || txtApellidoPatDestinatario.Text.Trim() == "" || txtApellidoMatDestinatario.Text.Trim() == "" || txtNombreDestinatario.Text.Trim() == "" || txtCodigoPostal.Text.Trim() == "" || txtCalle.Text.Trim() == "" || txtTelefonoDestinatario.Text.Trim() == "" || txtNoCasa.Text.Trim() == "")
             {
                 MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (txtCostoTotal.Text.Trim() == "" || txtPeso.Text.Trim() == "")
+            {
+                MessageBox.Show("Añade al menos un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            else if (!ValidarTelefono(txtTelefonoDestinatario.Text))
+            {
+                MessageBox.Show("Número de teléfono inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -194,7 +193,7 @@ namespace EnvíosJADEE.Forms
                 orden.ApellidoMatDestinatario = txtApellidoMatDestinatario.Text;
                 orden.TelefonoDestinatario = txtTelefonoDestinatario.Text;
 
-              
+
                 string resultado = ordenesService.InsertOrdenes(orden);
 
                 if (resultado == "Correcto")
@@ -217,44 +216,40 @@ namespace EnvíosJADEE.Forms
                 }
             }
         }
-
-        private void cmbPaís_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
-            cmbEstado.DataSource = null;
-            cmbEstado.DataSource = direccionesService.GetEstados(int.Parse(cmbPaís.SelectedValue.ToString()));
-            cmbEstado.DisplayMember = "Nombre";
-            cmbEstado.ValueMember = "Id";
+            txtNombreEmisor.Text = "";
+            cmbProducto.SelectedIndex = 0;
+            ProductosTemporales = new Dictionary<int, int>();
+            costoTotal = 0;
+            pesoTotal = 0;
+            txtCostoTotal.Text = "";
+            txtPeso.Text = "";
+            txtCalle.Text = "";
+            txtNoCasa.Text = "";
+            txtNombreDestinatario.Text = "";
+            txtApellidoPatDestinatario.Text = "";
+            txtApellidoMatDestinatario.Text = "";
+            txtTelefonoDestinatario.Text = "";
+        }
+        #endregion
 
-            cmbMunicipio.DataSource = null;
-            cmbMunicipio.DataSource = direccionesService.GetMunicipios(int.Parse(cmbEstado.SelectedValue.ToString()));
-            cmbMunicipio.DisplayMember = "Nombre";
-            cmbMunicipio.ValueMember = "Id";
+        private void dgvOrdenes_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = dgvOrdenes.Rows[e.RowIndex];
 
-            cmbColonia.DataSource = null;
-            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
-            cmbColonia.DisplayMember = "Nombre";
-            cmbColonia.ValueMember = "Id";
+            int IdOrden = int.Parse(row.Cells[0].Value.ToString());
+            string EstatusOrden = row.Cells[18].Value.ToString();
+            ordenesService.UpdateEstatusOrden(EstatusOrden, IdOrden);
+
+            dgvOrdenes.DataSource = null;
+            dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
         }
 
-        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        private bool ValidarTelefono(string numero)
         {
-            cmbMunicipio.DataSource = null;
-            cmbMunicipio.DataSource = direccionesService.GetMunicipios(int.Parse(cmbEstado.SelectedValue.ToString()));
-            cmbMunicipio.DisplayMember = "Nombre";
-            cmbMunicipio.ValueMember = "Id";
-
-            cmbColonia.DataSource = null;
-            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
-            cmbColonia.DisplayMember = "Nombre";
-            cmbColonia.ValueMember = "Id";
-        }
-
-        private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbColonia.DataSource = null;
-            cmbColonia.DataSource = direccionesService.GetColonias(int.Parse(cmbMunicipio.SelectedValue.ToString()));
-            cmbColonia.DisplayMember = "Nombre";
-            cmbColonia.ValueMember = "Id";
+            string patron = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
+            return Regex.IsMatch(numero, patron);
         }
     }
 }

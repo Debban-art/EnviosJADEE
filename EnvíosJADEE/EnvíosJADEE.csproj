@@ -141,6 +141,7 @@
     <Compile Include="Models\DetallePerfilModel.cs" />
     <Compile Include="Models\DetallesEnvíoModel.cs" />
     <Compile Include="Models\DetallesOrdenModel.cs" />
+    <Compile Include="Models\DirecciónModel.cs" />
     <Compile Include="Models\EstadosModel.cs" />
     <Compile Include="Models\MarcaModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />

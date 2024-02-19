@@ -19,7 +19,6 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
-
         public List<RegistroEnvioModel> GetRegistroEnvios()
         {
             parametros = new ArrayList();
@@ -47,6 +46,7 @@ namespace EnvíosJADEE.Network
                                          NombreDestinatario = dataRow["NombreDestinatario"].ToString(),
                                          ApellidoPatDestinatario = dataRow["ApellidoPatDestinatario"].ToString(),
                                          ApellidoMatDestinatario = dataRow["ApellidoMatDestinatario"].ToString(),
+                                         TelefonoDestinatario = dataRow["TelefonoDestinatario"].ToString(),
                                          FechaSalida = dataRow["FechaSalida"].ToString(),
                                          FechaEntrega = dataRow["FechaEntrega"].ToString(),
                                          EstatusDeOrden = dataRow["EstatusDeOrden"].ToString(),
@@ -94,7 +94,6 @@ namespace EnvíosJADEE.Network
             }
         }
 
-
         public List<ProductosModel> GetProductoById(int IdProducto)
         {
             parametros = new ArrayList();
@@ -141,6 +140,25 @@ namespace EnvíosJADEE.Network
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "Error";
             }
+        }
+
+        public void UpdateEstatusOrden(string Estatus, int IdOrden)
+        {
+            parametros = new ArrayList();
+
+            parametros.Add(new SqlParameter { ParameterName = "@pIdOrden", SqlDbType = SqlDbType.Int, Value = IdOrden });
+            parametros.Add(new SqlParameter { ParameterName = "@pNuevoEstatus", SqlDbType = System.Data.SqlDbType.VarChar, Value = Estatus });
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdateEstatus", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
         }
 
     }

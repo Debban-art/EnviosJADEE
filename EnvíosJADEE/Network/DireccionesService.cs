@@ -124,5 +124,31 @@ namespace EnvíosJADEE.Network
             return lista;
 
         }
+
+        public List<DirecciónModel> GetDireccionPorCodigoPostal(int CodigoPostal)
+        {
+            parametros = new ArrayList();
+            List<DirecciónModel> lista = new List<DirecciónModel>();
+            parametros.Add(new SqlParameter { ParameterName = "@pCodigoPostal", SqlDbType = SqlDbType.Int, Value = CodigoPostal});
+            try
+            {
+                DataSet ds = dac.Fill("GetDirecciónByCodigoPostal", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable()
+                                     .Select(DataRow => new DirecciónModel
+                                     {
+                                         IdPais = int.Parse(DataRow["IdPais"].ToString()),
+                                         IdEstado = int.Parse(DataRow["IdEstado"].ToString()),
+                                         IdMunicipio = int.Parse(DataRow["IdMunicipio"].ToString())
+                                     }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+            }
+            return lista;
+        }
     }
 }
