@@ -81,6 +81,12 @@
     <Compile Include="Forms\frmDetallePerfil.Designer.cs">
       <DependentUpon>frmDetallePerfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmDetallesDeOrden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDetallesDeOrden.Designer.cs">
+      <DependentUpon>frmDetallesDeOrden.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmEstatusOrden.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,7 @@
     <Compile Include="Models\DetallesOrdenModel.cs" />
     <Compile Include="Models\DirecciónModel.cs" />
     <Compile Include="Models\EstadosModel.cs" />
+    <Compile Include="Models\EstatusDeOrdenModel.cs" />
     <Compile Include="Models\MarcaModel.cs" />
     <Compile Include="Models\ModuloModel.cs" />
     <Compile Include="Models\MunicipioModel.cs" />
@@ -158,6 +165,7 @@
     <Compile Include="Network\CategoriasService.cs" />
     <Compile Include="Network\ClientesService.cs" />
     <Compile Include="Network\DetallePerfilService.cs" />
+    <Compile Include="Network\DetallesDeOrdenService.cs" />
     <Compile Include="Network\DireccionesService.cs" />
     <Compile Include="Network\LoginService.cs" />
     <Compile Include="Network\MarcasService.cs" />
@@ -185,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmDetallePerfil.resx">
       <DependentUpon>frmDetallePerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDetallesDeOrden.resx">
+      <DependentUpon>frmDetallesDeOrden.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmHome.resx">
       <DependentUpon>frmHome.cs</DependentUpon>

@@ -9,11 +9,42 @@ namespace EnvíosJADEE.Models
     internal class DetallesEnvíoModel
     {
         public int Id { get; set; }
-        public int IdOrden { get; set; }
-        public int IdEstatusOrden { get; set; }
-        public int IdMueble { get; set; }
+
+        public string Clave { get; set; }
+
+        public string NombreEmisor { get; set; }
+
+        public float CostoTotal { get; set; }
+
+        public float Peso { get; set; }
+        public int CodigoPostal { get; set; }
+        public string NoCasa { get; set; }
+        public string Calle { get; set; }
+        public string Colonia { get; set; }
+        public string Municipio { get; set; }
+        public string Estado { get; set; }
+        public string Pais { get; set; }
+        public string NombreDestinatario { get; set; }
+        public string ApellidoPatDestinatario { get; set; }
+        public string ApellidoMatDestinatario { get; set; }
+        public string TelefonoDestinatario { get; set; }
+
+        public string NombreRepartidor { get; set; }
+        public string ClaveRepartidor { get; set;  }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string Matricula { get; set; }
         public string FechaSalida { get; set; }
+
         public string FechaEntrega { get; set; }
-        public int Estatus { get; set; }
+
+        public string EstatusDeOrden { get; set; }
+
+        public int UsuarioRegistra { get; set; }
+
+        public string FechaRegistro { get; set; }
+
+        public string Estatus { get; set; }
+
     }
 }

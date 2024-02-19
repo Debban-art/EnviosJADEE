@@ -473,7 +473,7 @@
             this.dgvOrdenes.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvOrdenes.Location = new System.Drawing.Point(942, 165);
             this.dgvOrdenes.Name = "dgvOrdenes";
-            this.dgvOrdenes.Size = new System.Drawing.Size(627, 362);
+            this.dgvOrdenes.Size = new System.Drawing.Size(651, 362);
             this.dgvOrdenes.TabIndex = 14;
             this.dgvOrdenes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrdenes_CellEndEdit);
             // 
@@ -484,7 +484,7 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
-            this.ClientSize = new System.Drawing.Size(1364, 749);
+            this.ClientSize = new System.Drawing.Size(1598, 749);
             this.Controls.Add(this.gpbDatosDestinatario);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);
