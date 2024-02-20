@@ -28,44 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvMarcas = new System.Windows.Forms.DataGridView();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.cmbEstatus = new System.Windows.Forms.ComboBox();
             this.lblEstatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAñadir = new System.Windows.Forms.Button();
+            this.btnCambiar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
             this.dgvOrden = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrden)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvMarcas
+            // dgvProductos
             // 
-            this.dgvMarcas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMarcas.Location = new System.Drawing.Point(388, 179);
-            this.dgvMarcas.Name = "dgvMarcas";
-            this.dgvMarcas.Size = new System.Drawing.Size(643, 322);
-            this.dgvMarcas.TabIndex = 20;
+            this.dgvProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductos.Location = new System.Drawing.Point(351, 180);
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.ReadOnly = true;
+            this.dgvProductos.Size = new System.Drawing.Size(431, 322);
+            this.dgvProductos.TabIndex = 20;
             // 
             // cmbEstatus
             // 
             this.cmbEstatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.cmbEstatus.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstatus.FormattingEnabled = true;
-            this.cmbEstatus.Location = new System.Drawing.Point(53, 306);
+            this.cmbEstatus.Location = new System.Drawing.Point(52, 276);
             this.cmbEstatus.Name = "cmbEstatus";
             this.cmbEstatus.Size = new System.Drawing.Size(228, 29);
             this.cmbEstatus.TabIndex = 51;
+            this.cmbEstatus.SelectedIndexChanged += new System.EventHandler(this.cmbEstatus_SelectedIndexChanged);
             // 
             // lblEstatus
             // 
             this.lblEstatus.AutoSize = true;
             this.lblEstatus.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstatus.Location = new System.Drawing.Point(49, 269);
+            this.lblEstatus.Location = new System.Drawing.Point(49, 252);
             this.lblEstatus.Name = "lblEstatus";
             this.lblEstatus.Size = new System.Drawing.Size(59, 21);
             this.lblEstatus.TabIndex = 52;
@@ -95,25 +97,25 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(170, 427);
+            this.btnCancelar.Location = new System.Drawing.Point(170, 324);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(111, 41);
+            this.btnCancelar.Size = new System.Drawing.Size(111, 29);
             this.btnCancelar.TabIndex = 56;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // btnAñadir
+            // btnCambiar
             // 
-            this.btnAñadir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btnAñadir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAñadir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAñadir.ForeColor = System.Drawing.Color.White;
-            this.btnAñadir.Location = new System.Drawing.Point(53, 427);
-            this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(111, 41);
-            this.btnAñadir.TabIndex = 55;
-            this.btnAñadir.Text = "Añadir";
-            this.btnAñadir.UseVisualStyleBackColor = false;
+            this.btnCambiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiar.ForeColor = System.Drawing.Color.White;
+            this.btnCambiar.Location = new System.Drawing.Point(52, 324);
+            this.btnCambiar.Name = "btnCambiar";
+            this.btnCambiar.Size = new System.Drawing.Size(111, 29);
+            this.btnCambiar.TabIndex = 55;
+            this.btnCambiar.Text = "Cambiar Estatus";
+            this.btnCambiar.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -145,31 +147,33 @@
             // 
             this.dgvOrden.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.dgvOrden.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrden.Location = new System.Drawing.Point(388, 105);
+            this.dgvOrden.Location = new System.Drawing.Point(351, 106);
             this.dgvOrden.Name = "dgvOrden";
-            this.dgvOrden.Size = new System.Drawing.Size(643, 38);
+            this.dgvOrden.ReadOnly = true;
+            this.dgvOrden.Size = new System.Drawing.Size(678, 68);
             this.dgvOrden.TabIndex = 59;
             // 
             // frmDetallesDeOrden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
             this.Controls.Add(this.dgvOrden);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMostrar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAñadir);
+            this.Controls.Add(this.btnCambiar);
             this.Controls.Add(this.txtClave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblEstatus);
             this.Controls.Add(this.cmbEstatus);
-            this.Controls.Add(this.dgvMarcas);
+            this.Controls.Add(this.dgvProductos);
             this.Name = "frmDetallesDeOrden";
             this.Text = "Detalles de Orden";
             this.Load += new System.EventHandler(this.frmDetallesDeOrden_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarcas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrden)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -178,13 +182,13 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvMarcas;
+        private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.ComboBox cmbEstatus;
         private System.Windows.Forms.Label lblEstatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnAñadir;
+        private System.Windows.Forms.Button btnCambiar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.DataGridView dgvOrden;

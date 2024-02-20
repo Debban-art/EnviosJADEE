@@ -92,5 +92,32 @@ namespace EnvíosJADEE.Network
             }
             return lista;
         }
+
+        public List<ProductosPorOrdenModel> GetProductosPorOrden(string ClaveOrden)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pClave", SqlDbType = SqlDbType.VarChar, Value = ClaveOrden });
+            List<ProductosPorOrdenModel> lista = new List<ProductosPorOrdenModel>();
+            try
+            {
+                DataSet ds = dac.Fill("GetProductosByOrden", parametros);
+                if(ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable()
+                        .Select(dataRow => new ProductosPorOrdenModel
+                        {
+                            IdOrden = int.Parse(dataRow["Id"].ToString()),
+                            Clave = dataRow["Clave"].ToString(),
+                            Producto = dataRow["NombreProducto"].ToString(),
+                            Cantidad = int.Parse((dataRow["Cantidad"].ToString()))
+                        }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lista;
+        }
     }
 }

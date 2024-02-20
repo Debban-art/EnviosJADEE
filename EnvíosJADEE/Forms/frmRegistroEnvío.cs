@@ -66,6 +66,7 @@ namespace EnvíosJADEE.Forms
             dgvOrdenes.Columns[15].ReadOnly = true;
             dgvOrdenes.Columns[16].ReadOnly = true;
             dgvOrdenes.Columns[17].ReadOnly = true;
+            dgvOrdenes.Columns[18].ReadOnly = true;
             dgvOrdenes.Columns[19].ReadOnly = true;
             dgvOrdenes.Columns[20].ReadOnly = true;
         }
