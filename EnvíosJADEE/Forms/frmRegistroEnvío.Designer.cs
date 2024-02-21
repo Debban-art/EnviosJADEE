@@ -433,6 +433,7 @@
             this.groupBox2.TabIndex = 81;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de envío";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // btnAgregarProducto
             // 
@@ -465,6 +466,7 @@
             this.gpbDatosDestinatario.TabIndex = 82;
             this.gpbDatosDestinatario.TabStop = false;
             this.gpbDatosDestinatario.Text = "Datos del destinatario";
+            this.gpbDatosDestinatario.Enter += new System.EventHandler(this.gpbDatosDestinatario_Enter);
             // 
             // dgvOrdenes
             // 

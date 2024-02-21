@@ -94,6 +94,25 @@ namespace EnvíosJADEE.Network
             }
         }
 
+        public void UpdateActEstatusRegistroEnvios(string Estatus, int IdOrden)
+        {
+            parametros = new ArrayList();
+
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = SqlDbType.VarChar, Value = Estatus });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = SqlDbType.Int, Value = SesionClass.IdUsuario });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdOrden", SqlDbType = SqlDbType.Int, Value = IdOrden });
+
+            try
+            {
+                dac.ExecuteNonQuery("UpdateEstatusActOrdenEnvío", parametros);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return;
+        }
         public List<ProductosModel> GetProductoById(int IdProducto)
         {
             parametros = new ArrayList();
@@ -142,12 +161,13 @@ namespace EnvíosJADEE.Network
             }
         }
 
-        public void UpdateEstatusOrden(string Estatus, int IdOrden)
+        public void UpdateEstatusOrden(int Estatus, string ClaveOrden, int IdRepartidor)
         {
             parametros = new ArrayList();
 
-            parametros.Add(new SqlParameter { ParameterName = "@pIdOrden", SqlDbType = SqlDbType.Int, Value = IdOrden });
-            parametros.Add(new SqlParameter { ParameterName = "@pNuevoEstatus", SqlDbType = System.Data.SqlDbType.VarChar, Value = Estatus });
+            parametros.Add(new SqlParameter { ParameterName = "@pClave", SqlDbType = SqlDbType.VarChar, Value = ClaveOrden });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdNuevoEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = Estatus });
+            parametros.Add(new SqlParameter { ParameterName = "@pIdRepartidor", SqlDbType = SqlDbType.Int, Value = IdRepartidor });
 
             try
             {

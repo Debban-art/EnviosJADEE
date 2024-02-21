@@ -160,6 +160,7 @@
     <Compile Include="Models\ProductosModel.cs" />
     <Compile Include="Models\ProductosPorOrdenModel.cs" />
     <Compile Include="Models\RegistroEnvioModel.cs" />
+    <Compile Include="Models\RepartidorModel.cs" />
     <Compile Include="Models\TipoModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\VehiculoModel.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="Network\PersonaUsuarioService.cs" />
     <Compile Include="Network\ProductosService.cs" />
     <Compile Include="Network\RegistroEnvioService.cs" />
+    <Compile Include="Network\RepartidoresService.cs" />
     <Compile Include="Network\TipoService.cs" />
     <Compile Include="Network\VehiculosService.cs" />
     <Compile Include="Program.cs" />

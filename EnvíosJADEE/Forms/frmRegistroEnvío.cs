@@ -43,11 +43,7 @@ namespace EnvíosJADEE.Forms
 
             txtCostoTotal.ReadOnly = true;
             txtPeso.ReadOnly = true;
-
-
-
             dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
-
             dgvOrdenes.Columns[0].ReadOnly = true;
             dgvOrdenes.Columns[1].ReadOnly = true;
             dgvOrdenes.Columns[2].ReadOnly = true;
@@ -69,6 +65,7 @@ namespace EnvíosJADEE.Forms
             dgvOrdenes.Columns[18].ReadOnly = true;
             dgvOrdenes.Columns[19].ReadOnly = true;
             dgvOrdenes.Columns[20].ReadOnly = true;
+            dgvOrdenes.Columns[21].ReadOnly = false;
         }
 
 
@@ -239,10 +236,9 @@ namespace EnvíosJADEE.Forms
         {
             var row = dgvOrdenes.Rows[e.RowIndex];
 
-            int IdOrden = int.Parse(row.Cells[0].Value.ToString());
-            string EstatusOrden = row.Cells[18].Value.ToString();
-            ordenesService.UpdateEstatusOrden(EstatusOrden, IdOrden);
-
+            string Estatus = row.Cells["Estatus"].Value.ToString();
+            int IdOrden = int.Parse(row.Cells["Id"].Value.ToString());
+            ordenesService.UpdateActEstatusRegistroEnvios(Estatus, IdOrden);
             dgvOrdenes.DataSource = null;
             dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
         }
@@ -251,6 +247,16 @@ namespace EnvíosJADEE.Forms
         {
             string patron = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
             return Regex.IsMatch(numero, patron);
+        }
+
+        private void gpbDatosDestinatario_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
