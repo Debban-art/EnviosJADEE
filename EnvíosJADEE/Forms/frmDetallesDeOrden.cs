@@ -15,7 +15,12 @@ namespace EnvíosJADEE.Forms
 {
     public partial class frmDetallesDeOrden : Form
     {
+        //todo list
+        //Agregar funcionalidades cancelar
+        //Hacer readOnly a todos excepto estatus, repartidor.
+        //Cargar en automático de nuevo al cambiar estatus
         DetallesDeOrdenService detallesDeOrdenService = new DetallesDeOrdenService();
+        DireccionesService direccionesService = new DireccionesService();
         Label lblRepartidores = new Label();
         ComboBox cmbRepartidores = new ComboBox();
         public frmDetallesDeOrden()
@@ -46,6 +51,11 @@ namespace EnvíosJADEE.Forms
             cmbRepartidores.Size = cmbEstatus.Size;
             cmbRepartidores.Font = cmbEstatus.Font;
             cmbRepartidores.BackColor = cmbEstatus.BackColor;
+
+            lblClaveRepartidor.Location = new Point(cmbRepartidores.Right + 5, lblRepartidores.Top);
+
+            txtClaveRepartidor.Location = new Point(cmbRepartidores.Right + 5, cmbRepartidores.Top);
+
             gpbDatosEnvio.Controls.Add(lblRepartidores);
             gpbDatosEnvio.Controls.Add(cmbRepartidores);
 
@@ -57,7 +67,11 @@ namespace EnvíosJADEE.Forms
 
             #region dgvOrden
             DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
-            cmbEstatus.SelectedItem = detallesEnvío.EstatusDeOrden.ToString(); //Arreglar
+            cmbEstatus.SelectedValue = detallesEnvío.IdEstatusDeOrden; //Arreglar
+
+            cmbRepartidores.SelectedValue = detallesEnvío.IdRepartidor;
+            txtClaveRepartidor.Text = detallesEnvío.ClaveRepartidor;
+
             txtNombreEmisor.Text = detallesEnvío.NombreEmisor.ToString();
             txtCostoTotal.Text = detallesEnvío.CostoTotal.ToString();
             txtPeso.Text = detallesEnvío.Peso.ToString(); 
@@ -66,6 +80,17 @@ namespace EnvíosJADEE.Forms
             txtMarca.Text = detallesEnvío.Marca.ToString();
             txtModelo.Text = detallesEnvío.Modelo.ToString();
             txtMatrícula.Text = detallesEnvío.Matricula.ToString();
+
+
+
+            cmbPaís.DataSource = direccionesService.GetPais();
+            cmbPaís.ValueMember = "Id";
+            cmbPaís.DisplayMember = "Nombre";
+            cmbPaís.SelectedValue = detallesEnvío.IdPais;
+
+            LoadEstados(detallesEnvío.IdPais, detallesEnvío.IdEstado);
+            LoadMunicipios(detallesEnvío.IdEstado, detallesEnvío.IdMunicipio);
+            LoadColonias(detallesEnvío.IdMunicipio, detallesEnvío.IdColonia);
 
             txtCodigoPostal.Text = detallesEnvío.CodigoPostal.ToString();
             txtCalle.Text = detallesEnvío.Calle;
@@ -87,11 +112,13 @@ namespace EnvíosJADEE.Forms
         {
             if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden == "Enviado")
             {
-                btnCambiar.Location = new Point(cmbRepartidores.Right + 10, cmbRepartidores.Top);
+                btnCambiar.Location = new Point(txtClaveRepartidor.Right + 10, cmbRepartidores.Top);
                 btnCancelar.Location = new Point(btnCambiar.Right + 4, cmbRepartidores.Top);
 
                 lblRepartidores.Visible = true;
                 cmbRepartidores.Visible = true;
+                lblClaveRepartidor.Visible = true;
+                txtClaveRepartidor.Visible = true;
             }
             else
             {
@@ -112,12 +139,33 @@ namespace EnvíosJADEE.Forms
             registroEnvioService.UpdateEstatusOrden(IdNuevoEstatus, ClaveOrden, IdRepartidor);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void LoadEstados(int idPais, int idEstado)
         {
-
+            cmbEstado.DataSource = null;
+            cmbEstado.DisplayMember = "Nombre";
+            cmbEstado.ValueMember = "Id";
+            cmbEstado.DataSource = direccionesService.GetEstados(idPais);
+            cmbEstado.SelectedValue = idEstado;
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void LoadMunicipios(int idEstado, int idMunicipio)
+        {
+            cmbMunicipio.DataSource = null;
+            cmbMunicipio.DisplayMember = "Nombre";
+            cmbMunicipio.ValueMember = "Id";
+            cmbMunicipio.DataSource = direccionesService.GetMunicipios(idEstado);
+            cmbMunicipio.SelectedValue = idMunicipio;
+        }
+        private void LoadColonias (int idMunicipio, int idColonia)
+        {
+            cmbColonia.DataSource = null;
+            cmbColonia.DisplayMember = "Nombre";
+            cmbColonia.ValueMember = "Id";
+            cmbColonia.DataSource = direccionesService.GetColonias(idMunicipio);
+            cmbColonia.SelectedValue = idColonia;
+        }
+
+        private void gpbDatosEnvio_Enter(object sender, EventArgs e)
         {
 
         }

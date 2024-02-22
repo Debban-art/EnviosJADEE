@@ -20,7 +20,7 @@ namespace EnvíosJADEE.Models
         public int CodigoPostal { get; set; }
         public string NoCasa { get; set; }
         public string Calle { get; set; }
-        public string Colonia { get; set; }
+        public int IdColonia { get; set; }
         public int IdMunicipio { get; set; }
         public int IdEstado { get; set; }
         public int IdPais { get; set; }
@@ -29,7 +29,7 @@ namespace EnvíosJADEE.Models
         public string ApellidoMatDestinatario { get; set; }
         public string TelefonoDestinatario { get; set; }
 
-        public string NombreRepartidor { get; set; }
+        public int IdRepartidor { get; set; }
         public string ClaveRepartidor { get; set;  }
         public string Marca { get; set; }
         public string Modelo { get; set; }
@@ -38,7 +38,7 @@ namespace EnvíosJADEE.Models
 
         public string FechaEntrega { get; set; }
 
-        public string EstatusDeOrden { get; set; }
+        public int IdEstatusDeOrden { get; set; }
 
         public int UsuarioRegistra { get; set; }
 
