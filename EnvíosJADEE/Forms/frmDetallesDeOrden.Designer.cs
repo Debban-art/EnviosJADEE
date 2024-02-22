@@ -51,7 +51,6 @@
             this.lblEstatus = new System.Windows.Forms.Label();
             this.txtCostoTotal = new System.Windows.Forms.TextBox();
             this.btnCambiar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblPeso = new System.Windows.Forms.Label();
             this.txtPeso = new System.Windows.Forms.TextBox();
@@ -81,6 +80,7 @@
             this.txtFechaSalida = new System.Windows.Forms.TextBox();
             this.lblNombreEmisor = new System.Windows.Forms.Label();
             this.txtNombreEmisor = new System.Windows.Forms.TextBox();
+            this.btnActualizarEstatus = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.gpbDatosDestinatario.SuspendLayout();
             this.gpb.SuspendLayout();
@@ -119,9 +119,11 @@
             // txtNombreDestinatario
             // 
             this.txtNombreDestinatario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtNombreDestinatario.Enabled = false;
             this.txtNombreDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreDestinatario.Location = new System.Drawing.Point(14, 54);
             this.txtNombreDestinatario.Name = "txtNombreDestinatario";
+            this.txtNombreDestinatario.ReadOnly = true;
             this.txtNombreDestinatario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNombreDestinatario.Size = new System.Drawing.Size(267, 21);
             this.txtNombreDestinatario.TabIndex = 60;
@@ -139,9 +141,11 @@
             // txtTelefonoDestinatario
             // 
             this.txtTelefonoDestinatario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtTelefonoDestinatario.Enabled = false;
             this.txtTelefonoDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefonoDestinatario.Location = new System.Drawing.Point(15, 110);
             this.txtTelefonoDestinatario.Name = "txtTelefonoDestinatario";
+            this.txtTelefonoDestinatario.ReadOnly = true;
             this.txtTelefonoDestinatario.Size = new System.Drawing.Size(267, 21);
             this.txtTelefonoDestinatario.TabIndex = 79;
             // 
@@ -168,18 +172,22 @@
             // txtApellidoPatDestinatario
             // 
             this.txtApellidoPatDestinatario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtApellidoPatDestinatario.Enabled = false;
             this.txtApellidoPatDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoPatDestinatario.Location = new System.Drawing.Point(299, 54);
             this.txtApellidoPatDestinatario.Name = "txtApellidoPatDestinatario";
+            this.txtApellidoPatDestinatario.ReadOnly = true;
             this.txtApellidoPatDestinatario.Size = new System.Drawing.Size(267, 21);
             this.txtApellidoPatDestinatario.TabIndex = 63;
             // 
             // txtApellidoMatDestinatario
             // 
             this.txtApellidoMatDestinatario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtApellidoMatDestinatario.Enabled = false;
             this.txtApellidoMatDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellidoMatDestinatario.Location = new System.Drawing.Point(585, 54);
             this.txtApellidoMatDestinatario.Name = "txtApellidoMatDestinatario";
+            this.txtApellidoMatDestinatario.ReadOnly = true;
             this.txtApellidoMatDestinatario.Size = new System.Drawing.Size(267, 21);
             this.txtApellidoMatDestinatario.TabIndex = 65;
             // 
@@ -212,9 +220,11 @@
             // txtMarca
             // 
             this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtMarca.Enabled = false;
             this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMarca.Location = new System.Drawing.Point(14, 54);
             this.txtMarca.Name = "txtMarca";
+            this.txtMarca.ReadOnly = true;
             this.txtMarca.Size = new System.Drawing.Size(267, 21);
             this.txtMarca.TabIndex = 60;
             // 
@@ -241,18 +251,22 @@
             // txtModelo
             // 
             this.txtModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtModelo.Enabled = false;
             this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtModelo.Location = new System.Drawing.Point(299, 54);
             this.txtModelo.Name = "txtModelo";
+            this.txtModelo.ReadOnly = true;
             this.txtModelo.Size = new System.Drawing.Size(267, 21);
             this.txtModelo.TabIndex = 63;
             // 
             // txtMatrícula
             // 
             this.txtMatrícula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtMatrícula.Enabled = false;
             this.txtMatrícula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatrícula.Location = new System.Drawing.Point(585, 54);
             this.txtMatrícula.Name = "txtMatrícula";
+            this.txtMatrícula.ReadOnly = true;
             this.txtMatrícula.Size = new System.Drawing.Size(267, 21);
             this.txtMatrícula.TabIndex = 65;
             // 
@@ -278,6 +292,7 @@
             // cmbEstatus
             // 
             this.cmbEstatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbEstatus.Enabled = false;
             this.cmbEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmbEstatus.FormattingEnabled = true;
             this.cmbEstatus.Location = new System.Drawing.Point(16, 58);
@@ -313,9 +328,11 @@
             // txtCostoTotal
             // 
             this.txtCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtCostoTotal.Enabled = false;
             this.txtCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostoTotal.Location = new System.Drawing.Point(301, 110);
             this.txtCostoTotal.Name = "txtCostoTotal";
+            this.txtCostoTotal.ReadOnly = true;
             this.txtCostoTotal.Size = new System.Drawing.Size(267, 21);
             this.txtCostoTotal.TabIndex = 73;
             // 
@@ -331,29 +348,18 @@
             this.btnCambiar.TabIndex = 55;
             this.btnCambiar.Text = "Cambiar Estatus";
             this.btnCambiar.UseVisualStyleBackColor = false;
+            this.btnCambiar.Visible = false;
             this.btnCambiar.Click += new System.EventHandler(this.btnCambiar_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(133, 114);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 30);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(431, 52);
+            this.btnCancelar.Location = new System.Drawing.Point(297, 115);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(111, 29);
-            this.btnCancelar.TabIndex = 56;
+            this.btnCancelar.Size = new System.Drawing.Size(111, 30);
+            this.btnCancelar.TabIndex = 58;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -370,9 +376,11 @@
             // txtPeso
             // 
             this.txtPeso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtPeso.Enabled = false;
             this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPeso.Location = new System.Drawing.Point(584, 110);
             this.txtPeso.Name = "txtPeso";
+            this.txtPeso.ReadOnly = true;
             this.txtPeso.Size = new System.Drawing.Size(267, 21);
             this.txtPeso.TabIndex = 74;
             // 
@@ -413,6 +421,7 @@
             // cmbColonia
             // 
             this.cmbColonia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbColonia.Enabled = false;
             this.cmbColonia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColonia.FormattingEnabled = true;
             this.cmbColonia.Location = new System.Drawing.Point(309, 116);
@@ -453,9 +462,11 @@
             // txtNoCasa
             // 
             this.txtNoCasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtNoCasa.Enabled = false;
             this.txtNoCasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNoCasa.Location = new System.Drawing.Point(20, 182);
             this.txtNoCasa.Name = "txtNoCasa";
+            this.txtNoCasa.ReadOnly = true;
             this.txtNoCasa.Size = new System.Drawing.Size(267, 21);
             this.txtNoCasa.TabIndex = 77;
             // 
@@ -472,9 +483,11 @@
             // txtCalle
             // 
             this.txtCalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtCalle.Enabled = false;
             this.txtCalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCalle.Location = new System.Drawing.Point(596, 116);
             this.txtCalle.Name = "txtCalle";
+            this.txtCalle.ReadOnly = true;
             this.txtCalle.Size = new System.Drawing.Size(267, 21);
             this.txtCalle.TabIndex = 76;
             // 
@@ -511,6 +524,7 @@
             // cmbPaís
             // 
             this.cmbPaís.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbPaís.Enabled = false;
             this.cmbPaís.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaís.FormattingEnabled = true;
             this.cmbPaís.Location = new System.Drawing.Point(20, 54);
@@ -521,6 +535,7 @@
             // cmbEstado
             // 
             this.cmbEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbEstado.Enabled = false;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(309, 54);
@@ -531,6 +546,7 @@
             // cmbMunicipio
             // 
             this.cmbMunicipio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbMunicipio.Enabled = false;
             this.cmbMunicipio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMunicipio.FormattingEnabled = true;
             this.cmbMunicipio.Location = new System.Drawing.Point(596, 54);
@@ -541,9 +557,11 @@
             // txtCodigoPostal
             // 
             this.txtCodigoPostal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtCodigoPostal.Enabled = false;
             this.txtCodigoPostal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoPostal.Location = new System.Drawing.Point(20, 116);
             this.txtCodigoPostal.Name = "txtCodigoPostal";
+            this.txtCodigoPostal.ReadOnly = true;
             this.txtCodigoPostal.Size = new System.Drawing.Size(267, 21);
             this.txtCodigoPostal.TabIndex = 70;
             // 
@@ -571,7 +589,6 @@
             this.gpbDatosEnvio.Controls.Add(this.btnCambiar);
             this.gpbDatosEnvio.Controls.Add(this.txtFechaSalida);
             this.gpbDatosEnvio.Controls.Add(this.lblNombreEmisor);
-            this.gpbDatosEnvio.Controls.Add(this.btnCancelar);
             this.gpbDatosEnvio.Controls.Add(this.txtNombreEmisor);
             this.gpbDatosEnvio.Controls.Add(this.gpbDatosDestinatario);
             this.gpbDatosEnvio.Controls.Add(this.gbpDireccionEnvio);
@@ -632,18 +649,22 @@
             // txtFechaEntrega
             // 
             this.txtFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtFechaEntrega.Enabled = false;
             this.txtFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechaEntrega.Location = new System.Drawing.Point(301, 169);
             this.txtFechaEntrega.Name = "txtFechaEntrega";
+            this.txtFechaEntrega.ReadOnly = true;
             this.txtFechaEntrega.Size = new System.Drawing.Size(267, 21);
             this.txtFechaEntrega.TabIndex = 91;
             // 
             // txtFechaSalida
             // 
             this.txtFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtFechaSalida.Enabled = false;
             this.txtFechaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFechaSalida.Location = new System.Drawing.Point(17, 169);
             this.txtFechaSalida.Name = "txtFechaSalida";
+            this.txtFechaSalida.ReadOnly = true;
             this.txtFechaSalida.Size = new System.Drawing.Size(267, 21);
             this.txtFechaSalida.TabIndex = 89;
             // 
@@ -660,11 +681,28 @@
             // txtNombreEmisor
             // 
             this.txtNombreEmisor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtNombreEmisor.Enabled = false;
             this.txtNombreEmisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreEmisor.Location = new System.Drawing.Point(17, 112);
             this.txtNombreEmisor.Name = "txtNombreEmisor";
+            this.txtNombreEmisor.ReadOnly = true;
             this.txtNombreEmisor.Size = new System.Drawing.Size(267, 21);
             this.txtNombreEmisor.TabIndex = 88;
+            // 
+            // btnActualizarEstatus
+            // 
+            this.btnActualizarEstatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnActualizarEstatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarEstatus.ForeColor = System.Drawing.Color.White;
+            this.btnActualizarEstatus.Location = new System.Drawing.Point(133, 115);
+            this.btnActualizarEstatus.Name = "btnActualizarEstatus";
+            this.btnActualizarEstatus.Size = new System.Drawing.Size(158, 30);
+            this.btnActualizarEstatus.TabIndex = 86;
+            this.btnActualizarEstatus.Text = "Actualizar estatus";
+            this.btnActualizarEstatus.UseVisualStyleBackColor = false;
+            this.btnActualizarEstatus.Visible = false;
+            this.btnActualizarEstatus.Click += new System.EventHandler(this.btnActualizarEstatus_Click);
             // 
             // frmDetallesDeOrden
             // 
@@ -673,11 +711,12 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1146, 749);
+            this.Controls.Add(this.btnActualizarEstatus);
             this.Controls.Add(this.gpbDatosEnvio);
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.txtClave);
             this.Controls.Add(this.btnMostrar);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.lblClave);
             this.MinimumSize = new System.Drawing.Size(788, 766);
             this.Name = "frmDetallesDeOrden";
@@ -715,7 +754,6 @@
         private System.Windows.Forms.Label lblEstatus;
         private System.Windows.Forms.TextBox txtCostoTotal;
         private System.Windows.Forms.Button btnCambiar;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblPeso;
         private System.Windows.Forms.TextBox txtPeso;
@@ -752,5 +790,6 @@
         private System.Windows.Forms.Label lblFechaSalida;
         private System.Windows.Forms.TextBox txtFechaEntrega;
         private System.Windows.Forms.TextBox txtFechaSalida;
+        private System.Windows.Forms.Button btnActualizarEstatus;
     }
 }

@@ -31,12 +31,14 @@ namespace EnvíosJADEE.Forms
         private void frmDetallesDeOrden_Load(object sender, EventArgs e)
         {
             MenuBuilder.BuildMenu(this);
+
+            btnCancelar.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
+
             cmbEstatus.DataSource = detallesDeOrdenService.GetEstatusOrden();
             cmbEstatus.DisplayMember = "NombreEstatusOrden";
             cmbEstatus.ValueMember = "Id";
 
             btnCambiar.Location = new Point(cmbEstatus.Right + 4, cmbEstatus.Top);
-            btnCancelar.Location = new Point(btnCambiar.Right + 4, cmbEstatus.Top);
 
             lblRepartidores.Location = new System.Drawing.Point(cmbEstatus.Right + 5, lblEstatus.Top);
             lblRepartidores.Font = new Font("Yu Gothic UI", 12);
@@ -63,48 +65,13 @@ namespace EnvíosJADEE.Forms
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            string ClaveOrden = txtClave.Text;
-
-            #region dgvOrden
-            DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
-            cmbEstatus.SelectedValue = detallesEnvío.IdEstatusDeOrden; //Arreglar
-
-            cmbRepartidores.SelectedValue = detallesEnvío.IdRepartidor;
-            txtClaveRepartidor.Text = detallesEnvío.ClaveRepartidor;
-
-            txtNombreEmisor.Text = detallesEnvío.NombreEmisor.ToString();
-            txtCostoTotal.Text = detallesEnvío.CostoTotal.ToString();
-            txtPeso.Text = detallesEnvío.Peso.ToString(); 
-            txtFechaSalida.Text = detallesEnvío.FechaSalida.ToString();
-            txtFechaEntrega.Text = detallesEnvío.FechaEntrega.ToString();
-            txtMarca.Text = detallesEnvío.Marca.ToString();
-            txtModelo.Text = detallesEnvío.Modelo.ToString();
-            txtMatrícula.Text = detallesEnvío.Matricula.ToString();
 
 
+            btnActualizarEstatus.Visible = true;
+            btnActualizarEstatus.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
+            btnCancelar.Location = new Point(btnActualizarEstatus.Right + 10, btnActualizarEstatus.Top);
 
-            cmbPaís.DataSource = direccionesService.GetPais();
-            cmbPaís.ValueMember = "Id";
-            cmbPaís.DisplayMember = "Nombre";
-            cmbPaís.SelectedValue = detallesEnvío.IdPais;
-
-            LoadEstados(detallesEnvío.IdPais, detallesEnvío.IdEstado);
-            LoadMunicipios(detallesEnvío.IdEstado, detallesEnvío.IdMunicipio);
-            LoadColonias(detallesEnvío.IdMunicipio, detallesEnvío.IdColonia);
-
-            txtCodigoPostal.Text = detallesEnvío.CodigoPostal.ToString();
-            txtCalle.Text = detallesEnvío.Calle;
-            txtNoCasa.Text = detallesEnvío.NoCasa;
-            txtNombreDestinatario.Text = detallesEnvío.NombreDestinatario;
-            txtApellidoPatDestinatario.Text = detallesEnvío.ApellidoPatDestinatario;
-            txtApellidoMatDestinatario.Text = detallesEnvío.ApellidoMatDestinatario;
-            txtTelefonoDestinatario.Text = detallesEnvío.ApellidoPatDestinatario;
-            #endregion
-
-            #region dgvProductos
-            dgvProductos.DataSource = null;
-            dgvProductos.DataSource = detallesDeOrdenService.GetProductosPorOrden(ClaveOrden);
-            #endregion
+            LoadData();
 
         }
 
@@ -112,11 +79,25 @@ namespace EnvíosJADEE.Forms
         {
             if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden == "Enviado")
             {
-                btnCambiar.Location = new Point(txtClaveRepartidor.Right + 10, cmbRepartidores.Top);
-                btnCancelar.Location = new Point(btnCambiar.Right + 4, cmbRepartidores.Top);
+                btnCambiar.Location = new Point(cmbRepartidores.Right + 10, cmbRepartidores.Top);
 
                 lblRepartidores.Visible = true;
+
                 cmbRepartidores.Visible = true;
+                cmbRepartidores.Enabled = true;
+
+                lblClaveRepartidor.Visible = false;
+                txtClaveRepartidor.Visible = false;
+            }
+            else if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden != "Pendiente")
+            {
+                btnCambiar.Location = new Point(txtClaveRepartidor.Right + 10, cmbRepartidores.Top);
+
+                lblRepartidores.Visible = true;
+
+                cmbRepartidores.Visible = true;
+                cmbRepartidores.Enabled = false;
+
                 lblClaveRepartidor.Visible = true;
                 txtClaveRepartidor.Visible = true;
             }
@@ -124,8 +105,10 @@ namespace EnvíosJADEE.Forms
             {
                 lblRepartidores.Visible = false;
                 cmbRepartidores.Visible = false;
+                cmbRepartidores.Enabled = false;
+                lblClaveRepartidor.Visible = false;
+                txtClaveRepartidor.Visible = false;
                 btnCambiar.Location = new Point(cmbEstatus.Right + 4, cmbEstatus.Top);
-                btnCancelar.Location = new Point(btnCambiar.Right + 4, cmbEstatus.Top);
             }
         }
 
@@ -137,6 +120,7 @@ namespace EnvíosJADEE.Forms
             int IdRepartidor = int.Parse(cmbRepartidores.SelectedValue.ToString());
 
             registroEnvioService.UpdateEstatusOrden(IdNuevoEstatus, ClaveOrden, IdRepartidor);
+            LoadData();
         }
 
         private void LoadEstados(int idPais, int idEstado)
@@ -168,6 +152,81 @@ namespace EnvíosJADEE.Forms
         private void gpbDatosEnvio_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnActualizarEstatus_Click(object sender, EventArgs e)
+        {
+            cmbEstatus.Enabled = true;
+            btnCambiar.Visible = true;
+        }
+
+        private void LoadData()
+        {
+            string ClaveOrden = txtClave.Text;
+            #region dgvOrden
+            DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
+            cmbEstatus.SelectedValue = detallesEnvío.IdEstatusDeOrden; //Arreglar
+
+            cmbRepartidores.SelectedValue = detallesEnvío.IdRepartidor;
+            txtClaveRepartidor.Text = detallesEnvío.ClaveRepartidor;
+
+            cmbEstatus.Enabled = false;
+            cmbRepartidores.Enabled = false;
+            txtClaveRepartidor.Enabled = false;
+            btnCambiar.Visible = false;
+
+            if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden != "Pendiente")
+            {
+                btnCambiar.Location = new Point(txtClaveRepartidor.Right + 10, cmbRepartidores.Top);
+
+                lblRepartidores.Visible = true;
+                cmbRepartidores.Visible = true;
+                lblClaveRepartidor.Visible = true;
+                txtClaveRepartidor.Visible = true;
+            }
+            else
+            {
+                lblRepartidores.Visible = false;
+                cmbRepartidores.Visible = false;
+                lblClaveRepartidor.Visible = false;
+                txtClaveRepartidor.Visible = false;
+                btnCambiar.Location = new Point(cmbEstatus.Right + 4, cmbEstatus.Top);
+            }
+
+
+
+            txtNombreEmisor.Text = detallesEnvío.NombreEmisor.ToString();
+            txtCostoTotal.Text = detallesEnvío.CostoTotal.ToString();
+            txtPeso.Text = detallesEnvío.Peso.ToString();
+            txtFechaSalida.Text = detallesEnvío.FechaSalida.ToString();
+            txtFechaEntrega.Text = detallesEnvío.FechaEntrega.ToString();
+            txtMarca.Text = detallesEnvío.Marca.ToString();
+            txtModelo.Text = detallesEnvío.Modelo.ToString();
+            txtMatrícula.Text = detallesEnvío.Matricula.ToString();
+
+
+            cmbPaís.DataSource = direccionesService.GetPais();
+            cmbPaís.ValueMember = "Id";
+            cmbPaís.DisplayMember = "Nombre";
+            cmbPaís.SelectedValue = detallesEnvío.IdPais;
+
+            LoadEstados(detallesEnvío.IdPais, detallesEnvío.IdEstado);
+            LoadMunicipios(detallesEnvío.IdEstado, detallesEnvío.IdMunicipio);
+            LoadColonias(detallesEnvío.IdMunicipio, detallesEnvío.IdColonia);
+
+            txtCodigoPostal.Text = detallesEnvío.CodigoPostal.ToString();
+            txtCalle.Text = detallesEnvío.Calle;
+            txtNoCasa.Text = detallesEnvío.NoCasa;
+            txtNombreDestinatario.Text = detallesEnvío.NombreDestinatario;
+            txtApellidoPatDestinatario.Text = detallesEnvío.ApellidoPatDestinatario;
+            txtApellidoMatDestinatario.Text = detallesEnvío.ApellidoMatDestinatario;
+            txtTelefonoDestinatario.Text = detallesEnvío.ApellidoPatDestinatario;
+            #endregion
+
+            #region dgvProductos
+            dgvProductos.DataSource = null;
+            dgvProductos.DataSource = detallesDeOrdenService.GetProductosPorOrden(ClaveOrden);
+            #endregion
         }
     }
 }

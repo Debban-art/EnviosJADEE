@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EnvíosJADEE.Forms
 {
@@ -12,6 +13,7 @@ namespace EnvíosJADEE.Forms
         #region variables
         RegistroEnvioService ordenesService = new RegistroEnvioService();
         ProductosService productosService = new ProductosService();
+        TrackingService trackingService = new TrackingService();
         DireccionesService direccionesService = new DireccionesService();
 
         float costoTotal = 0;
@@ -200,6 +202,9 @@ namespace EnvíosJADEE.Forms
                     dgvOrdenes.DataSource = null;
                     dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
 
+                    int filaUltimoModelo = dgvOrdenes.Rows.Count - 1;
+                    string clave = dgvOrdenes.Rows[filaUltimoModelo].Cells["Clave"].Value.ToString();
+
                     foreach (int id in ProductosTemporales.Keys)
                     {
                         ordenesService.InsertDetallesOrdenes(id, ProductosTemporales[id]);
@@ -207,11 +212,19 @@ namespace EnvíosJADEE.Forms
 
                     costoTotal = 0;
                     pesoTotal = 0;
+
+                    TrackingModel NuevoRegistro = new TrackingModel();
+                    NuevoRegistro.ClaveOrden = clave;
+                    NuevoRegistro.CambioRegistrado = "El paquete está siendo preparado para su envío";
+
+                    trackingService.InsertNuevoRegistro(NuevoRegistro);
                 }
                 else
                 {
                     MessageBox.Show("Error al insertar la orden", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+
             }
         }
         private void btnCancelar_Click_1(object sender, EventArgs e)
