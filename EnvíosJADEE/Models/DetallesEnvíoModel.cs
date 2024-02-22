@@ -21,9 +21,9 @@ namespace EnvíosJADEE.Models
         public string NoCasa { get; set; }
         public string Calle { get; set; }
         public string Colonia { get; set; }
-        public string Municipio { get; set; }
-        public string Estado { get; set; }
-        public string Pais { get; set; }
+        public int IdMunicipio { get; set; }
+        public int IdEstado { get; set; }
+        public int IdPais { get; set; }
         public string NombreDestinatario { get; set; }
         public string ApellidoPatDestinatario { get; set; }
         public string ApellidoMatDestinatario { get; set; }

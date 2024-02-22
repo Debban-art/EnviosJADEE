@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.dgvOrden = new System.Windows.Forms.DataGridView();
             this.gpbDatosDestinatario = new System.Windows.Forms.GroupBox();
+            this.gpb = new System.Windows.Forms.GroupBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
+            this.lblMarca = new System.Windows.Forms.Label();
+            this.lblModelo = new System.Windows.Forms.Label();
+            this.txtModelo = new System.Windows.Forms.TextBox();
+            this.txtMatrícula = new System.Windows.Forms.TextBox();
+            this.lblMatrícula = new System.Windows.Forms.Label();
             this.txtNombreDestinatario = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtTelefonoDestinatario = new System.Windows.Forms.TextBox();
@@ -66,49 +72,38 @@
             this.cmbMunicipio = new System.Windows.Forms.ComboBox();
             this.txtCodigoPostal = new System.Windows.Forms.TextBox();
             this.lblClave = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gpbDatosEnvio = new System.Windows.Forms.GroupBox();
             this.lblNombreEmisor = new System.Windows.Forms.Label();
             this.txtNombreEmisor = new System.Windows.Forms.TextBox();
-            this.gpb = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txtFechaSalida = new System.Windows.Forms.TextBox();
+            this.txtFechaEntrega = new System.Windows.Forms.TextBox();
+            this.lblFechaSalida = new System.Windows.Forms.Label();
+            this.lblFechaDeEntrega = new System.Windows.Forms.Label();
+            this.gpbRepartidor = new System.Windows.Forms.GroupBox();
+            this.txtNombreRepartidor = new System.Windows.Forms.TextBox();
+            this.lblNombreRepartidor = new System.Windows.Forms.Label();
+            this.lblClaveRepartidor = new System.Windows.Forms.Label();
+            this.txtClaveRepartidor = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrden)).BeginInit();
             this.gpbDatosDestinatario.SuspendLayout();
-            this.gbpDireccionEnvio.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.gpb.SuspendLayout();
+            this.gbpDireccionEnvio.SuspendLayout();
+            this.gpbDatosEnvio.SuspendLayout();
+            this.gpbRepartidor.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProductos
             // 
             this.dgvProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductos.Location = new System.Drawing.Point(984, 37);
+            this.dgvProductos.Location = new System.Drawing.Point(11, 151);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
-            this.dgvProductos.Size = new System.Drawing.Size(431, 322);
+            this.dgvProductos.Size = new System.Drawing.Size(423, 550);
             this.dgvProductos.TabIndex = 20;
-            // 
-            // dgvOrden
-            // 
-            this.dgvOrden.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.dgvOrden.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrden.Location = new System.Drawing.Point(724, 606);
-            this.dgvOrden.Name = "dgvOrden";
-            this.dgvOrden.ReadOnly = true;
-            this.dgvOrden.Size = new System.Drawing.Size(678, 68);
-            this.dgvOrden.TabIndex = 59;
             // 
             // gpbDatosDestinatario
             // 
-            this.gpbDatosDestinatario.Controls.Add(this.gpb);
             this.gpbDatosDestinatario.Controls.Add(this.txtNombreDestinatario);
             this.gpbDatosDestinatario.Controls.Add(this.lblNombre);
             this.gpbDatosDestinatario.Controls.Add(this.txtTelefonoDestinatario);
@@ -118,12 +113,85 @@
             this.gpbDatosDestinatario.Controls.Add(this.txtApellidoMatDestinatario);
             this.gpbDatosDestinatario.Controls.Add(this.lblApellidoMat);
             this.gpbDatosDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Bold);
-            this.gpbDatosDestinatario.Location = new System.Drawing.Point(13, 579);
+            this.gpbDatosDestinatario.Location = new System.Drawing.Point(16, 633);
             this.gpbDatosDestinatario.Name = "gpbDatosDestinatario";
             this.gpbDatosDestinatario.Size = new System.Drawing.Size(866, 150);
             this.gpbDatosDestinatario.TabIndex = 86;
             this.gpbDatosDestinatario.TabStop = false;
             this.gpbDatosDestinatario.Text = "Datos del destinatario";
+            // 
+            // gpb
+            // 
+            this.gpb.Controls.Add(this.txtMarca);
+            this.gpb.Controls.Add(this.lblMarca);
+            this.gpb.Controls.Add(this.lblModelo);
+            this.gpb.Controls.Add(this.txtModelo);
+            this.gpb.Controls.Add(this.txtMatrícula);
+            this.gpb.Controls.Add(this.lblMatrícula);
+            this.gpb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Bold);
+            this.gpb.Location = new System.Drawing.Point(16, 298);
+            this.gpb.Name = "gpb";
+            this.gpb.Size = new System.Drawing.Size(866, 89);
+            this.gpb.TabIndex = 87;
+            this.gpb.TabStop = false;
+            this.gpb.Text = "Datos del vehiculo";
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMarca.Location = new System.Drawing.Point(14, 54);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(267, 21);
+            this.txtMarca.TabIndex = 60;
+            // 
+            // lblMarca
+            // 
+            this.lblMarca.AutoSize = true;
+            this.lblMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMarca.Location = new System.Drawing.Point(10, 31);
+            this.lblMarca.Name = "lblMarca";
+            this.lblMarca.Size = new System.Drawing.Size(42, 15);
+            this.lblMarca.TabIndex = 59;
+            this.lblMarca.Text = "Marca";
+            // 
+            // lblModelo
+            // 
+            this.lblModelo.AutoSize = true;
+            this.lblModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModelo.Location = new System.Drawing.Point(295, 31);
+            this.lblModelo.Name = "lblModelo";
+            this.lblModelo.Size = new System.Drawing.Size(49, 15);
+            this.lblModelo.TabIndex = 62;
+            this.lblModelo.Text = "Modelo";
+            // 
+            // txtModelo
+            // 
+            this.txtModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtModelo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtModelo.Location = new System.Drawing.Point(299, 54);
+            this.txtModelo.Name = "txtModelo";
+            this.txtModelo.Size = new System.Drawing.Size(267, 21);
+            this.txtModelo.TabIndex = 63;
+            // 
+            // txtMatrícula
+            // 
+            this.txtMatrícula.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtMatrícula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMatrícula.Location = new System.Drawing.Point(585, 54);
+            this.txtMatrícula.Name = "txtMatrícula";
+            this.txtMatrícula.Size = new System.Drawing.Size(267, 21);
+            this.txtMatrícula.TabIndex = 65;
+            // 
+            // lblMatrícula
+            // 
+            this.lblMatrícula.AutoSize = true;
+            this.lblMatrícula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatrícula.Location = new System.Drawing.Point(581, 31);
+            this.lblMatrícula.Name = "lblMatrícula";
+            this.lblMatrícula.Size = new System.Drawing.Size(58, 15);
+            this.lblMatrícula.TabIndex = 64;
+            this.lblMatrícula.Text = "Matrícula";
             // 
             // txtNombreDestinatario
             // 
@@ -131,6 +199,7 @@
             this.txtNombreDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreDestinatario.Location = new System.Drawing.Point(14, 54);
             this.txtNombreDestinatario.Name = "txtNombreDestinatario";
+            this.txtNombreDestinatario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtNombreDestinatario.Size = new System.Drawing.Size(267, 21);
             this.txtNombreDestinatario.TabIndex = 60;
             // 
@@ -205,19 +274,19 @@
             // 
             this.txtClave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtClave.Location = new System.Drawing.Point(13, 60);
+            this.txtClave.Location = new System.Drawing.Point(16, 81);
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(267, 21);
+            this.txtClave.Size = new System.Drawing.Size(423, 21);
             this.txtClave.TabIndex = 58;
             // 
             // cmbEstatus
             // 
             this.cmbEstatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.cmbEstatus.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmbEstatus.FormattingEnabled = true;
-            this.cmbEstatus.Location = new System.Drawing.Point(15, 118);
+            this.cmbEstatus.Location = new System.Drawing.Point(16, 58);
             this.cmbEstatus.Name = "cmbEstatus";
-            this.cmbEstatus.Size = new System.Drawing.Size(266, 29);
+            this.cmbEstatus.Size = new System.Drawing.Size(266, 23);
             this.cmbEstatus.TabIndex = 51;
             this.cmbEstatus.SelectedIndexChanged += new System.EventHandler(this.cmbEstatus_SelectedIndexChanged);
             // 
@@ -227,7 +296,7 @@
             this.btnMostrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMostrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMostrar.ForeColor = System.Drawing.Color.White;
-            this.btnMostrar.Location = new System.Drawing.Point(299, 55);
+            this.btnMostrar.Location = new System.Drawing.Point(16, 115);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(111, 30);
             this.btnMostrar.TabIndex = 57;
@@ -239,7 +308,7 @@
             // 
             this.lblEstatus.AutoSize = true;
             this.lblEstatus.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstatus.Location = new System.Drawing.Point(12, 94);
+            this.lblEstatus.Location = new System.Drawing.Point(13, 34);
             this.lblEstatus.Name = "lblEstatus";
             this.lblEstatus.Size = new System.Drawing.Size(59, 21);
             this.lblEstatus.TabIndex = 52;
@@ -249,7 +318,7 @@
             // 
             this.txtCostoTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCostoTotal.Location = new System.Drawing.Point(311, 205);
+            this.txtCostoTotal.Location = new System.Drawing.Point(301, 110);
             this.txtCostoTotal.Name = "txtCostoTotal";
             this.txtCostoTotal.Size = new System.Drawing.Size(267, 21);
             this.txtCostoTotal.TabIndex = 73;
@@ -260,7 +329,7 @@
             this.btnCambiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCambiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambiar.ForeColor = System.Drawing.Color.White;
-            this.btnCambiar.Location = new System.Drawing.Point(299, 118);
+            this.btnCambiar.Location = new System.Drawing.Point(299, 52);
             this.btnCambiar.Name = "btnCambiar";
             this.btnCambiar.Size = new System.Drawing.Size(111, 29);
             this.btnCambiar.TabIndex = 55;
@@ -273,7 +342,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(431, 55);
+            this.button1.Location = new System.Drawing.Point(133, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 30);
             this.button1.TabIndex = 58;
@@ -285,7 +354,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(431, 118);
+            this.btnCancelar.Location = new System.Drawing.Point(431, 52);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(111, 29);
             this.btnCancelar.TabIndex = 56;
@@ -296,7 +365,7 @@
             // 
             this.lblPeso.AutoSize = true;
             this.lblPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPeso.Location = new System.Drawing.Point(602, 182);
+            this.lblPeso.Location = new System.Drawing.Point(579, 87);
             this.lblPeso.Name = "lblPeso";
             this.lblPeso.Size = new System.Drawing.Size(35, 15);
             this.lblPeso.TabIndex = 21;
@@ -306,7 +375,7 @@
             // 
             this.txtPeso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtPeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPeso.Location = new System.Drawing.Point(607, 205);
+            this.txtPeso.Location = new System.Drawing.Point(584, 110);
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(267, 21);
             this.txtPeso.TabIndex = 74;
@@ -315,7 +384,7 @@
             // 
             this.lblCostoTotal.AutoSize = true;
             this.lblCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCostoTotal.Location = new System.Drawing.Point(307, 183);
+            this.lblCostoTotal.Location = new System.Drawing.Point(297, 88);
             this.lblCostoTotal.Name = "lblCostoTotal";
             this.lblCostoTotal.Size = new System.Drawing.Size(68, 15);
             this.lblCostoTotal.TabIndex = 20;
@@ -338,7 +407,7 @@
             this.gbpDireccionEnvio.Controls.Add(this.cmbMunicipio);
             this.gbpDireccionEnvio.Controls.Add(this.txtCodigoPostal);
             this.gbpDireccionEnvio.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Bold);
-            this.gbpDireccionEnvio.Location = new System.Drawing.Point(12, 348);
+            this.gbpDireccionEnvio.Location = new System.Drawing.Point(13, 402);
             this.gbpDireccionEnvio.Name = "gbpDireccionEnvio";
             this.gbpDireccionEnvio.Size = new System.Drawing.Size(886, 225);
             this.gbpDireccionEnvio.TabIndex = 80;
@@ -486,45 +555,47 @@
             // 
             this.lblClave.AutoSize = true;
             this.lblClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClave.Location = new System.Drawing.Point(9, 37);
+            this.lblClave.Location = new System.Drawing.Point(12, 58);
             this.lblClave.Name = "lblClave";
             this.lblClave.Size = new System.Drawing.Size(89, 15);
             this.lblClave.TabIndex = 17;
             this.lblClave.Text = "Clave de orden";
             // 
-            // groupBox2
+            // gpbDatosEnvio
             // 
-            this.groupBox2.Controls.Add(this.lblNombreEmisor);
-            this.groupBox2.Controls.Add(this.dgvOrden);
-            this.groupBox2.Controls.Add(this.txtNombreEmisor);
-            this.groupBox2.Controls.Add(this.dgvProductos);
-            this.groupBox2.Controls.Add(this.gpbDatosDestinatario);
-            this.groupBox2.Controls.Add(this.lblClave);
-            this.groupBox2.Controls.Add(this.gbpDireccionEnvio);
-            this.groupBox2.Controls.Add(this.lblCostoTotal);
-            this.groupBox2.Controls.Add(this.txtPeso);
-            this.groupBox2.Controls.Add(this.lblPeso);
-            this.groupBox2.Controls.Add(this.btnCancelar);
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.btnCambiar);
-            this.groupBox2.Controls.Add(this.txtCostoTotal);
-            this.groupBox2.Controls.Add(this.lblEstatus);
-            this.groupBox2.Controls.Add(this.btnMostrar);
-            this.groupBox2.Controls.Add(this.cmbEstatus);
-            this.groupBox2.Controls.Add(this.txtClave);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(25, 60);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1534, 750);
-            this.groupBox2.TabIndex = 85;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos de envío";
+            this.gpbDatosEnvio.AutoSize = true;
+            this.gpbDatosEnvio.Controls.Add(this.gpb);
+            this.gpbDatosEnvio.Controls.Add(this.gpbRepartidor);
+            this.gpbDatosEnvio.Controls.Add(this.cmbEstatus);
+            this.gpbDatosEnvio.Controls.Add(this.lblFechaDeEntrega);
+            this.gpbDatosEnvio.Controls.Add(this.lblFechaSalida);
+            this.gpbDatosEnvio.Controls.Add(this.lblEstatus);
+            this.gpbDatosEnvio.Controls.Add(this.txtFechaEntrega);
+            this.gpbDatosEnvio.Controls.Add(this.btnCambiar);
+            this.gpbDatosEnvio.Controls.Add(this.txtFechaSalida);
+            this.gpbDatosEnvio.Controls.Add(this.lblNombreEmisor);
+            this.gpbDatosEnvio.Controls.Add(this.btnCancelar);
+            this.gpbDatosEnvio.Controls.Add(this.txtNombreEmisor);
+            this.gpbDatosEnvio.Controls.Add(this.gpbDatosDestinatario);
+            this.gpbDatosEnvio.Controls.Add(this.gbpDireccionEnvio);
+            this.gpbDatosEnvio.Controls.Add(this.lblCostoTotal);
+            this.gpbDatosEnvio.Controls.Add(this.txtPeso);
+            this.gpbDatosEnvio.Controls.Add(this.lblPeso);
+            this.gpbDatosEnvio.Controls.Add(this.txtCostoTotal);
+            this.gpbDatosEnvio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.gpbDatosEnvio.Location = new System.Drawing.Point(440, 68);
+            this.gpbDatosEnvio.Name = "gpbDatosEnvio";
+            this.gpbDatosEnvio.Size = new System.Drawing.Size(1297, 812);
+            this.gpbDatosEnvio.TabIndex = 85;
+            this.gpbDatosEnvio.TabStop = false;
+            this.gpbDatosEnvio.Text = "Datos de envío";
+            this.gpbDatosEnvio.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblNombreEmisor
             // 
             this.lblNombreEmisor.AutoSize = true;
             this.lblNombreEmisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombreEmisor.Location = new System.Drawing.Point(12, 183);
+            this.lblNombreEmisor.Location = new System.Drawing.Point(13, 94);
             this.lblNombreEmisor.Name = "lblNombreEmisor";
             this.lblNombreEmisor.Size = new System.Drawing.Size(93, 15);
             this.lblNombreEmisor.TabIndex = 87;
@@ -534,104 +605,101 @@
             // 
             this.txtNombreEmisor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
             this.txtNombreEmisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreEmisor.Location = new System.Drawing.Point(16, 205);
+            this.txtNombreEmisor.Location = new System.Drawing.Point(17, 112);
             this.txtNombreEmisor.Name = "txtNombreEmisor";
             this.txtNombreEmisor.Size = new System.Drawing.Size(267, 21);
             this.txtNombreEmisor.TabIndex = 88;
             // 
-            // gpb
+            // txtFechaSalida
             // 
-            this.gpb.Controls.Add(this.textBox1);
-            this.gpb.Controls.Add(this.label1);
-            this.gpb.Controls.Add(this.textBox2);
-            this.gpb.Controls.Add(this.label2);
-            this.gpb.Controls.Add(this.label3);
-            this.gpb.Controls.Add(this.textBox3);
-            this.gpb.Controls.Add(this.textBox4);
-            this.gpb.Controls.Add(this.label4);
-            this.gpb.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Bold);
-            this.gpb.Location = new System.Drawing.Point(8, 8);
-            this.gpb.Name = "gpb";
-            this.gpb.Size = new System.Drawing.Size(866, 150);
-            this.gpb.TabIndex = 87;
-            this.gpb.TabStop = false;
-            this.gpb.Text = "Datos del vehiculo";
+            this.txtFechaSalida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtFechaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaSalida.Location = new System.Drawing.Point(17, 169);
+            this.txtFechaSalida.Name = "txtFechaSalida";
+            this.txtFechaSalida.Size = new System.Drawing.Size(267, 21);
+            this.txtFechaSalida.TabIndex = 89;
             // 
-            // textBox1
+            // txtFechaEntrega
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(14, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(267, 21);
-            this.textBox1.TabIndex = 60;
+            this.txtFechaEntrega.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtFechaEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaEntrega.Location = new System.Drawing.Point(301, 169);
+            this.txtFechaEntrega.Name = "txtFechaEntrega";
+            this.txtFechaEntrega.Size = new System.Drawing.Size(267, 21);
+            this.txtFechaEntrega.TabIndex = 91;
             // 
-            // label1
+            // lblFechaSalida
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
-            this.label1.TabIndex = 59;
-            this.label1.Text = "Nombre";
+            this.lblFechaSalida.AutoSize = true;
+            this.lblFechaSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaSalida.Location = new System.Drawing.Point(18, 152);
+            this.lblFechaSalida.Name = "lblFechaSalida";
+            this.lblFechaSalida.Size = new System.Drawing.Size(94, 15);
+            this.lblFechaSalida.TabIndex = 92;
+            this.lblFechaSalida.Text = "Fecha de salida";
             // 
-            // textBox2
+            // lblFechaDeEntrega
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(15, 110);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(267, 21);
-            this.textBox2.TabIndex = 79;
+            this.lblFechaDeEntrega.AutoSize = true;
+            this.lblFechaDeEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaDeEntrega.Location = new System.Drawing.Point(299, 151);
+            this.lblFechaDeEntrega.Name = "lblFechaDeEntrega";
+            this.lblFechaDeEntrega.Size = new System.Drawing.Size(103, 15);
+            this.lblFechaDeEntrega.TabIndex = 93;
+            this.lblFechaDeEntrega.Text = "Fecha de entrega";
             // 
-            // label2
+            // gpbRepartidor
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(295, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 15);
-            this.label2.TabIndex = 62;
-            this.label2.Text = "Apellido Paterno";
+            this.gpbRepartidor.Controls.Add(this.txtNombreRepartidor);
+            this.gpbRepartidor.Controls.Add(this.lblNombreRepartidor);
+            this.gpbRepartidor.Controls.Add(this.lblClaveRepartidor);
+            this.gpbRepartidor.Controls.Add(this.txtClaveRepartidor);
+            this.gpbRepartidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F, System.Drawing.FontStyle.Bold);
+            this.gpbRepartidor.Location = new System.Drawing.Point(17, 206);
+            this.gpbRepartidor.Name = "gpbRepartidor";
+            this.gpbRepartidor.Size = new System.Drawing.Size(592, 86);
+            this.gpbRepartidor.TabIndex = 88;
+            this.gpbRepartidor.TabStop = false;
+            this.gpbRepartidor.Text = "Datos del repartidor";
+            this.gpbRepartidor.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label3
+            // txtNombreRepartidor
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
-            this.label3.TabIndex = 78;
-            this.label3.Text = "Télefono";
+            this.txtNombreRepartidor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtNombreRepartidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreRepartidor.Location = new System.Drawing.Point(14, 54);
+            this.txtNombreRepartidor.Name = "txtNombreRepartidor";
+            this.txtNombreRepartidor.Size = new System.Drawing.Size(267, 21);
+            this.txtNombreRepartidor.TabIndex = 60;
             // 
-            // textBox3
+            // lblNombreRepartidor
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(299, 54);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(267, 21);
-            this.textBox3.TabIndex = 63;
+            this.lblNombreRepartidor.AutoSize = true;
+            this.lblNombreRepartidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreRepartidor.Location = new System.Drawing.Point(10, 31);
+            this.lblNombreRepartidor.Name = "lblNombreRepartidor";
+            this.lblNombreRepartidor.Size = new System.Drawing.Size(108, 15);
+            this.lblNombreRepartidor.TabIndex = 59;
+            this.lblNombreRepartidor.Text = "Nombre repartidor";
             // 
-            // textBox4
+            // lblClaveRepartidor
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(585, 54);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(267, 21);
-            this.textBox4.TabIndex = 65;
+            this.lblClaveRepartidor.AutoSize = true;
+            this.lblClaveRepartidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClaveRepartidor.Location = new System.Drawing.Point(295, 31);
+            this.lblClaveRepartidor.Name = "lblClaveRepartidor";
+            this.lblClaveRepartidor.Size = new System.Drawing.Size(98, 15);
+            this.lblClaveRepartidor.TabIndex = 62;
+            this.lblClaveRepartidor.Text = "Clave Repartidor";
             // 
-            // label4
+            // txtClaveRepartidor
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(581, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 15);
-            this.label4.TabIndex = 64;
-            this.label4.Text = "Apellido Materno";
+            this.txtClaveRepartidor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtClaveRepartidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClaveRepartidor.Location = new System.Drawing.Point(299, 54);
+            this.txtClaveRepartidor.Name = "txtClaveRepartidor";
+            this.txtClaveRepartidor.Size = new System.Drawing.Size(267, 21);
+            this.txtClaveRepartidor.TabIndex = 63;
             // 
             // frmDetallesDeOrden
             // 
@@ -639,29 +707,36 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
-            this.ClientSize = new System.Drawing.Size(1598, 839);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(1146, 749);
+            this.Controls.Add(this.gpbDatosEnvio);
+            this.Controls.Add(this.dgvProductos);
+            this.Controls.Add(this.txtClave);
+            this.Controls.Add(this.btnMostrar);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblClave);
+            this.MinimumSize = new System.Drawing.Size(788, 766);
             this.Name = "frmDetallesDeOrden";
             this.Text = "Detalles de Orden";
             this.Load += new System.EventHandler(this.frmDetallesDeOrden_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrden)).EndInit();
             this.gpbDatosDestinatario.ResumeLayout(false);
             this.gpbDatosDestinatario.PerformLayout();
-            this.gbpDireccionEnvio.ResumeLayout(false);
-            this.gbpDireccionEnvio.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.gpb.ResumeLayout(false);
             this.gpb.PerformLayout();
+            this.gbpDireccionEnvio.ResumeLayout(false);
+            this.gbpDireccionEnvio.PerformLayout();
+            this.gpbDatosEnvio.ResumeLayout(false);
+            this.gpbDatosEnvio.PerformLayout();
+            this.gpbRepartidor.ResumeLayout(false);
+            this.gpbRepartidor.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dgvProductos;
-        private System.Windows.Forms.DataGridView dgvOrden;
         private System.Windows.Forms.GroupBox gpbDatosDestinatario;
         private System.Windows.Forms.TextBox txtNombreDestinatario;
         private System.Windows.Forms.Label lblNombre;
@@ -698,17 +773,24 @@
         private System.Windows.Forms.ComboBox cmbMunicipio;
         private System.Windows.Forms.TextBox txtCodigoPostal;
         private System.Windows.Forms.Label lblClave;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gpbDatosEnvio;
         private System.Windows.Forms.GroupBox gpb;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.Label lblMarca;
+        private System.Windows.Forms.Label lblModelo;
+        private System.Windows.Forms.TextBox txtModelo;
+        private System.Windows.Forms.TextBox txtMatrícula;
+        private System.Windows.Forms.Label lblMatrícula;
         private System.Windows.Forms.Label lblNombreEmisor;
         private System.Windows.Forms.TextBox txtNombreEmisor;
+        private System.Windows.Forms.GroupBox gpbRepartidor;
+        private System.Windows.Forms.TextBox txtNombreRepartidor;
+        private System.Windows.Forms.Label lblNombreRepartidor;
+        private System.Windows.Forms.Label lblClaveRepartidor;
+        private System.Windows.Forms.TextBox txtClaveRepartidor;
+        private System.Windows.Forms.Label lblFechaDeEntrega;
+        private System.Windows.Forms.Label lblFechaSalida;
+        private System.Windows.Forms.TextBox txtFechaEntrega;
+        private System.Windows.Forms.TextBox txtFechaSalida;
     }
 }
