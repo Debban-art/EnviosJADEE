@@ -52,5 +52,10 @@ namespace EnvíosJADEE.Forms
         {
             MenuBuilder.BuildMenu(this);
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

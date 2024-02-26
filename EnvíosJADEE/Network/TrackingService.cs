@@ -3,6 +3,7 @@ using EnvíosJADEE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,29 @@ namespace EnvíosJADEE.Network
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return "Correcto";
+        }
+
+
+        public string  GetEstatusOrden(string Clave)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pClave", SqlDbType = System.Data.SqlDbType.VarChar, Value = Clave });
+
+            string Estatus = "";
+            try
+            {
+                DataSet ds = dac.Fill("GetEstatusDeOrdenByClave", parametros);
+
+                if (ds.Tables.Count > 0)
+                {
+                    Estatus = ds.Tables[0].Columns[0].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return Estatus;
         }
     }
 }

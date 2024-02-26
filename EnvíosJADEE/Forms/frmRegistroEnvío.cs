@@ -215,7 +215,7 @@ namespace EnvíosJADEE.Forms
 
                     TrackingModel NuevoRegistro = new TrackingModel();
                     NuevoRegistro.ClaveOrden = clave;
-                    NuevoRegistro.CambioRegistrado = "El paquete está siendo preparado para su envío";
+                    NuevoRegistro.CambioRegistrado = $"El paquete {NuevoRegistro.ClaveOrden} está siendo preparado para su envío";
 
                     trackingService.InsertNuevoRegistro(NuevoRegistro);
                 }
