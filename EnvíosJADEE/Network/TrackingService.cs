@@ -35,6 +35,53 @@ namespace EnvíosJADEE.Network
             return "Correcto";
         }
 
+        public List<TrackingModel> GetRegistrosPorClave(string Clave)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pClaveOrden", SqlDbType = SqlDbType.VarChar, Value = Clave });
+            List<TrackingModel> lista = new List<TrackingModel>();
+            try
+            {
+                DataSet ds = dac.Fill("GetBitacoraEnvio", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable()
+                                     .Select(dataRow => new TrackingModel
+                                     {
+                                         ClaveOrden = dataRow["ClaveOrden"].ToString(),
+                                         CambioRegistrado = dataRow["CambioRegistrado"].ToString(),
+                                         FechaCambio = dataRow["FechaCambio"].ToString(),
+                                     }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);    
+
+            }
+            return lista;
+        }
+
+        public string GetFechaEntrega(string Clave)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pClaveOrden", SqlDbType = SqlDbType.VarChar, Value = Clave });
+            string FechaEntrega = "";
+            try
+            {
+                DataSet ds = dac.Fill("GetFechaEntrega", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    FechaEntrega = ds.Tables[0].Rows[0]["FechaEntrega"].ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return FechaEntrega;
+        }
+
 
         public string  GetEstatusOrden(string Clave)
         {
@@ -46,9 +93,9 @@ namespace EnvíosJADEE.Network
             {
                 DataSet ds = dac.Fill("GetEstatusDeOrdenByClave", parametros);
 
-                if (ds.Tables.Count > 0)
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    Estatus = ds.Tables[0].Columns[0].ToString();
+                    Estatus = ds.Tables[0].Rows[0]["NombreEstatus"].ToString();
                 }
             }
             catch (Exception ex)

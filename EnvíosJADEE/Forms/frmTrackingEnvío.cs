@@ -23,7 +23,7 @@ namespace EnvíosJADEE.Forms
         private void frmTrackingEnvío_Load(object sender, EventArgs e)
         {
             MenuBuilder.BuildMenu(this);
-
+            
 
         }
 
@@ -44,9 +44,26 @@ namespace EnvíosJADEE.Forms
                 }
                 else
                 {
-                    lblClaveOrden.Text = EstatusDeOrden;
+                    lblEstatusDeOrden.Text = EstatusDeOrden;
+                    dgvBitácora.Visible = true;
+                    dgvBitácora.DataSource = null;
+                    dgvBitácora.DataSource = trackingService.GetRegistrosPorClave(Clave);
+                    lblFecha.Text = trackingService.GetFechaEntrega(Clave);
+
                 }
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtClaveDeOrden.Text = null;
+            txtClaveDeOrden.Focus();
+
+            lblEstatusDeOrden.Text = null;
+            lblFecha.Text = null;
+
+            dgvBitácora.DataSource = null;
+        }
+
     }
 }

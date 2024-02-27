@@ -21,6 +21,7 @@ namespace EnvíosJADEE.Forms
         //Cargar en automático de nuevo al cambiar estatus
         DetallesDeOrdenService detallesDeOrdenService = new DetallesDeOrdenService();
         DireccionesService direccionesService = new DireccionesService();
+        TrackingService trackingService = new TrackingService();
         Label lblRepartidores = new Label();
         ComboBox cmbRepartidores = new ComboBox();
         public frmDetallesDeOrden()
@@ -120,6 +121,28 @@ namespace EnvíosJADEE.Forms
             int IdRepartidor = int.Parse(cmbRepartidores.SelectedValue.ToString());
 
             registroEnvioService.UpdateEstatusOrden(IdNuevoEstatus, ClaveOrden, IdRepartidor);
+
+            TrackingModel nuevoRegistro = new TrackingModel();
+            nuevoRegistro.ClaveOrden = ClaveOrden;
+
+            if (IdNuevoEstatus == 2)
+            {
+                nuevoRegistro.CambioRegistrado = "El paquete ha salido de la estación ";
+            }
+            else if (IdNuevoEstatus == 3)
+            {
+                nuevoRegistro.CambioRegistrado = "El paquete está en camino a su entrega";
+            }
+            else if (IdNuevoEstatus == 4)
+            {
+                nuevoRegistro.CambioRegistrado = "El paquete ha sido entregado";
+            }
+            else
+            {
+                nuevoRegistro.CambioRegistrado = "El paquete ha sido cancelado";
+            }
+
+            trackingService.InsertNuevoRegistro(nuevoRegistro);
             LoadData();
         }
 

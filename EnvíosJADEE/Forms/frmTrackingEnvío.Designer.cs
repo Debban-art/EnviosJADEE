@@ -31,10 +31,11 @@
             this.lblClaveOrden = new System.Windows.Forms.Label();
             this.txtClaveDeOrden = new System.Windows.Forms.TextBox();
             this.lblEstatusDeOrden = new System.Windows.Forms.Label();
-            this.dgvOrdenes = new System.Windows.Forms.DataGridView();
+            this.dgvBitácora = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenes)).BeginInit();
+            this.lblFecha = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBitácora)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClaveOrden
@@ -66,15 +67,18 @@
             this.lblEstatusDeOrden.Size = new System.Drawing.Size(0, 89);
             this.lblEstatusDeOrden.TabIndex = 62;
             // 
-            // dgvOrdenes
+            // dgvBitácora
             // 
-            this.dgvOrdenes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
-            this.dgvOrdenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrdenes.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvOrdenes.Location = new System.Drawing.Point(543, 73);
-            this.dgvOrdenes.Name = "dgvOrdenes";
-            this.dgvOrdenes.Size = new System.Drawing.Size(488, 443);
-            this.dgvOrdenes.TabIndex = 63;
+            this.dgvBitácora.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvBitácora.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvBitácora.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(69)))));
+            this.dgvBitácora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBitácora.GridColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvBitácora.Location = new System.Drawing.Point(522, 157);
+            this.dgvBitácora.Name = "dgvBitácora";
+            this.dgvBitácora.Size = new System.Drawing.Size(488, 207);
+            this.dgvBitácora.TabIndex = 63;
+            this.dgvBitácora.Visible = false;
             // 
             // btnCancelar
             // 
@@ -87,6 +91,7 @@
             this.btnCancelar.TabIndex = 65;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnMostrar
             // 
@@ -102,22 +107,32 @@
             this.btnMostrar.UseVisualStyleBackColor = false;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
+            // lblFecha
+            // 
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Yu Gothic UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(9, 424);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(0, 40);
+            this.lblFecha.TabIndex = 66;
+            // 
             // frmTrackingEnvío
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnMostrar);
-            this.Controls.Add(this.dgvOrdenes);
+            this.Controls.Add(this.dgvBitácora);
             this.Controls.Add(this.lblEstatusDeOrden);
             this.Controls.Add(this.lblClaveOrden);
             this.Controls.Add(this.txtClaveDeOrden);
             this.Name = "frmTrackingEnvío";
             this.Text = "Tracking";
             this.Load += new System.EventHandler(this.frmTrackingEnvío_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBitácora)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +143,9 @@
         private System.Windows.Forms.Label lblClaveOrden;
         private System.Windows.Forms.TextBox txtClaveDeOrden;
         private System.Windows.Forms.Label lblEstatusDeOrden;
-        private System.Windows.Forms.DataGridView dgvOrdenes;
+        private System.Windows.Forms.DataGridView dgvBitácora;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnMostrar;
+        private System.Windows.Forms.Label lblFecha;
     }
 }
