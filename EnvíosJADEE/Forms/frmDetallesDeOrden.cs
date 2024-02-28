@@ -35,9 +35,6 @@ namespace EnvíosJADEE.Forms
 
             btnCancelar.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
 
-            cmbEstatus.DataSource = detallesDeOrdenService.GetEstatusOrden();
-            cmbEstatus.DisplayMember = "NombreEstatusOrden";
-            cmbEstatus.ValueMember = "Id";
 
             btnCambiar.Location = new Point(cmbEstatus.Right + 4, cmbEstatus.Top);
 
@@ -117,32 +114,38 @@ namespace EnvíosJADEE.Forms
         {
             RegistroEnvioService registroEnvioService = new RegistroEnvioService();
             string ClaveOrden = txtClave.Text;
+            DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
+
             int IdNuevoEstatus = int.Parse(cmbEstatus.SelectedValue.ToString());
             int IdRepartidor = int.Parse(cmbRepartidores.SelectedValue.ToString());
 
-            registroEnvioService.UpdateEstatusOrden(IdNuevoEstatus, ClaveOrden, IdRepartidor);
+            if ( IdNuevoEstatus != detallesEnvío.IdEstatusDeOrden)
+            {
+                registroEnvioService.UpdateEstatusOrden(IdNuevoEstatus, ClaveOrden, IdRepartidor);
 
-            TrackingModel nuevoRegistro = new TrackingModel();
-            nuevoRegistro.ClaveOrden = ClaveOrden;
+                TrackingModel nuevoRegistro = new TrackingModel();
+                nuevoRegistro.ClaveOrden = ClaveOrden;
 
-            if (IdNuevoEstatus == 2)
-            {
-                nuevoRegistro.CambioRegistrado = "El paquete ha salido de la estación ";
-            }
-            else if (IdNuevoEstatus == 3)
-            {
-                nuevoRegistro.CambioRegistrado = "El paquete está en camino a su entrega";
-            }
-            else if (IdNuevoEstatus == 4)
-            {
-                nuevoRegistro.CambioRegistrado = "El paquete ha sido entregado";
-            }
-            else
-            {
-                nuevoRegistro.CambioRegistrado = "El paquete ha sido cancelado";
+                if (IdNuevoEstatus == 2)
+                {
+                    nuevoRegistro.CambioRegistrado = "El paquete ha salido de la estación ";
+                }
+                else if (IdNuevoEstatus == 3)
+                {
+                    nuevoRegistro.CambioRegistrado = "El paquete está en camino a su entrega";
+                }
+                else if (IdNuevoEstatus == 4)
+                {
+                    nuevoRegistro.CambioRegistrado = "El paquete ha sido entregado";
+                }
+                else
+                {
+                    nuevoRegistro.CambioRegistrado = "El paquete ha sido cancelado";
+                }
+
+                trackingService.InsertNuevoRegistro(nuevoRegistro);
             }
 
-            trackingService.InsertNuevoRegistro(nuevoRegistro);
             LoadData();
         }
 
@@ -181,6 +184,7 @@ namespace EnvíosJADEE.Forms
         {
             cmbEstatus.Enabled = true;
             btnCambiar.Visible = true;
+
         }
 
         private void LoadData()
@@ -188,7 +192,10 @@ namespace EnvíosJADEE.Forms
             string ClaveOrden = txtClave.Text;
             #region dgvOrden
             DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
-            cmbEstatus.SelectedValue = detallesEnvío.IdEstatusDeOrden; //Arreglar
+            cmbEstatus.DataSource = detallesDeOrdenService.GetEstatusOrden(detallesEnvío);
+            cmbEstatus.DisplayMember = "NombreEstatusOrden";
+            cmbEstatus.ValueMember = "Id";
+            cmbEstatus.SelectedValue = detallesEnvío.IdEstatusDeOrden; 
 
             cmbRepartidores.SelectedValue = detallesEnvío.IdRepartidor;
             txtClaveRepartidor.Text = detallesEnvío.ClaveRepartidor;

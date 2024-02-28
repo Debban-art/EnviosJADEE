@@ -17,9 +17,10 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
-        public List<EstatusDeOrdenModel> GetEstatusOrden()
+        public List<EstatusDeOrdenModel> GetEstatusOrden(DetallesEnvíoModel detallesEnvío)
         {
             parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pIdEstatusActual", SqlDbType = System.Data.SqlDbType.Int, Value = detallesEnvío.IdEstatusDeOrden });
             List<EstatusDeOrdenModel> lista = new List<EstatusDeOrdenModel>();
             try
             {

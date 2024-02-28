@@ -48,7 +48,15 @@ namespace EnvíosJADEE.Forms
                     dgvBitácora.Visible = true;
                     dgvBitácora.DataSource = null;
                     dgvBitácora.DataSource = trackingService.GetRegistrosPorClave(Clave);
-                    lblFecha.Text = trackingService.GetFechaEntrega(Clave);
+                    if (EstatusDeOrden == "Entregado")
+                    {
+                        lblFecha.Text = "Fecha de entrega:  ";
+                    }
+                    else
+                    {
+                        lblFecha.Text = "Fecha estimada de entrega: ";
+                    }
+                    lblFecha.Text += trackingService.GetFechaEntrega(Clave);
 
                 }
             }
