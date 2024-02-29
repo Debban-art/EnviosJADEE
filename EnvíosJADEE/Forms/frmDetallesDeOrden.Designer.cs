@@ -81,6 +81,7 @@
             this.lblNombreEmisor = new System.Windows.Forms.Label();
             this.txtNombreEmisor = new System.Windows.Forms.TextBox();
             this.btnActualizarEstatus = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.gpbDatosDestinatario.SuspendLayout();
             this.gpb.SuspendLayout();
@@ -362,6 +363,7 @@
             this.btnCancelar.TabIndex = 58;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblPeso
             // 
@@ -704,13 +706,29 @@
             this.btnActualizarEstatus.Visible = false;
             this.btnActualizarEstatus.Click += new System.EventHandler(this.btnActualizarEstatus_Click);
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.Location = new System.Drawing.Point(11, 710);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(171, 30);
+            this.btnImprimir.TabIndex = 87;
+            this.btnImprimir.Text = "Imprimir reporte";
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Visible = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // frmDetallesDeOrden
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
-            this.ClientSize = new System.Drawing.Size(1146, 749);
+            this.ClientSize = new System.Drawing.Size(1453, 813);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnActualizarEstatus);
             this.Controls.Add(this.gpbDatosEnvio);
             this.Controls.Add(this.dgvProductos);
@@ -791,5 +809,6 @@
         private System.Windows.Forms.TextBox txtFechaEntrega;
         private System.Windows.Forms.TextBox txtFechaSalida;
         private System.Windows.Forms.Button btnActualizarEstatus;
+        private System.Windows.Forms.Button btnImprimir;
     }
 }

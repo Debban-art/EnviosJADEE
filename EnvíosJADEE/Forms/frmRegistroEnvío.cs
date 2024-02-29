@@ -277,27 +277,6 @@ namespace EnvíosJADEE.Forms
 
         }
 
-        private void CreatePdf(OrdenModel orden)
-        {
-            PdfFont fontTitle = new PdfStandardFont(PdfFontFamily.Helvetica,20);
-            PdfFont fontSubtitle;
-            PdfFont fontText;
 
-            using (PdfDocument document = new PdfDocument())
-            {
-                //Add a page to the document.
-                PdfPage page = document.Pages.Add();
-                //Create PDF graphics for a page.
-                PdfGraphics graphics = page.Graphics;
-                //Set the standard font.
-                PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
-                //Draw the text.
-                graphics.DrawString("Hello World!!!", font, PdfBrushes.Black, new PointF(0, 0));
-                //Save the document.
-                document.Save("Output.pdf");
-
-
-            }
-        }
     }
 }
