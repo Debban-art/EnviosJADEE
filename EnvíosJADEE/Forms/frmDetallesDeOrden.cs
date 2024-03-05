@@ -10,10 +10,12 @@ using iText.Layout.Element;
 using System.Windows.Forms;
 using iText.Layout.Properties;
 using iText.IO;
+using iText.IO.Image;
 using iText.Kernel.Pdf.Canvas.Draw;
 using System.Xml.Linq;
 using iText.IO.Font.Constants;
 using iText.Kernel.Font;
+using ZXing;
 
 namespace EnvíosJADEE.Forms
 {
@@ -273,16 +275,6 @@ namespace EnvíosJADEE.Forms
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-
-            #region fonts
-            PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-            #endregion
-
-            //#region spacing
-            //float titleSpacing = 10;
-            //float textSpacing = 5;
-            //#endregion
-
             #region filepath
             string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string filePath = Path.Combine(documentosPath, $"Reporte {txtClave.Text}.pdf");
@@ -293,25 +285,46 @@ namespace EnvíosJADEE.Forms
             Document doc = new Document(pdf, iText.Kernel.Geom.PageSize.LETTER);
             try
             {
+                ImageData imageFile = ImageDataFactory.Create("C:\\Users\\Lab-A\\Documents\\GitHub\\EnviosJADEE\\EnvíosJADEE\\Resources\\package_122391.png");
 
+                iText.Layout.Element.Image logo = new iText.Layout.Element.Image(imageFile).Scale(0.25f, 0.25f).SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+                doc.Add(logo);
 
                 Paragraph header = new Paragraph("Detalles de orden").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20).SetBold();
                 doc.Add(header);
                 LineSeparator ls = new LineSeparator(new SolidLine());
                 doc.Add(ls);
 
-                #region Datos generales de la orden
-                Paragraph datosGeneralesOrden = new Paragraph();
-                datosGeneralesOrden.Add("Clave:\n").SetBold();
-                datosGeneralesOrden.Add($"{txtClave.Text}\n");
-                datosGeneralesOrden.Add("Nombre del emisor:\n");
-                datosGeneralesOrden.Add($"{txtNombreEmisor.Text}\n");
-                datosGeneralesOrden.Add("Costo total:\n");
-                datosGeneralesOrden.Add($"{txtCostoTotal.Text}\n");
-                datosGeneralesOrden.Add("Peso total:\n");
-                datosGeneralesOrden.Add($"{txtPeso.Text}\n");
 
-                doc.Add(datosGeneralesOrden);
+                #region Generar codigo de barras
+                BarcodeWriter barcode = new BarcodeWriter
+                {
+                    Format = BarcodeFormat.CODE_128
+                };
+
+                Bitmap barcodeBitmap = barcode.Write(txtClave.Text);
+                #endregion
+
+                #region Datos generales de la orden
+                Paragraph contenido = new Paragraph();
+                contenido.Add(new Text("Clave:\n").SetBold());
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    barcodeBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                    byte[] barcodeBytes = ms.ToArray();
+
+                    iText.Layout.Element.Image barcodeImage = new iText.Layout.Element.Image(ImageDataFactory.Create(barcodeBytes)).Scale(0.5f,0.5f);
+                    contenido.Add(barcodeImage);
+                    contenido.Add("\n");
+                }
+                contenido.Add(new Text("Nombre del emisor:\n").SetBold());
+                contenido.Add($"{txtNombreEmisor.Text}\n");
+                contenido.Add(new Text("Costo total:\n").SetBold());
+                contenido.Add($"{txtCostoTotal.Text}\n");
+                contenido.Add(new Text("Peso total:\n").SetBold());
+                contenido.Add($"{txtPeso.Text}\n");
+
+                doc.Add(contenido);
 
                 #endregion
 
@@ -320,6 +333,15 @@ namespace EnvíosJADEE.Forms
                 doc.Add(header);
                 doc.Add(ls);
 
+                contenido = new Paragraph();
+                contenido.Add(new Text("Nombre completo:\n").SetBold());
+                contenido.Add($"{txtNombreDestinatario.Text} {txtApellidoPatDestinatario.Text} {txtApellidoMatDestinatario.Text}\n");
+                contenido.Add(new Text("Teléfono:\n").SetBold());
+                contenido.Add($"{txtTelefonoDestinatario.Text}\n");
+                contenido.Add(new Text("Dirección:\n").SetBold());
+                contenido.Add($"{txtCalle.Text}, {txtNoCasa.Text}, {((ColoniaModel)cmbColonia.SelectedItem).Nombre.ToString()}, {txtCodigoPostal.Text}, {((MunicipioModel)cmbMunicipio.SelectedItem).Nombre.ToString()}, {((EstadosModel)cmbEstado.SelectedItem).Nombre.ToString()}, {((PaisModels)cmbPaís.SelectedItem).Nombre.ToString()}\n");
+
+                doc.Add(contenido);
                 #endregion
 
                 #region Productos
@@ -327,12 +349,74 @@ namespace EnvíosJADEE.Forms
                 doc.Add(header);
                 doc.Add(ls);
 
+                Table productos = new Table(3);
+
+                productos.AddHeaderCell("Clave");
+                productos.AddHeaderCell("Nombre");
+                productos.AddHeaderCell("Cantidad");
+
+                foreach (DataGridViewRow row in dgvProductos.Rows)
+                {
+                    productos.AddCell(row.Cells["Clave"].Value.ToString());
+                    productos.AddCell(row.Cells["Producto"].Value.ToString());
+                    productos.AddCell(row.Cells["Cantidad"].Value.ToString());
+                }
+
+                productos.SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
+
+                doc.Add(new Paragraph("\n"));
+                doc.Add(productos);
+                doc.Add(new Paragraph("\n"));
                 #endregion
 
                 #region Datos del Envío
                 header = new Paragraph("Datos de envío").SetTextAlignment(TextAlignment.CENTER).SetFontSize(18);
                 doc.Add(header);
                 doc.Add(ls);
+                contenido = new Paragraph();
+                contenido.Add(new Text("Estatus de envío:\n").SetBold());
+                contenido.Add($"{((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden}\n");
+                contenido.Add(new Text("Fecha de salida:\n").SetBold());
+                contenido.Add($"{txtFechaSalida.Text}\n");
+                contenido.Add(new Text("Fecha de entrega:\n").SetBold());
+                contenido.Add($"{txtFechaSalida.Text}\n");
+
+                doc.Add(contenido);
+
+                if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden != "Pendiente")
+                {
+                    #region datos del repartidor
+
+                    header = new Paragraph("Datos del repartidor").SetFontSize(16).SetItalic();
+                    doc.Add(header);
+
+
+                    contenido = new Paragraph();
+                    contenido.Add(new Text("Nombre:\n").SetBold());
+                    contenido.Add($"{((RepartidorModel)cmbRepartidores.SelectedItem).Nombre}\n");
+
+                    contenido.Add(new Text("Clave de repartidor\n").SetBold());
+                    contenido.Add($"{txtClaveRepartidor.Text}");
+
+                    doc.Add(contenido);
+
+                    #endregion
+
+                    #region datos del vehiculo
+                    header = new Paragraph("Datos del vehiculo").SetItalic().SetFontSize(16);
+                    doc.Add(header);
+
+                    contenido = new Paragraph();
+                    contenido.Add(new Text("Marca del vehiculo:\n").SetBold());
+                    contenido.Add($"{txtMarca.Text}\n");
+                    contenido.Add(new Text("Modelo del vehiculo:\n").SetBold());
+                    contenido.Add($"{txtModelo.Text}\n");
+                    contenido.Add(new Text("Matrícula del vehículo:\n").SetBold());
+                    contenido.Add($"{txtMatrícula.Text}\n");
+
+                    doc.Add(contenido);
+                    #endregion
+                }
                 #endregion
 
                 MessageBox.Show("PDF creado correctamente en: " + filePath, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -342,116 +426,6 @@ namespace EnvíosJADEE.Forms
             {
                 MessageBox.Show("Error al crear el PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //graphics.DrawString("Datos de la orden", fontTitle1, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTitle1.Height + titleSpacing;
-
-            //#region Datos generales de la orden
-            //graphics.DrawString("Clave:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtClave.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Nombre del emisor:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtNombreEmisor.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Costo total:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtCostoTotal.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Peso total:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtPeso.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-            //#endregion
-
-            //#region Datos del destinatario
-            //graphics.DrawString("Datos del destinatario", fontTitle2, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTitle2.Height + titleSpacing;
-
-            //graphics.DrawString("Nombre completo:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtNombreDestinatario.Text} {txtApellidoPatDestinatario.Text} {txtApellidoMatDestinatario.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Teléfono:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtTelefonoDestinatario.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Dirección:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtCalle.Text}, {txtNoCasa.Text}, {((ColoniaModel)cmbColonia.SelectedItem).Nombre.ToString()}, {txtCodigoPostal.Text}, {((MunicipioModel)cmbMunicipio.SelectedItem).Nombre.ToString()}, {((EstadosModel)cmbEstado.SelectedItem).Nombre.ToString()}, {((PaisModels)cmbPaís.SelectedItem).Nombre.ToString()}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-            //#endregion
-
-            //#region Productos
-            //graphics.DrawString("Productos", fontTitle2, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTitle2.Height + titleSpacing;
-            //#endregion
-
-
-            //#region Datos del envío
-            //graphics.DrawString("Datos del envío", fontTitle2, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTitle2.Height + titleSpacing;
-
-            //graphics.DrawString("Estatus:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Fecha de salida:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtFechaSalida.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //graphics.DrawString("Fecha de entrega:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontTextBold.Height + textSpacing;
-            //graphics.DrawString($"{txtFechaEntrega.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //yOffset += fontText.Height + textSpacing;
-
-            //if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden != "Pendiente")
-            //{
-            //    #region datos del repartidor
-            //    graphics.DrawString("Datos del repartidor", fontTitle3, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTitle3.Height + titleSpacing;
-
-            //    graphics.DrawString("Nombre del repartidor:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTextBold.Height + textSpacing;
-            //    graphics.DrawString($"{((RepartidorModel)cmbRepartidores.SelectedItem).Nombre}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontText.Height + textSpacing;
-
-            //    graphics.DrawString("Clave del repartidor:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTextBold.Height + textSpacing;
-            //    graphics.DrawString($"{txtClaveRepartidor.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontText.Height + textSpacing;
-            //    #endregion
-
-            //    #region datos del vehiculo
-            //    graphics.DrawString("Datos del vehículo", fontTitle3, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTitle3.Height + titleSpacing;
-
-            //    graphics.DrawString("Marca del vehiculo:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTextBold.Height + textSpacing;
-            //    graphics.DrawString($"{txtMarca.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontText.Height + textSpacing;
-
-            //    graphics.DrawString("Modelo del vehiculo:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTextBold.Height + textSpacing;
-            //    graphics.DrawString($"{txtModelo.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontText.Height + textSpacing;
-
-            //    graphics.DrawString("Matrícula del vehículo:", fontTextBold, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontTextBold.Height + textSpacing;
-            //    graphics.DrawString($"{txtMatrícula.Text}", fontText, PdfBrushes.Black, new PointF(0, yOffset));
-            //    yOffset += fontText.Height + textSpacing;
-            //    #endregion
-            //}
-
-            //#endregion
         }
         
     }
