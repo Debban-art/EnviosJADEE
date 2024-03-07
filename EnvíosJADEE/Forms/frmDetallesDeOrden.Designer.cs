@@ -82,6 +82,7 @@
             this.txtNombreEmisor = new System.Windows.Forms.TextBox();
             this.btnActualizarEstatus = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnReporteExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.gpbDatosDestinatario.SuspendLayout();
             this.gpb.SuspendLayout();
@@ -714,12 +715,27 @@
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.Location = new System.Drawing.Point(11, 710);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(171, 30);
+            this.btnImprimir.Size = new System.Drawing.Size(193, 30);
             this.btnImprimir.TabIndex = 87;
-            this.btnImprimir.Text = "Imprimir reporte";
+            this.btnImprimir.Text = "Imprimir reporte en PDF";
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Visible = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnReporteExcel
+            // 
+            this.btnReporteExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnReporteExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteExcel.ForeColor = System.Drawing.Color.White;
+            this.btnReporteExcel.Location = new System.Drawing.Point(215, 710);
+            this.btnReporteExcel.Name = "btnReporteExcel";
+            this.btnReporteExcel.Size = new System.Drawing.Size(209, 30);
+            this.btnReporteExcel.TabIndex = 88;
+            this.btnReporteExcel.Text = "Imprimir reporte en Excel";
+            this.btnReporteExcel.UseVisualStyleBackColor = false;
+            this.btnReporteExcel.Visible = false;
+            this.btnReporteExcel.Click += new System.EventHandler(this.reporteExcel_Click);
             // 
             // frmDetallesDeOrden
             // 
@@ -728,6 +744,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1453, 813);
+            this.Controls.Add(this.btnReporteExcel);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnActualizarEstatus);
             this.Controls.Add(this.gpbDatosEnvio);
@@ -810,5 +827,6 @@
         private System.Windows.Forms.TextBox txtFechaSalida;
         private System.Windows.Forms.Button btnActualizarEstatus;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnReporteExcel;
     }
 }

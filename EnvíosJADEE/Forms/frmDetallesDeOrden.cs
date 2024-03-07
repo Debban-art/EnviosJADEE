@@ -16,7 +16,7 @@ using System.Xml.Linq;
 using iText.IO.Font.Constants;
 using iText.Kernel.Font;
 using ZXing;
-
+using ClosedXML.Excel;
 namespace EnvíosJADEE.Forms
 {
     public partial class frmDetallesDeOrden : Form
@@ -25,11 +25,16 @@ namespace EnvíosJADEE.Forms
         //Agregar funcionalidades cancelar
         //Hacer readOnly a todos excepto estatus, repartidor.
         //Cargar en automático de nuevo al cambiar estatus
+
+
         DetallesDeOrdenService detallesDeOrdenService = new DetallesDeOrdenService();
         DireccionesService direccionesService = new DireccionesService();
         TrackingService trackingService = new TrackingService();
+
+
         Label lblRepartidores = new Label();
         ComboBox cmbRepartidores = new ComboBox();
+        DetallesEnvíoModel detallesEnvío;
 
 
         public frmDetallesDeOrden()
@@ -75,6 +80,7 @@ namespace EnvíosJADEE.Forms
 
             btnActualizarEstatus.Visible = true;
             btnImprimir.Visible = true;
+            btnReporteExcel.Visible = true;
             btnActualizarEstatus.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
             btnCancelar.Location = new Point(btnActualizarEstatus.Right + 10, btnActualizarEstatus.Top);
 
@@ -200,7 +206,7 @@ namespace EnvíosJADEE.Forms
         {
             string ClaveOrden = txtClave.Text;
             #region dgvOrden
-            DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
+            detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
             cmbEstatus.DataSource = detallesDeOrdenService.GetEstatusOrden(detallesEnvío);
             cmbEstatus.DisplayMember = "NombreEstatusOrden";
             cmbEstatus.ValueMember = "Id";
@@ -427,7 +433,33 @@ namespace EnvíosJADEE.Forms
                 MessageBox.Show("Error al crear el PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
+        private void reporteExcel_Click(object sender, EventArgs e)
+        {
+            #region filepath
+            string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = Path.Combine(documentosPath, $"Reporte {txtClave.Text}.xlsx");
+            #endregion
+            RegistroEnvioService datosDeOrdneService = new RegistroEnvioService();
+            try
+            {
+                XLWorkbook workBook = new XLWorkbook();
+                var workSheet = workBook.AddWorksheet();
+
+                workSheet.ColumnWidth = 12;
+
+                workSheet.FirstCell().InsertTable(datosDeOrdneService.GetRegistroEnvios(txtClave.Text));
+
+                workBook.SaveAs(filePath);
+
+                MessageBox.Show("Excel creado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
 

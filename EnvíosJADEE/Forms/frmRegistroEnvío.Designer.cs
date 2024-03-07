@@ -65,6 +65,7 @@
             this.btnAgregarProducto = new System.Windows.Forms.Button();
             this.gpbDatosDestinatario = new System.Windows.Forms.GroupBox();
             this.dgvOrdenes = new System.Windows.Forms.DataGridView();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             this.gbpDireccionEnvio.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gpbDatosDestinatario.SuspendLayout();
@@ -479,6 +480,20 @@
             this.dgvOrdenes.TabIndex = 14;
             this.dgvOrdenes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrdenes_CellEndEdit);
             // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(942, 545);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(209, 30);
+            this.btnExportarExcel.TabIndex = 89;
+            this.btnExportarExcel.Text = "Exportar ordenes a Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // frmEnvíos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,6 +502,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1598, 749);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.gpbDatosDestinatario);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);
@@ -544,5 +560,6 @@
         private System.Windows.Forms.Button btnAgregarProducto;
         private System.Windows.Forms.DataGridView dgvOrdenes;
         private System.Windows.Forms.ComboBox cmbColonia;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

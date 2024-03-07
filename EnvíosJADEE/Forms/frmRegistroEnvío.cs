@@ -8,6 +8,8 @@ using static System.Net.Mime.MediaTypeNames;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using System.Drawing;
+using ClosedXML.Excel;
+using System.IO;
 
 namespace EnvíosJADEE.Forms
 {
@@ -277,6 +279,31 @@ namespace EnvíosJADEE.Forms
 
         }
 
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            #region filepath
+            string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = Path.Combine(documentosPath, $"Ordenes Envios JADEE.xlsx");
+            #endregion
+            RegistroEnvioService datosDeOrdneService = new RegistroEnvioService();
+            try
+            {
+                XLWorkbook workBook = new XLWorkbook();
+                var workSheet = workBook.AddWorksheet();
 
+                workSheet.ColumnWidth = 12;
+
+                workSheet.FirstCell().InsertTable(datosDeOrdneService.GetRegistroEnvios());
+
+                workBook.SaveAs(filePath);
+
+                MessageBox.Show("Excel creado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

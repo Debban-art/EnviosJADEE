@@ -6,9 +6,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestLeoniWF;
 
@@ -19,9 +16,10 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
-        public List<RegistroEnvioModel> GetRegistroEnvios()
+        public List<RegistroEnvioModel> GetRegistroEnvios(string clave = "")
         {
             parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pClave", SqlDbType = System.Data.SqlDbType.VarChar, Value = clave });
             List<RegistroEnvioModel> lista = new List<RegistroEnvioModel>();
             try
             {

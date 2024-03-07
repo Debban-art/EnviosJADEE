@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenesPorFecha)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@
             this.dgvOrdenesPorFecha.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrdenesPorFecha.Location = new System.Drawing.Point(12, 154);
             this.dgvOrdenesPorFecha.Name = "dgvOrdenesPorFecha";
-            this.dgvOrdenesPorFecha.Size = new System.Drawing.Size(1015, 350);
+            this.dgvOrdenesPorFecha.Size = new System.Drawing.Size(1015, 323);
             this.dgvOrdenesPorFecha.TabIndex = 58;
             // 
             // label1
@@ -98,12 +99,28 @@
             this.dtpFechaFinal.Size = new System.Drawing.Size(288, 26);
             this.dtpFechaFinal.TabIndex = 61;
             // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(12, 495);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(209, 30);
+            this.btnExportarExcel.TabIndex = 90;
+            this.btnExportarExcel.Text = "Exportar ordenes a Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Visible = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // frmReportePorFechas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.dtpFechaFinal);
             this.Controls.Add(this.dtpFechaInicial);
             this.Controls.Add(this.label1);
@@ -126,5 +143,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }
