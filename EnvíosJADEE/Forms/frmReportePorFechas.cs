@@ -84,7 +84,7 @@ namespace EnvíosJADEE.Forms
                 rangoTituloTabla.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 54, 96, 146)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
 
                 var sumaRow = tablaDeRegistros.Row(tablaDeRegistros.RowCount() + 1);
-                sumaRow.Cell(4).FormulaA1 = "=SUMAR.SI([EstatusDeOrden];\"<>Cancelado\";[CostoTotal])";      
+                sumaRow.Cell(4).FormulaA1 = "=SUMAR.SI(Table1[EstatusDeOrden], \"<>Cancelado\", Table1[CostoTotal])";      
 
                 workSheet.Columns().AdjustToContents();
 
