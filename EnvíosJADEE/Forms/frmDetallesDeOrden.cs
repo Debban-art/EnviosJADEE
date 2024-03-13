@@ -295,7 +295,7 @@ namespace EnvíosJADEE.Forms
 
                 iText.Layout.Element.Image logo = new iText.Layout.Element.Image(imageFile).Scale(0.25f, 0.25f).SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
                 doc.Add(logo);
-
+ 
                 Paragraph header = new Paragraph("Detalles de orden").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20).SetBold();
                 doc.Add(header);
                 LineSeparator ls = new LineSeparator(new SolidLine());

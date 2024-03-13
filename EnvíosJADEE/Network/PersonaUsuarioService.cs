@@ -17,9 +17,12 @@ namespace EnvíosJADEE.Network
     {
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
-        public string InsertPersonaUsuario(PersonaModel persona, UsuarioModel usuario)
+        public int InsertPersonaUsuario(PersonaModel persona, UsuarioModel usuario)
         {
+            int resultado = 3;
+            List<int> lista = new List<int>();
             parametros = new ArrayList();
+            
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.Nombre });
             parametros.Add(new SqlParameter { ParameterName = "@pApPaterno", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.ApellidoPaterno });
             parametros.Add(new SqlParameter { ParameterName = "@pApMaterno", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.ApellidoMaterno });
@@ -29,14 +32,18 @@ namespace EnvíosJADEE.Network
 
             try
             {
-                dac.ExecuteNonQuery("InsertPersonaUsuario", parametros);
-                return "Correcto";
+                DataSet ds = dac.Fill("InsertPersonaUsuario", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return "Correcto";
+            return resultado;
         }
         public List<PersonaModel> GetPersonasUsuario()
         {

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using TestLeoniWF;
-
+using EnvíosJADEE.Clases;
 namespace EnvíosJADEE.Network
 {
     internal class VehiculosService
@@ -23,7 +23,7 @@ namespace EnvíosJADEE.Network
             parametros.Add(new SqlParameter { ParameterName = "@pModelo", SqlDbType = System.Data.SqlDbType.VarChar, Value = Vehiculo.modelo });
             parametros.Add(new SqlParameter { ParameterName = "@pNoSerie", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.NoSerie });
             parametros.Add(new SqlParameter { ParameterName = "@pIdTipo", SqlDbType = System.Data.SqlDbType.Int, Value = Vehiculo.idTipo });
-
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
 
             try
             {

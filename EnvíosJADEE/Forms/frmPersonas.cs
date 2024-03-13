@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace EnvíosJADEE.Forms
 {
     public partial class frmPersonas : Form
     {
+        PersonaUsuarioService personaService = new PersonaUsuarioService();
         public frmPersonas()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace EnvíosJADEE.Forms
             txtNombre.Text = "";
             txtApPaterno.Text = "";
             txtApMaterno.Text = "";
-            txtDirección.Text = "";
+            txtDireccion.Text = "";
 
 
             txtNombre.Focus();
@@ -33,28 +35,50 @@ namespace EnvíosJADEE.Forms
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Trim().Length == 0 || txtApPaterno.Text.Trim().Length == 0 || txtApMaterno.Text.Trim().Length == 0 || txtDirección.Text.Trim().Length == 0)
+            if (txtNombre.Text.Trim().Length == 0 || txtApPaterno.Text.Trim().Length == 0 || txtApMaterno.Text.Trim().Length == 0 || txtDireccion.Text.Trim().Length == 0)
             {
                 MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (Regex.Match(txtNombre.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(txtApPaterno.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(txtApMaterno.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(txtDireccion.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+            {
+                MessageBox.Show("Los datos solo pueden contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (Regex.Match(txtNombre.Text.Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(txtApPaterno.Text.Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(txtApMaterno.Text.Trim(), @"\w+(?:\s[a-zA-Z])+").Success)
+            {
+                MessageBox.Show("Favor de ingresar un solo nombre/apellido por campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 PersonaModel persona = new PersonaModel();
-                persona.Nombre = txtNombre.Text;
-                persona.ApellidoPaterno = txtApPaterno.Text;
-                persona.ApellidoMaterno= txtApMaterno.Text;
-                persona.Dirección = txtDirección.Text;
+                persona.Nombre = txtNombre.Text.Trim();
+                persona.ApellidoPaterno = txtApPaterno.Text.Trim();
+                persona.ApellidoMaterno = txtApMaterno.Text.Trim();
+                persona.Dirección = txtDireccion.Text.Trim();
 
-                UsuarioModel usuario= new UsuarioModel();
+                UsuarioModel usuario = new UsuarioModel();
                 usuario.IdPerfil = int.Parse(cmbPerfiles.SelectedValue.ToString());
 
-                PersonaUsuarioService service = new PersonaUsuarioService();
-                service.InsertPersonaUsuario(persona, usuario);
+                int resultado = personaService.InsertPersonaUsuario(persona, usuario);
 
-                dgvPersonas.DataSource = null;
-                dgvPersonas.DataSource = service.GetPersonasUsuario();
-
-
+                if (resultado == 1)
+                {
+                    MessageBox.Show("Cuenta añadida con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvPersonas.DataSource = null;
+                    dgvPersonas.DataSource = personaService.GetPersonasUsuario();
+                    dgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvPersonas.Columns[0].ReadOnly = true;
+                    dgvPersonas.Columns[4].ReadOnly = true;
+                    dgvPersonas.Columns[7].ReadOnly = true;
+                    dgvPersonas.Columns[9].ReadOnly = true;
+                }
+                else if (resultado == 0)
+                {
+                    MessageBox.Show("El usuario ya existe, trata de iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Algo salió mal, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
         }
@@ -68,7 +92,7 @@ namespace EnvíosJADEE.Forms
             cmbPerfiles.DisplayMember = "Nombre";
             cmbPerfiles.ValueMember = "Id";
 
-            PersonaUsuarioService personaService = new PersonaUsuarioService();
+
             dgvPersonas.DataSource = personaService.GetPersonasUsuario();
             dgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPersonas.Columns[0].ReadOnly= true;
@@ -77,28 +101,46 @@ namespace EnvíosJADEE.Forms
             dgvPersonas.Columns[9].ReadOnly = true;
         }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            frmHome frmHome = new frmHome();
-            frmHome.Show();
-            this.Close();
-        }
-
         private void dgvPersonas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            PersonaUsuarioService service = new PersonaUsuarioService();
-            PersonaModel persona = new PersonaModel();
-            var row = dgvPersonas.Rows[e.RowIndex];
+            try
+            {
+                PersonaModel persona = new PersonaModel();
+                var row = dgvPersonas.Rows[e.RowIndex];
 
-            persona.Id = int.Parse(row.Cells[0].Value.ToString());
-            persona.Nombre = row.Cells[1].Value.ToString();
-            persona.ApellidoPaterno = row.Cells[2].Value.ToString();
-            persona.ApellidoMaterno = row.Cells[3].Value.ToString();
-            persona.Dirección = row.Cells[5].Value.ToString();
-            persona.Estatus = row.Cells[8].Value.ToString();
-            service.UpdatePersonasUsuario(persona);
-            dgvPersonas.DataSource = null;
-            dgvPersonas.DataSource = service.GetPersonasUsuario();
+                if (row.Cells[1].Value.ToString().Trim() == "" || row.Cells[2].Value.ToString().Trim() == "" || row.Cells[3].Value.ToString().Trim() == "" || row.Cells[5].Value.ToString().Trim() == "" || row.Cells[8].Value.ToString().Trim() == "")
+                {
+                    MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (Regex.Match(row.Cells[1].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(row.Cells[2].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(row.Cells[3].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(row.Cells[5].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(row.Cells[8].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+                {
+                    MessageBox.Show("Los datos solo pueden contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (Regex.Match(row.Cells[1].Value.ToString(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(row.Cells[2].Value.ToString().Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(row.Cells[3].Value.ToString().Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(row.Cells[5].Value.ToString().Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(row.Cells[8].Value.ToString().Trim(), @"\w+(?:\s[a-zA-Z])+").Success)
+                {
+                    MessageBox.Show("Favor de ingresar un solo nombre/apellido por campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    persona.Id = int.Parse(row.Cells[0].Value.ToString());
+                    persona.Nombre = row.Cells[1].Value.ToString();
+                    persona.ApellidoPaterno = row.Cells[2].Value.ToString();
+                    persona.ApellidoMaterno = row.Cells[3].Value.ToString();
+                    persona.Dirección = row.Cells[5].Value.ToString();
+                    persona.Estatus = row.Cells[8].Value.ToString();
+                    personaService.UpdatePersonasUsuario(persona);
+
+                }
+                dgvPersonas.DataSource = null;
+                dgvPersonas.DataSource = personaService.GetPersonasUsuario();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)

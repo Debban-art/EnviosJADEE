@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace EnvíosJADEE.Forms
 {
@@ -26,25 +27,47 @@ namespace EnvíosJADEE.Forms
             {
                 MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (Regex.Match(txtNombre.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(txtApPaterno.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(txtApMaterno.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(txtDireccion.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+            {
+                MessageBox.Show("Los datos solo pueden contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (Regex.Match(txtNombre.Text.Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(txtApPaterno.Text.Trim(), @"\w+(?:\s[a-zA-Z])+").Success || Regex.Match(txtApMaterno.Text.Trim(), @"\w+(?:\s[a-zA-Z])+").Success)
+            {
+                MessageBox.Show("Favor de ingresar un solo nombre/apellido por campo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 PersonaModel persona = new PersonaModel();
-                persona.Nombre = txtNombre.Text;
-                persona.ApellidoPaterno = txtApPaterno.Text;
-                persona.ApellidoMaterno = txtApMaterno.Text;
-                persona.Dirección = txtDireccion.Text;
+                persona.Nombre = txtNombre.Text.Trim();
+                persona.ApellidoPaterno = txtApPaterno.Text.Trim();
+                persona.ApellidoMaterno = txtApMaterno.Text.Trim();
+                persona.Dirección = txtDireccion.Text.Trim();
 
                 UsuarioModel usuario = new UsuarioModel();
                 usuario.IdPerfil = int.Parse(cmbPerfiles.SelectedValue.ToString());
 
                 PersonaUsuarioService service = new PersonaUsuarioService();
-                service.InsertPersonaUsuario(persona, usuario);
+                int resultado = service.InsertPersonaUsuario(persona, usuario);
 
-                LoginService login = new LoginService();
-                login.Login(txtNombre.Text.Substring(0,1)+txtApPaterno.Text, "123456789");
-                frmHome frmHome = new frmHome();
-                frmHome.Show();
-                this.Hide();
+                if (resultado == 1)
+                {
+                    MessageBox.Show("Cuenta creada con éxito, seras redirigido a la pantalla de inicio", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LoginService login = new LoginService();
+                    login.Login(txtNombre.Text.Substring(0, 1) + txtApPaterno.Text, "123456789");
+                    frmHome frmHome = new frmHome();
+                    frmHome.Show();
+                    this.Hide();
+                }
+                else if (resultado == 0)
+                {
+                    MessageBox.Show("El usuario ya existe, trata de iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Algo salió mal, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
 

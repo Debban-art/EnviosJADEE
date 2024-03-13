@@ -34,7 +34,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApPaterno = new System.Windows.Forms.TextBox();
             this.txtApMaterno = new System.Windows.Forms.TextBox();
-            this.txtDirección = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
@@ -79,14 +79,14 @@
             this.txtApMaterno.Size = new System.Drawing.Size(228, 26);
             this.txtApMaterno.TabIndex = 3;
             // 
-            // txtDirección
+            // txtDireccion
             // 
-            this.txtDirección.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtDirección.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDirección.Location = new System.Drawing.Point(57, 304);
-            this.txtDirección.Name = "txtDirección";
-            this.txtDirección.Size = new System.Drawing.Size(228, 26);
-            this.txtDirección.TabIndex = 4;
+            this.txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(57, 304);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(228, 26);
+            this.txtDireccion.TabIndex = 4;
             // 
             // btnCancelar
             // 
@@ -200,7 +200,7 @@
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
-            this.Controls.Add(this.txtDirección);
+            this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.txtApMaterno);
             this.Controls.Add(this.txtApPaterno);
             this.Controls.Add(this.txtNombre);
@@ -220,7 +220,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApPaterno;
         private System.Windows.Forms.TextBox txtApMaterno;
-        private System.Windows.Forms.TextBox txtDirección;
+        private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.Label lblNombre;
