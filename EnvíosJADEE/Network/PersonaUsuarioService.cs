@@ -17,7 +17,7 @@ namespace EnvíosJADEE.Network
     {
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
-        public int InsertPersonaUsuario(PersonaModel persona, UsuarioModel usuario)
+        public int InsertPersonaUsuario(InsertPersonaModel persona, UsuarioModel usuario)
         {
             int resultado = 3;
             List<int> lista = new List<int>();
@@ -45,10 +45,10 @@ namespace EnvíosJADEE.Network
             }
             return resultado;
         }
-        public List<PersonaModel> GetPersonasUsuario()
+        public List<GetPersonaModel> GetPersonasUsuario()
         {
             parametros = new ArrayList();
-            List<PersonaModel> lista = new List<PersonaModel>();
+            List<GetPersonaModel> lista = new List<GetPersonaModel>();
             //parametros.Add(new SqlParameter { ParameterName = "@pIdUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = 1 });                                                                                                                                                                                                                                              
             try
             {
@@ -56,7 +56,7 @@ namespace EnvíosJADEE.Network
                 if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
-                                     .Select(dataRow => new PersonaModel
+                                     .Select(dataRow => new GetPersonaModel
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          Nombre = dataRow["Nombre"].ToString(),
@@ -64,7 +64,6 @@ namespace EnvíosJADEE.Network
                                          ApellidoMaterno = dataRow["ApellidoMaterno"].ToString(),
                                          NombreUsuario = dataRow["NombreUsuario"].ToString(),
                                          Dirección = dataRow["Direccion"].ToString(),
-                                         IdPerfil = int.Parse(dataRow["IdPerfil"].ToString()),
                                          Perfil = dataRow["Perfil"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
@@ -80,7 +79,7 @@ namespace EnvíosJADEE.Network
 
         }
 
-        public void UpdatePersonasUsuario(PersonaModel persona)
+        public void UpdatePersonasUsuario(GetPersonaModel persona)
         {
             parametros = new ArrayList();
 
@@ -89,7 +88,8 @@ namespace EnvíosJADEE.Network
             parametros.Add(new SqlParameter { ParameterName = "@pApellidoPaterno", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.ApellidoPaterno });
             parametros.Add(new SqlParameter { ParameterName = "@pApellidoMaterno", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.ApellidoMaterno });
             parametros.Add(new SqlParameter { ParameterName = "@pDirección", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.Dirección });
-            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = persona.Estatus == "Activo" ? 1 : 0 });
+            parametros.Add(new SqlParameter { ParameterName = "@pPerfil", SqlDbType = System.Data.SqlDbType.VarChar, Value = persona.Perfil});
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = persona.Estatus == "activo" ? 1 : 0 });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
 
             try

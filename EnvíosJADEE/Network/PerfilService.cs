@@ -65,6 +65,26 @@ namespace EnvíosJADEE.Network
             return lista;
 
         }
+
+        public List<string> GetLowerPerfiles()
+        {
+            parametros = new ArrayList();
+            List<string> lista = new List<string>();
+            try
+            {
+                DataSet ds = dac.Fill("GetLowerPerfiles", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable()
+                                      .Select(dataRow => dataRow["Nombre"].ToString()).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lista;
+        }
         public void UpdatePerfil(PerfilModel Perfil)
         {
             parametros = new ArrayList();

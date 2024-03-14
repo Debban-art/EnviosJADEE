@@ -37,7 +37,7 @@ namespace EnvíosJADEE.Forms
             }
             else
             {
-                PersonaModel persona = new PersonaModel();
+                InsertPersonaModel persona = new InsertPersonaModel();
                 persona.Nombre = txtNombre.Text.Trim();
                 persona.ApellidoPaterno = txtApPaterno.Text.Trim();
                 persona.ApellidoMaterno = txtApMaterno.Text.Trim();

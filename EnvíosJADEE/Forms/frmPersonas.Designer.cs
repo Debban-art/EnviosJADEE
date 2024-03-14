@@ -163,6 +163,7 @@
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.Size = new System.Drawing.Size(643, 322);
             this.dgvPersonas.TabIndex = 28;
+            this.dgvPersonas.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvPersonas_CellBeginEdit);
             this.dgvPersonas.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellEndEdit);
             // 
             // cmbPerfiles
