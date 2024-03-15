@@ -68,7 +68,7 @@ namespace EnvíosJADEE.Forms
                     dgvPersonas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     dgvPersonas.Columns[0].ReadOnly = true;
                     dgvPersonas.Columns[4].ReadOnly = true;
-                    dgvPersonas.Columns[7].ReadOnly = true;
+                    dgvPersonas.Columns[8].ReadOnly = true;
                     dgvPersonas.Columns[9].ReadOnly = true;
                 }
                 else if (resultado == 0)
@@ -98,6 +98,7 @@ namespace EnvíosJADEE.Forms
             dgvPersonas.Columns[0].ReadOnly= true;
             dgvPersonas.Columns[4].ReadOnly = true;
             dgvPersonas.Columns[8].ReadOnly = true;
+            dgvPersonas.Columns[9].ReadOnly = true;
         }
 
         private void dgvPersonas_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -109,7 +110,7 @@ namespace EnvíosJADEE.Forms
 
                 try
                 {
-                    InsertPersonaModel persona = new InsertPersonaModel();
+                   GetPersonaModel persona = new GetPersonaModel();
                     PerfilService perfilService = new PerfilService();
                     var row = dgvPersonas.Rows[e.RowIndex];
 
@@ -133,17 +134,28 @@ namespace EnvíosJADEE.Forms
                     {
                         MessageBox.Show("Ingrese un perfil válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    //else
-                    //{
-                    //    persona.Id = int.Parse(row.Cells[0].Value.ToString());
-                    //    persona.Nombre = row.Cells[1].Value.ToString();
-                    //    persona.ApellidoPaterno = row.Cells[2].Value.ToString();
-                    //    persona.ApellidoMaterno = row.Cells[3].Value.ToString();
-                    //    persona.Dirección = row.Cells[5].Value.ToString();
-                    //    persona.Estatus = row.Cells[8].Value.ToString();
-                    //    personaService.UpdatePersonasUsuario(persona);
+                    else
+                    {
+                        persona.Id = int.Parse(row.Cells[0].Value.ToString().Trim());
+                        persona.Nombre = row.Cells[1].Value.ToString().Trim();
+                        persona.ApellidoPaterno = row.Cells[2].Value.ToString().Trim();
+                        persona.ApellidoMaterno = row.Cells[3].Value.ToString().Trim();
+                        persona.Perfil = row.Cells[6].Value.ToString().ToLower().Trim();
+                        persona.Dirección = row.Cells[5].Value.ToString().Trim();
+                        persona.Estatus = row.Cells[7].Value.ToString().ToLower().Trim();
 
-                    //}
+                        int resultado = personaService.UpdatePersonasUsuario(persona);
+
+                        if (resultado == 1)
+                        {
+                            MessageBox.Show("Cuenta actualizada con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (resultado == 0)
+                        {
+                            MessageBox.Show("El nombre de ese usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
 
                 }
                 catch (Exception ex)
@@ -160,7 +172,7 @@ namespace EnvíosJADEE.Forms
 
         private void dgvPersonas_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         { 
-            if (e.ColumnIndex == 0 || e.ColumnIndex == 4 || e.ColumnIndex == 8)
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 4 || e.ColumnIndex == 8 || e.ColumnIndex == 9)
             {
                 e.Cancel = true;
             }

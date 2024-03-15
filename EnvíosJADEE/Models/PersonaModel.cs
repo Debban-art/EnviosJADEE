@@ -16,7 +16,7 @@ namespace EnvíosJADEE.Models
 		public string Dirección { get; set; }
         public int IdPerfil { get; set; }
         public string Estatus { get; set; }
-		public string FechaRegistro { get; set; }
+		public string FechaRegistro { get; set; } 
     }
 
     internal class GetPersonaModel
@@ -30,6 +30,7 @@ namespace EnvíosJADEE.Models
         public string Perfil { get; set; }
         public string Estatus { get; set; }
         public string FechaRegistro { get; set; }
+        public int Usuario { get; set; }
     }
 
 }

@@ -18,22 +18,29 @@ namespace EnvíosJADEE.Network
             
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
-        public string InsertPerfil(PerfilModel Perfil)
+        public int InsertPerfil(PerfilModel Perfil)
         {
+            int resultado = 3;
+            List<int> lista = new List<int>();
+
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Perfil.Nombre });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
 
             try
             {
-                dac.ExecuteNonQuery("InsertPerfil", parametros);
-                return "Correcto";
+                DataSet ds = dac.Fill("InsertPerfil", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return "Correcto";
+            return resultado;
         }
 
         public List<PerfilModel> GetPerfiles()

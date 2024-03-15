@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace EnvíosJADEE.Forms
 {
     public partial class frmPerfiles : Form
     {
+        PerfilService perfilService = new PerfilService();
         public frmPerfiles()
         {
             InitializeComponent();
@@ -40,45 +42,61 @@ namespace EnvíosJADEE.Forms
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Trim().Length == 0)
+            try
             {
-                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNombre.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("No se puede dejar el campo en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (Regex.Match(txtNombre.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+                {
+                    MessageBox.Show("El nombre solo puede contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    PerfilModel perfilModel = new PerfilModel();
+                    perfilModel.Nombre = txtNombre.Text;
+
+
+                    int resultado = perfilService.InsertPerfil(perfilModel);
+
+                    if (resultado == 1)
+                    {
+                        MessageBox.Show("Perfil añadido exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (resultado == 0)
+                    {
+                        MessageBox.Show("El perfil ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                PerfilModel perfilModel = new PerfilModel();
-                perfilModel.Nombre = txtNombre.Text;
-
-                PerfilService perfilService = new PerfilService();
-                perfilService.InsertPerfil(perfilModel);
-
-                dgvPerfiles.DataSource = null;
-                dgvPerfiles.DataSource = perfilService.GetPerfiles();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            frmHome frmHome = new frmHome();
-            frmHome.Show();
-            this.Close();
+            dgvPerfiles.DataSource = null;
+            dgvPerfiles.DataSource = perfilService.GetPerfiles();
+
         }
 
         private void dgvPerfiles_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            PerfilService service = new PerfilService();
-           PerfilModel Perfil = new PerfilModel();
+            
+            perfilService = new PerfilService();
+            PerfilModel Perfil = new PerfilModel();
             var row = dgvPerfiles.Rows[e.RowIndex];
 
-           Perfil.Id = int.Parse(row.Cells[0].Value.ToString());
-           Perfil.Nombre = row.Cells[1].Value.ToString();
-           Perfil.Estatus = row.Cells[2].Value.ToString();
-            service.UpdatePerfil(Perfil);
+            Perfil.Id = int.Parse(row.Cells[0].Value.ToString());
+            Perfil.Nombre = row.Cells[1].Value.ToString();
+            Perfil.Estatus = row.Cells[2].Value.ToString();
+            perfilService.UpdatePerfil(Perfil);
 
             dgvPerfiles.DataSource = null;
            
-            dgvPerfiles.DataSource = service.GetPerfiles();
+            dgvPerfiles.DataSource = perfilService.GetPerfiles();
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)

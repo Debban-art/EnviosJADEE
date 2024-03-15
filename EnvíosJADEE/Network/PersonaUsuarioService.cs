@@ -67,6 +67,7 @@ namespace EnvíosJADEE.Network
                                          Perfil = dataRow["Perfil"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
+                                         Usuario = int.Parse(dataRow["Usuario"].ToString())
 
                                      }).ToList();
                 }
@@ -79,8 +80,10 @@ namespace EnvíosJADEE.Network
 
         }
 
-        public void UpdatePersonasUsuario(GetPersonaModel persona)
+        public int UpdatePersonasUsuario(GetPersonaModel persona)
         {
+            int resultado = 3;
+            List<int> lista = new List<int>();
             parametros = new ArrayList();
 
             parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = persona.Id });
@@ -94,14 +97,19 @@ namespace EnvíosJADEE.Network
 
             try
             {
-                dac.ExecuteNonQuery("UpdatePersonasUsuarios", parametros);
-                return;
+                DataSet ds = dac.Fill("UpdatePersonas" +
+                    "Usuarios", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return;
+            return resultado;
         }
     }
 }
