@@ -17,29 +17,36 @@ namespace EnvíosJADEE.Network
     {
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
-        public string InsertModulos(ModuloModel Modulos)
+        public int InsertModulos(InsertModuloModel Modulos)
         {
+            List<int> lista = new List<int>();
+            int resultado = 3;
             parametros = new ArrayList();
+
             parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = Modulos.IdCategoria });
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Modulos.Nombre });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
 
             try
             {
-                dac.ExecuteNonQuery("InsertModulos", parametros);
-                return "Correcto";
+                DataSet ds = dac.Fill("InsertModulos", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return "Correcto";
+            return resultado;
         }
 
-        public List<ModuloModel> GetModulos()
+        public List<GetModuloModel> GetModulos()
         {
             parametros = new ArrayList();
-            List<ModuloModel> lista = new List<ModuloModel>();
+            List<GetModuloModel> lista = new List<GetModuloModel>();
             //parametros.Add(new SqlParameter { ParameterName = "@pIdUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = 1 });                                                                                                                                                                                                                                              
             try
             {
@@ -47,11 +54,10 @@ namespace EnvíosJADEE.Network
                 if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
-                                     .Select(dataRow => new ModuloModel
+                                     .Select(dataRow => new GetModuloModel
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          Nombre = dataRow["Nombre"].ToString(),
-                                         IdCategoria = int.Parse(dataRow["IdCategoria"].ToString()),
                                          Categoria = dataRow["Categoria"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
@@ -68,12 +74,15 @@ namespace EnvíosJADEE.Network
 
         }
 
-        public void UpdateModulos(ModuloModel modulo)
-        {
+        public int UpdateModulos(GetModuloModel modulo)
+        { 
+            List<int> lista = new List<int>();
+            int resultado = 3;
             parametros = new ArrayList();
+
             parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.Id });
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = modulo.Nombre });
-            parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.IdCategoria });
+            parametros.Add(new SqlParameter { ParameterName = "@pCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.Categoria });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
             parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.Estatus == "Activo" ? 1 : 0 });
             
@@ -81,14 +90,19 @@ namespace EnvíosJADEE.Network
 
             try
             {
-                dac.ExecuteNonQuery("UpdateModulos", parametros);
-                return;
+                DataSet ds = dac.Fill("UpdateModulos", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return;
+            return resultado;
         }
 
     }

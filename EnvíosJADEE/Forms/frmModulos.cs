@@ -1,13 +1,17 @@
-﻿using EnvíosJADEE.Clases;
+﻿using ClosedXML.Excel;
+using EnvíosJADEE.Clases;
 using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
 using System;
 using System.Windows.Forms;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace EnvíosJADEE.Forms
 {
     public partial class frmModulos : Form
     {
+        ModulosService service = new ModulosService();
         public frmModulos()
         {
             InitializeComponent();
@@ -28,33 +32,48 @@ namespace EnvíosJADEE.Forms
             cmbCategoria.DisplayMember = "Nombre";
             cmbCategoria.ValueMember = "Id";
             dgvModulos.Columns[0].ReadOnly = true;
-            dgvModulos.Columns[3].ReadOnly = true;
+            dgvModulos.Columns[4].ReadOnly = true;
             dgvModulos.Columns[5].ReadOnly = true;
-            dgvModulos.Columns[6].ReadOnly = true;
 
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text.Trim().Length == 0)
+            try
             {
-                MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (txtNombre.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("No se puede dejar el campo en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (Regex.Match(txtNombre.Text.Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+                {
+                    MessageBox.Show("El nombre solo puede contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    InsertModuloModel modulo = new InsertModuloModel();
+                    modulo.IdCategoria = int.Parse(cmbCategoria.SelectedValue.ToString());
+                    modulo.Nombre = txtNombre.Text;
+
+                    int resultado = service.InsertModulos(modulo);
+
+                    if (resultado == 1)
+                    {
+                        MessageBox.Show("Categoría añadida exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (resultado == 0)
+                    {
+                        MessageBox.Show("La categoría ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                //Llamar el insertModulo
-                ModulosService moduloService = new ModulosService();
-                ModuloModel modulo = new ModuloModel();
-
-                modulo.IdCategoria = int.Parse(cmbCategoria.SelectedValue.ToString());
-                modulo.Nombre = txtNombre.Text;
-
-                moduloService.InsertModulos(modulo);
-
-                //Refresh la tabla de modulos
-                dgvModulos.DataSource = null;
-                dgvModulos.DataSource = moduloService.GetModulos();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            dgvModulos.DataSource = null;
+            dgvModulos.DataSource = service.GetModulos();
 
         }
 
@@ -66,79 +85,103 @@ namespace EnvíosJADEE.Forms
             cmbCategoria.Focus();
         }
 
-        private void btnRegresar_Click(object sender, EventArgs e)
-        {
-            frmHome frmHome = new frmHome();
-
-            frmHome.Show();
-            this.Close();
-        }
-
-        private void dgvModulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dgvModulos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            ModulosService service = new ModulosService();
-            ModuloModel Modulos = new ModuloModel();
-            var row = dgvModulos.Rows[e.RowIndex];
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                dgvModulos.Rows[e.RowIndex].ErrorText = string.Empty;
 
-            Modulos.Id = int.Parse(row.Cells[0].Value.ToString());
-            Modulos.Nombre = row.Cells[1].Value.ToString();
-            Modulos.IdCategoria = int.Parse(row.Cells[2].Value.ToString());
-            Modulos.Estatus = row.Cells[4].Value.ToString();
-            service.UpdateModulos(Modulos);
+                try
+                {
+
+                    GetModuloModel Modulos = new GetModuloModel();
+                    var row = dgvModulos.Rows[e.RowIndex];
+
+                    if (row.Cells[1].Value == null || row.Cells[1].Value.ToString().Trim() == "")
+                    {
+                        MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (Regex.Match(row.Cells[1].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+                    {
+                        MessageBox.Show("Los datos solo pueden contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (row.Cells[3].Value.ToString().ToLower().Trim() != "activo" && row.Cells[3].Value.ToString().ToLower().Trim() != "inactivo")
+                    {
+                        MessageBox.Show("Ingrese un estatus válido: activo o inactivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Modulos.Id = int.Parse(row.Cells[0].Value.ToString());
+                        Modulos.Nombre = row.Cells[1].Value.ToString();
+                        Modulos.Categoria = row.Cells[2].Value.ToString().ToLower();
+                        Modulos.Estatus = row.Cells[3].Value.ToString();
+                        int resultado = service.UpdateModulos(Modulos);
+
+                        if (resultado == 1)
+                        {
+                            MessageBox.Show("Categoría actualizada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (resultado == 0)
+                        {
+                            MessageBox.Show("Esa categoría ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }));
+
             dgvModulos.DataSource = null;
-            ModulosService Modulosservice = new ModulosService();
             dgvModulos.DataSource = service.GetModulos();
         }
 
-        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new frmHome(), this);
+            string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = Path.Combine(documentosPath, $"Módulos {DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
 
-        }
 
-        private void perfilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmPerfiles(), this);
-        }
+            try
+            {
+                XLWorkbook workBook = new XLWorkbook();
+                var workSheet = workBook.AddWorksheet();
 
-        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmDetallePerfil(), this);
-        }
+                var tablaDeRegistros = workSheet.Cell(5, 1).InsertTable(service.GetModulos());
 
-        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmPersonas(), this);
-        }
+                workSheet.Cell("A1").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A1").Value = "Fecha";
+                workSheet.Cell("B1").Style.Fill.SetBackgroundColor(XLColor.FromArgb(100, 220, 230, 241));
+                workSheet.Cell("B1").Value = DateTime.Now.Date;
 
-        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmMedios(), this);
-        }
+                workSheet.Cell("A2").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A2").Value = "Hora";
+                workSheet.Cell("B2").Value = DateTime.Now.TimeOfDay;
 
-        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmMarcas(), this);
-        }
+                workSheet.Cell("C1").Value = "Envios JADEE";
+                var rangoNombreEmpresa = workSheet.Range("C1", "F2");
+                rangoNombreEmpresa.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
 
-        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmVehículos(), this);
-        }
 
-        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmCategorías(), this);
-        }
+                workSheet.Cell("A3").Value = $"Registro de Módulos";
+                var rangoTituloTabla = workSheet.Range("A3", "F4");
+                rangoTituloTabla.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 54, 96, 146)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
+                workSheet.Columns().AdjustToContents();
 
+                workBook.SaveAs(filePath);
+
+                MessageBox.Show("Excel creado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

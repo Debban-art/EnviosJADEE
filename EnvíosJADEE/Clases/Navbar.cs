@@ -31,8 +31,8 @@ public static class MenuBuilder
         {
             ToolStripDropDownButton categoriaItem = new ToolStripDropDownButton(categoria.Nombre);
 
-            List<ModuloModel> modulos = service.GetModulosPorPerfil(categoria.Id);
-            foreach (ModuloModel modulo in modulos)
+            List<GetModuloModel> modulos = service.GetModulosPorPerfil(categoria.Id);
+            foreach (GetModuloModel modulo in modulos)
             {
                 ToolStripMenuItem moduloItem = new ToolStripMenuItem(modulo.Nombre);
                 moduloItem.BackColor = Color.FromArgb(0, 75, 69);

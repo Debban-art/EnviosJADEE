@@ -11,6 +11,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using ClosedXML.Excel;
 
 namespace EnvíosJADEE.Forms
 {
@@ -84,65 +86,112 @@ namespace EnvíosJADEE.Forms
 
         private void dgvPerfiles_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
-            perfilService = new PerfilService();
-            PerfilModel Perfil = new PerfilModel();
-            var row = dgvPerfiles.Rows[e.RowIndex];
+            this.BeginInvoke(new MethodInvoker(() =>
+            {
+                dgvPerfiles.Rows[e.RowIndex].ErrorText = string.Empty;
 
-            Perfil.Id = int.Parse(row.Cells[0].Value.ToString());
-            Perfil.Nombre = row.Cells[1].Value.ToString();
-            Perfil.Estatus = row.Cells[2].Value.ToString();
-            perfilService.UpdatePerfil(Perfil);
+                try
+                {
+                    perfilService = new PerfilService();
+                    PerfilModel Perfil = new PerfilModel();
+                    var row = dgvPerfiles.Rows[e.RowIndex];
 
-            dgvPerfiles.DataSource = null;
-           
-            dgvPerfiles.DataSource = perfilService.GetPerfiles();
+                    if (row.Cells[1].Value == null || row.Cells[1].Value.ToString().Trim() == "")
+                    {
+                        MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (Regex.Match(row.Cells[1].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+                    {
+                        MessageBox.Show("Los datos solo pueden contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (row.Cells[2].Value.ToString().ToLower().Trim() != "activo" && row.Cells[2].Value.ToString().ToLower().Trim() != "inactivo")
+                    {
+                        MessageBox.Show("Ingrese un estatus válido: activo o inactivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        Perfil.Id = int.Parse(row.Cells[0].Value.ToString());
+                        Perfil.Nombre = row.Cells[1].Value.ToString().Trim();
+                        Perfil.Estatus = row.Cells[2].Value.ToString().Trim().ToLower();
+
+                        int resultado =  perfilService.UpdatePerfil(Perfil);
+
+                        if (resultado == 1)
+                        {
+                            MessageBox.Show("Perfil actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (resultado == 0)
+                        {
+                            MessageBox.Show("Ese perfil ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                dgvPerfiles.DataSource = null;
+                dgvPerfiles.DataSource = perfilService.GetPerfiles();
+
+                return;
+            }));
+
+
+
+
         }
 
-        private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dgvPerfiles_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
-            ChangePages.ChangeWindow(new frmHome(), this);
-
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 3 || e.ColumnIndex == 4)
+            {
+                e.Cancel = true;
+            }
         }
 
-        private void modulosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            ChangePages.ChangeWindow(new frmModulos(), this);
-        }
+            string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filePath = Path.Combine(documentosPath, $"Perfiles {DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
 
-        private void detallesPerfilToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmDetallePerfil(), this);
-        }
 
-        private void personasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmPersonas(), this);
-        }
+            try
+            {
+                XLWorkbook workBook = new XLWorkbook();
+                var workSheet = workBook.AddWorksheet();
 
-        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmMedios(), this);
-        }
+                var tablaDeRegistros = workSheet.Cell(5, 1).InsertTable(perfilService.GetPerfiles());
 
-        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmMarcas(), this);
-        }
+                workSheet.Cell("A1").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A1").Value = "Fecha";
+                workSheet.Cell("B1").Style.Fill.SetBackgroundColor(XLColor.FromArgb(100, 220, 230, 241));
+                workSheet.Cell("B1").Value = DateTime.Now.Date;
 
-        private void vehículosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmVehículos(), this);
-        }
+                workSheet.Cell("A2").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A2").Value = "Hora";
+                workSheet.Cell("B2").Value = DateTime.Now.TimeOfDay;
 
-        private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmCategorías(), this);
-        }
+                workSheet.Cell("C1").Value = "Envios JADEE";
+                var rangoNombreEmpresa = workSheet.Range("C1", "E2");
+                rangoNombreEmpresa.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
 
-        private void modulosToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ChangePages.ChangeWindow(new frmModulos(), this);
+
+                workSheet.Cell("A3").Value = $"Registro de Personas";
+                var rangoTituloTabla = workSheet.Range("A3", "E4");
+                rangoTituloTabla.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 54, 96, 146)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
+
+                workSheet.Columns().AdjustToContents();
+
+                workBook.SaveAs(filePath);
+
+                MessageBox.Show("Excel creado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -18,12 +18,12 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
-        public List<ModuloModel> GetModulosPorPerfil(int idCategoría)
+        public List<GetModuloModel> GetModulosPorPerfil(int idCategoría)
         {
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pIdCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = idCategoría });
 
-            List<ModuloModel> lista = new List<ModuloModel>();
+            List<GetModuloModel> lista = new List<GetModuloModel>();
 
             try
             {
@@ -31,7 +31,7 @@ namespace EnvíosJADEE.Network
                 if (ds.Tables.Count> 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
-                                     .Select(dataRow => new ModuloModel
+                                     .Select(dataRow => new GetModuloModel
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          Nombre = dataRow["Nombre"].ToString(),

@@ -35,6 +35,7 @@
             this.lblModulo = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.dgvModulos = new System.Windows.Forms.DataGridView();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvModulos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,8 +113,21 @@
             this.dgvModulos.Name = "dgvModulos";
             this.dgvModulos.Size = new System.Drawing.Size(643, 322);
             this.dgvModulos.TabIndex = 54;
-            this.dgvModulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModulos_CellContentClick);
             this.dgvModulos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModulos_CellEndEdit);
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(357, 479);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(215, 30);
+            this.btnExportarExcel.TabIndex = 93;
+            this.btnExportarExcel.Text = "Exportar Módulos  a Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // frmModulos
             // 
@@ -121,6 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.dgvModulos);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnCancelar);
@@ -145,5 +160,6 @@
         private System.Windows.Forms.Label lblModulo;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DataGridView dgvModulos;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

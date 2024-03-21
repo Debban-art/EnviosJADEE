@@ -34,6 +34,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.dgvCategorías = new System.Windows.Forms.DataGridView();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorías)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,8 +92,22 @@
             this.dgvCategorías.Name = "dgvCategorías";
             this.dgvCategorías.Size = new System.Drawing.Size(643, 322);
             this.dgvCategorías.TabIndex = 31;
-            this.dgvCategorías.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellContentClick);
+            this.dgvCategorías.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvCategorías_CellBeginEdit);
             this.dgvCategorías.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellEndEdit);
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(352, 472);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(246, 30);
+            this.btnExportarExcel.TabIndex = 92;
+            this.btnExportarExcel.Text = "Exportar Categorías a Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // frmCategorías
             // 
@@ -100,6 +115,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.dgvCategorías);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
@@ -122,5 +138,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.DataGridView dgvCategorías;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }
