@@ -73,25 +73,7 @@ namespace EnvíosJADEE.Network
 
         }
 
-        public List<string> GetLowerPerfiles()
-        {
-            parametros = new ArrayList();
-            List<string> lista = new List<string>();
-            try
-            {
-                DataSet ds = dac.Fill("GetLowerPerfiles", parametros);
-                if (ds.Tables.Count > 0)
-                {
-                    lista = ds.Tables[0].AsEnumerable()
-                                      .Select(dataRow => dataRow["Nombre"].ToString()).ToList();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return lista;
-        }
+       
         public int UpdatePerfil(PerfilModel Perfil)
         {
             int resultado = 3;
@@ -117,6 +99,21 @@ namespace EnvíosJADEE.Network
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
+        }
+
+        public void DeletePerfil (int id)
+        {
+           parametros = new ArrayList();
+           parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = id});
+
+            try
+            {
+                dac.ExecuteNonQuery("DeletePerfil", parametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

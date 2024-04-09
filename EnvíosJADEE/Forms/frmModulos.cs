@@ -59,11 +59,11 @@ namespace EnvíosJADEE.Forms
 
                     if (resultado == 1)
                     {
-                        MessageBox.Show("Categoría añadida exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Módulo añadido exitosamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (resultado == 0)
                     {
-                        MessageBox.Show("La categoría ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("El módulo ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -98,11 +98,11 @@ namespace EnvíosJADEE.Forms
                     GetModuloModel Modulos = new GetModuloModel();
                     var row = dgvModulos.Rows[e.RowIndex];
 
-                    if (row.Cells[1].Value == null || row.Cells[1].Value.ToString().Trim() == "")
+                    if (row.Cells[1].Value.ToString().Trim().Length == 0 || row.Cells[2].Value.ToString().Trim().Length == 0)
                     {
                         MessageBox.Show("No se pueden dejar campos en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (Regex.Match(row.Cells[1].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
+                    else if (Regex.Match(row.Cells[1].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success || Regex.Match(row.Cells[2].Value.ToString().Trim(), @"[\d!@#$%^&*()_+{}\[\]:;<>,.?/~\\]").Success)
                     {
                         MessageBox.Show("Los datos solo pueden contener letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -114,17 +114,21 @@ namespace EnvíosJADEE.Forms
                     {
                         Modulos.Id = int.Parse(row.Cells[0].Value.ToString());
                         Modulos.Nombre = row.Cells[1].Value.ToString();
-                        Modulos.Categoria = row.Cells[2].Value.ToString().ToLower();
+                        Modulos.Categoria = row.Cells[2].Value.ToString();
                         Modulos.Estatus = row.Cells[3].Value.ToString();
                         int resultado = service.UpdateModulos(Modulos);
 
                         if (resultado == 1)
                         {
-                            MessageBox.Show("Categoría actualizada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Modulo actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (resultado == 0)
                         {
-                            MessageBox.Show("Esa categoría ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Este módulo ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (resultado == 2)
+                        {
+                            MessageBox.Show("Categoría inválida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -135,10 +139,11 @@ namespace EnvíosJADEE.Forms
                     MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+                dgvModulos.DataSource = null;
+                dgvModulos.DataSource = service.GetModulos();
+                return;
             }));
 
-            dgvModulos.DataSource = null;
-            dgvModulos.DataSource = service.GetModulos();
         }
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
@@ -182,6 +187,36 @@ namespace EnvíosJADEE.Forms
             {
                 MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvModulos_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 4 || e.ColumnIndex == 5)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void dgvModulos_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvModulos.SelectedRows.Count == 1 && dgvModulos.SelectedCells.Count == dgvModulos.SelectedRows[0].Cells.Count)
+            {
+
+                btnEliminar.Visible = true;
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                btnEliminar.Visible = false;
+                btnEliminar.Enabled = false;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            service.DeleteModulos(int.Parse(dgvModulos.SelectedRows[0].Cells[0].Value.ToString()));
+            dgvModulos.DataSource = null;
+            dgvModulos.DataSource = service.GetModulos();
         }
     }
 }

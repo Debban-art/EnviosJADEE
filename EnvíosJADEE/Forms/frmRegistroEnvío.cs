@@ -70,9 +70,9 @@ namespace EnvíosJADEE.Forms
             dgvOrdenes.Columns[16].ReadOnly = true;
             dgvOrdenes.Columns[17].ReadOnly = true;
             dgvOrdenes.Columns[18].ReadOnly = true;
-            dgvOrdenes.Columns[19].ReadOnly = true;
+            dgvOrdenes.Columns[19].ReadOnly = false;
             dgvOrdenes.Columns[20].ReadOnly = true;
-            dgvOrdenes.Columns[21].ReadOnly = false;
+            dgvOrdenes.Columns[21].ReadOnly = true;
         }
 
 
@@ -256,11 +256,22 @@ namespace EnvíosJADEE.Forms
         {
             var row = dgvOrdenes.Rows[e.RowIndex];
 
-            string Estatus = row.Cells["Estatus"].Value.ToString();
+            string Estatus = row.Cells["Estatus"].Value.ToString().ToLower().Trim();
             int IdOrden = int.Parse(row.Cells["Id"].Value.ToString());
-            ordenesService.UpdateActEstatusRegistroEnvios(Estatus, IdOrden);
+
+            if (Estatus != "activo" && Estatus != "inactivo")
+            {
+                MessageBox.Show("Ingrese un estatus válido: activo o inactivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Estatus actualizado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ordenesService.UpdateActEstatusRegistroEnvios(Estatus, IdOrden);
+                
+            }
             dgvOrdenes.DataSource = null;
             dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
+
         }
 
         private bool ValidarTelefono(string numero)
@@ -281,19 +292,36 @@ namespace EnvíosJADEE.Forms
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
-            #region filepath
             string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = Path.Combine(documentosPath, $"Ordenes Envios JADEE.xlsx");
-            #endregion
-            RegistroEnvioService datosDeOrdneService = new RegistroEnvioService();
+            string filePath = Path.Combine(documentosPath, $"Registros de Ordenes {DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
+
+
             try
             {
                 XLWorkbook workBook = new XLWorkbook();
                 var workSheet = workBook.AddWorksheet();
 
-                workSheet.ColumnWidth = 12;
+                var tablaDeRegistros = workSheet.Cell(5, 1).InsertTable(ordenesService.GetRegistroEnvios());
 
-                workSheet.FirstCell().InsertTable(datosDeOrdneService.GetRegistroEnvios());
+                workSheet.Cell("A1").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A1").Value = "Fecha";
+                workSheet.Cell("B1").Style.Fill.SetBackgroundColor(XLColor.FromArgb(100, 220, 230, 241));
+                workSheet.Cell("B1").Value = DateTime.Now.Date;
+
+                workSheet.Cell("A2").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A2").Value = "Hora";
+                workSheet.Cell("B2").Value = DateTime.Now.TimeOfDay;
+
+                workSheet.Cell("C1").Value = "Envios JADEE";
+                var rangoNombreEmpresa = workSheet.Range("C1", "V2");
+                rangoNombreEmpresa.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
+
+
+                workSheet.Cell("A3").Value = "Registros de Ordenes";
+                var rangoTituloTabla = workSheet.Range("A3", "V4");
+                rangoTituloTabla.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 54, 96, 146)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
+
+                workSheet.Columns().AdjustToContents();
 
                 workBook.SaveAs(filePath);
 
@@ -304,6 +332,28 @@ namespace EnvíosJADEE.Forms
                 MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void dgvOrdenes_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvOrdenes.SelectedRows.Count == 1 && dgvOrdenes.SelectedCells.Count == dgvOrdenes.SelectedRows[0].Cells.Count)
+            {
+
+                btnEliminar.Visible = true;
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                btnEliminar.Visible = false;
+                btnEliminar.Enabled = false;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ordenesService.DeleteOrden(int.Parse(dgvOrdenes.SelectedRows[0].Cells[0].Value.ToString()));
+            dgvOrdenes.DataSource = null;
+            dgvOrdenes.DataSource = ordenesService.GetRegistroEnvios();
         }
     }
 }

@@ -79,10 +79,6 @@ namespace EnvíosJADEE.Forms
                     {
                         MessageBox.Show("El usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else
-                    {
-                        MessageBox.Show("Algo salió mal, intente de nuevo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
 
                 }
             }
@@ -140,10 +136,6 @@ namespace EnvíosJADEE.Forms
                     {
                         MessageBox.Show("Ingrese un estatus válido: activo o inactivo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    else if (!perfilService.GetLowerPerfiles().Contains(row.Cells[6].Value.ToString().ToLower().Trim()))
-                    {
-                        MessageBox.Show("Ingrese un perfil válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                     else
                     {
                         persona.Id = int.Parse(row.Cells[0].Value.ToString().Trim());
@@ -158,11 +150,15 @@ namespace EnvíosJADEE.Forms
 
                         if (resultado == 1)
                         {
-                            MessageBox.Show("Cuenta actualizada con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Cuenta actualizada con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else if (resultado == 0)
                         {
                             MessageBox.Show("El nombre de ese usuario ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else if (resultado == 2)
+                        {
+                            MessageBox.Show("Perfil inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -229,6 +225,33 @@ namespace EnvíosJADEE.Forms
             {
                 MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvPersonas_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPersonas.SelectedRows.Count == 1 && dgvPersonas.SelectedCells.Count == dgvPersonas.SelectedRows[0].Cells.Count)
+            {
+
+                btnEliminar.Visible = true;
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                btnEliminar.Visible = false;
+                btnEliminar.Enabled = false;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            personaService.DeletePersonaUsuario(int.Parse(dgvPersonas.SelectedRows[0].Cells[0].Value.ToString()));
+            dgvPersonas.DataSource = null;
+            dgvPersonas.DataSource = personaService.GetPersonasUsuario();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

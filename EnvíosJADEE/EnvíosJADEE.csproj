@@ -294,6 +294,12 @@
     <Compile Include="Forms\frmRegistroEnvío.Designer.cs">
       <DependentUpon>frmRegistroEnvío.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRepartidores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRepartidores.Designer.cs">
+      <DependentUpon>frmRepartidores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmReportePorFechas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegistroEnvío.resx">
       <DependentUpon>frmRegistroEnvío.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRepartidores.resx">
+      <DependentUpon>frmRepartidores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmReportePorFechas.resx">
       <DependentUpon>frmReportePorFechas.cs</DependentUpon>

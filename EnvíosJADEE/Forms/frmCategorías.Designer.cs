@@ -35,6 +35,7 @@
             this.btnAñadir = new System.Windows.Forms.Button();
             this.dgvCategorías = new System.Windows.Forms.DataGridView();
             this.btnExportarExcel = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorías)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +94,9 @@
             this.dgvCategorías.Size = new System.Drawing.Size(643, 322);
             this.dgvCategorías.TabIndex = 31;
             this.dgvCategorías.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvCategorías_CellBeginEdit);
+            this.dgvCategorías.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellClick);
             this.dgvCategorías.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCategorías_CellEndEdit);
+            this.dgvCategorías.SelectionChanged += new System.EventHandler(this.dgvCategorías_SelectionChanged);
             // 
             // btnExportarExcel
             // 
@@ -109,12 +112,29 @@
             this.btnExportarExcel.UseVisualStyleBackColor = false;
             this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Brown;
+            this.btnEliminar.Enabled = false;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(616, 472);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(96, 30);
+            this.btnEliminar.TabIndex = 93;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // frmCategorías
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.dgvCategorías);
             this.Controls.Add(this.btnCancelar);
@@ -139,5 +159,6 @@
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.DataGridView dgvCategorías;
         private System.Windows.Forms.Button btnExportarExcel;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

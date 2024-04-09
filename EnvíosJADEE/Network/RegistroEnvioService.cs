@@ -96,7 +96,7 @@ namespace EnvíosJADEE.Network
         {
             parametros = new ArrayList();
 
-            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = SqlDbType.VarChar, Value = Estatus });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = SqlDbType.VarChar, Value = Estatus == "activo" ? 1 : 0 });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = SqlDbType.Int, Value = SesionClass.IdUsuario });
             parametros.Add(new SqlParameter { ParameterName = "@pIdOrden", SqlDbType = SqlDbType.Int, Value = IdOrden });
 
@@ -177,6 +177,21 @@ namespace EnvíosJADEE.Network
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return;
+        }
+
+        public void DeleteOrden(int id)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = id });
+
+            try
+            {
+                dac.ExecuteNonQuery("DeleteOrden", parametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

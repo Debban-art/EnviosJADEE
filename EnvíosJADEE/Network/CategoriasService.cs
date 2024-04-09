@@ -100,5 +100,20 @@ namespace EnvíosJADEE.Network
             return resultado;
         }
 
+        public void DeleteCategoria(int id)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = id });
+
+            try
+            {
+                dac.ExecuteNonQuery("DeleteCategoria", parametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
+            }
+        }
+
     }
 }

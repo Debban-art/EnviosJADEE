@@ -294,6 +294,7 @@
             // cmbEstatus
             // 
             this.cmbEstatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstatus.Enabled = false;
             this.cmbEstatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cmbEstatus.FormattingEnabled = true;
@@ -424,6 +425,7 @@
             // cmbColonia
             // 
             this.cmbColonia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbColonia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColonia.Enabled = false;
             this.cmbColonia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColonia.FormattingEnabled = true;
@@ -527,6 +529,7 @@
             // cmbPaís
             // 
             this.cmbPaís.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbPaís.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPaís.Enabled = false;
             this.cmbPaís.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaís.FormattingEnabled = true;
@@ -538,6 +541,7 @@
             // cmbEstado
             // 
             this.cmbEstado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.Enabled = false;
             this.cmbEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstado.FormattingEnabled = true;
@@ -743,7 +747,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
-            this.ClientSize = new System.Drawing.Size(1453, 813);
+            this.ClientSize = new System.Drawing.Size(1364, 749);
             this.Controls.Add(this.btnReporteExcel);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnActualizarEstatus);

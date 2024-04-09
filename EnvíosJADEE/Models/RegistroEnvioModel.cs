@@ -34,10 +34,11 @@ namespace EnvíosJADEE.Models
 
         public string EstatusDeOrden { get; set; }
 
-        public int UsuarioRegistra { get; set; }
+        public string Estatus { get; set; }
 
         public string FechaRegistro { get; set; }
+        public int UsuarioRegistra { get; set; }
 
-        public string Estatus { get; set; }
+
     }
 }

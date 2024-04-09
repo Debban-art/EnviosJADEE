@@ -24,6 +24,24 @@ namespace EnvíosJADEE.Forms
             InitializeComponent();
         }
 
+        private void frmCategorías_Load(object sender, EventArgs e)
+        {
+            CategoriasService service = new CategoriasService();
+            MenuBuilder.BuildMenu(this);
+            dgvCategorías.DataSource = service.GetCategorias();
+            dgvCategorías.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCategorías.Columns[0].ReadOnly = true;
+            dgvCategorías.Columns[3].ReadOnly = true;
+            dgvCategorías.Columns[4].ReadOnly = true;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            txtNombre.Text = "";
+            txtNombre.Focus();
+        }
+
+        //INSERTAR UNA NUEVA CATEGORÍA 
         private void btnAñadir_Click(object sender, EventArgs e)
         {
             try
@@ -64,23 +82,7 @@ namespace EnvíosJADEE.Forms
 
         }
 
-        private void frmCategorías_Load(object sender, EventArgs e)
-        {
-            CategoriasService service = new CategoriasService();
-            MenuBuilder.BuildMenu(this);
-            dgvCategorías.DataSource= service.GetCategorias();
-            dgvCategorías.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCategorías.Columns[0].ReadOnly = true;
-            dgvCategorías.Columns[3].ReadOnly = true;
-            dgvCategorías.Columns[4].ReadOnly = true;
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            txtNombre.Text = "";
-            txtNombre.Focus();
-        }
-
+        //EDITAR UNA CATEGORÍA
         private void dgvCategorías_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             this.BeginInvoke(new MethodInvoker(() =>
@@ -119,7 +121,7 @@ namespace EnvíosJADEE.Forms
                         }
                         else if (resultado == 0)
                         {
-                            MessageBox.Show("Esa categoría ya existe ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Esa categoría ya existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -145,6 +147,7 @@ namespace EnvíosJADEE.Forms
             }
         }
 
+        //EXPORTAR A EXCEL
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
             string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -172,7 +175,7 @@ namespace EnvíosJADEE.Forms
                 rangoNombreEmpresa.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
 
 
-                workSheet.Cell("A3").Value = $"Registro de Categorías";
+                workSheet.Cell("A3").Value = "Registro de Categorías";
                 var rangoTituloTabla = workSheet.Range("A3", "E4");
                 rangoTituloTabla.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 54, 96, 146)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
 
@@ -187,5 +190,34 @@ namespace EnvíosJADEE.Forms
                 MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvCategorías_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            service.DeleteCategoria(int.Parse(dgvCategorías.SelectedRows[0].Cells[0].Value.ToString()));
+            dgvCategorías.DataSource = null;
+            dgvCategorías.DataSource = service.GetCategorias();
+        }
+
+        private void dgvCategorías_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvCategorías.SelectedRows.Count == 1 && dgvCategorías.SelectedCells.Count == dgvCategorías.SelectedRows[0].Cells.Count)
+            {
+
+                btnEliminar.Visible = true;
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                btnEliminar.Visible = false;
+                btnEliminar.Enabled = false;
+            }
+        }
+
+        
     }
 }

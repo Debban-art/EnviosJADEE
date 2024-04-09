@@ -9,8 +9,10 @@ namespace EnvíosJADEE.Models
     internal class MarcaModel
     {
         public int Id { get; set; }
-        public string marca { get; set; }
+        public string Marca { get; set; }
 
-        public string estatus { get; set; }
+        public string Estatus { get; set; }
+        public string FechaModificación { get; set; }
+        public int Usuario { get; set; }
     }
 }

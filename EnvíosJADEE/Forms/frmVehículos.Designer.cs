@@ -33,7 +33,7 @@
             this.lblMatrícula = new System.Windows.Forms.Label();
             this.txtMatrícula = new System.Windows.Forms.TextBox();
             this.lblNoSerie = new System.Windows.Forms.Label();
-            this.txtNoId = new System.Windows.Forms.TextBox();
+            this.txtNoSerie = new System.Windows.Forms.TextBox();
             this.cmbMarca = new System.Windows.Forms.ComboBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.lblTipo = new System.Windows.Forms.Label();
@@ -42,6 +42,8 @@
             this.dgvVehiculos = new System.Windows.Forms.DataGridView();
             this.btnAñadir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,19 +87,20 @@
             this.lblNoSerie.TabIndex = 9;
             this.lblNoSerie.Text = "Número de Serie";
             // 
-            // txtNoId
+            // txtNoSerie
             // 
-            this.txtNoId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
-            this.txtNoId.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNoId.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoId.Location = new System.Drawing.Point(38, 413);
-            this.txtNoId.Name = "txtNoId";
-            this.txtNoId.Size = new System.Drawing.Size(228, 22);
-            this.txtNoId.TabIndex = 10;
+            this.txtNoSerie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.txtNoSerie.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNoSerie.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNoSerie.Location = new System.Drawing.Point(38, 413);
+            this.txtNoSerie.Name = "txtNoSerie";
+            this.txtNoSerie.Size = new System.Drawing.Size(228, 22);
+            this.txtNoSerie.TabIndex = 10;
             // 
             // cmbMarca
             // 
             this.cmbMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarca.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMarca.FormattingEnabled = true;
             this.cmbMarca.Location = new System.Drawing.Point(38, 213);
@@ -108,6 +111,7 @@
             // cmbTipo
             // 
             this.cmbTipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Location = new System.Drawing.Point(38, 145);
@@ -154,7 +158,9 @@
             this.dgvVehiculos.Name = "dgvVehiculos";
             this.dgvVehiculos.Size = new System.Drawing.Size(643, 322);
             this.dgvVehiculos.TabIndex = 14;
+            this.dgvVehiculos.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvVehiculos_CellBeginEdit);
             this.dgvVehiculos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVehiculos_CellEndEdit);
+            this.dgvVehiculos.SelectionChanged += new System.EventHandler(this.dgvVehiculos_SelectionChanged);
             // 
             // btnAñadir
             // 
@@ -183,19 +189,51 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Brown;
+            this.btnEliminar.Enabled = false;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(554, 475);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(96, 30);
+            this.btnEliminar.TabIndex = 104;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(339, 475);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(209, 30);
+            this.btnExportarExcel.TabIndex = 103;
+            this.btnExportarExcel.Text = "Exportar registros a Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // frmVehículos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAñadir);
             this.Controls.Add(this.dgvVehiculos);
             this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.cmbMarca);
-            this.Controls.Add(this.txtNoId);
+            this.Controls.Add(this.txtNoSerie);
             this.Controls.Add(this.lblNoSerie);
             this.Controls.Add(this.txtMatrícula);
             this.Controls.Add(this.txtModelo);
@@ -218,7 +256,7 @@
         private System.Windows.Forms.Label lblMatrícula;
         private System.Windows.Forms.TextBox txtMatrícula;
         private System.Windows.Forms.Label lblNoSerie;
-        private System.Windows.Forms.TextBox txtNoId;
+        private System.Windows.Forms.TextBox txtNoSerie;
         private System.Windows.Forms.ComboBox cmbMarca;
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Label lblTipo;
@@ -227,5 +265,7 @@
         private System.Windows.Forms.DataGridView dgvVehiculos;
         private System.Windows.Forms.Button btnAñadir;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

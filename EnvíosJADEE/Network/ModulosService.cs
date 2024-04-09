@@ -82,7 +82,7 @@ namespace EnvíosJADEE.Network
 
             parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.Id });
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = modulo.Nombre });
-            parametros.Add(new SqlParameter { ParameterName = "@pCategoria", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.Categoria });
+            parametros.Add(new SqlParameter { ParameterName = "@pCategoria", SqlDbType = System.Data.SqlDbType.VarChar, Value = modulo.Categoria });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
             parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = modulo.Estatus == "Activo" ? 1 : 0 });
             
@@ -103,6 +103,21 @@ namespace EnvíosJADEE.Network
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resultado;
+        }
+
+        public void DeleteModulos(int id)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = id });
+
+            try
+            {
+                dac.ExecuteNonQuery("DeleteModulo", parametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

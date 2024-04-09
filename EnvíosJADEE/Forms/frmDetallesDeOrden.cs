@@ -1,31 +1,24 @@
-﻿using EnvíosJADEE.Models;
+﻿using ClosedXML.Excel;
+using EnvíosJADEE.Models;
 using EnvíosJADEE.Network;
+using iText.IO.Image;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Draw;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 using System;
 using System.Drawing;
 using System.IO;
-using System.Runtime.Remoting.Contexts;
-using iText.Kernel.Pdf;
-using iText.Layout;
-using iText.Layout.Element;
 using System.Windows.Forms;
-using iText.Layout.Properties;
-using iText.IO;
-using iText.IO.Image;
-using iText.Kernel.Pdf.Canvas.Draw;
-using System.Xml.Linq;
-using iText.IO.Font.Constants;
-using iText.Kernel.Font;
 using ZXing;
-using ClosedXML.Excel;
+
+
 namespace EnvíosJADEE.Forms
 {
     public partial class frmDetallesDeOrden : Form
     {
-        //todo list
-        //Agregar funcionalidades cancelar
-        //Hacer readOnly a todos excepto estatus, repartidor.
-        //Cargar en automático de nuevo al cambiar estatus
-
+        RegistroEnvioService registroEnvioService = new RegistroEnvioService();
 
         DetallesDeOrdenService detallesDeOrdenService = new DetallesDeOrdenService();
         DireccionesService direccionesService = new DireccionesService();
@@ -71,25 +64,49 @@ namespace EnvíosJADEE.Forms
 
             gpbDatosEnvio.Controls.Add(lblRepartidores);
             gpbDatosEnvio.Controls.Add(cmbRepartidores);
+            cmbRepartidores.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbRepartidores.Visible = false;
+            cmbRepartidores.Enabled = false;
+            lblRepartidores.Visible = false;
 
         }
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
 
+            if (txtClave.Text.Trim() == "")
+            {
+                MessageBox.Show("No se puede dejar el campo en blanco", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                try
+                {
+                    LoadData();
+                    btnActualizarEstatus.Visible = true;
+                    btnImprimir.Visible = true;
+                    btnReporteExcel.Visible = true;
+                    btnActualizarEstatus.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
+                    btnCancelar.Location = new Point(btnActualizarEstatus.Right + 10, btnActualizarEstatus.Top);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Clave inválida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            btnActualizarEstatus.Visible = true;
-            btnImprimir.Visible = true;
-            btnReporteExcel.Visible = true;
-            btnActualizarEstatus.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
-            btnCancelar.Location = new Point(btnActualizarEstatus.Right + 10, btnActualizarEstatus.Top);
+                }
 
-            LoadData();
+
+            }
+
 
         }
 
         private void cmbEstatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbEstatus.DataSource == null)
+            {
+                return;
+            }
             if (((EstatusDeOrdenModel)cmbEstatus.SelectedItem).NombreEstatusOrden == "Enviado")
             {
                 btnCambiar.Location = new Point(cmbRepartidores.Right + 10, cmbRepartidores.Top);
@@ -127,7 +144,7 @@ namespace EnvíosJADEE.Forms
 
         private void btnCambiar_Click(object sender, EventArgs e)
         {
-            RegistroEnvioService registroEnvioService = new RegistroEnvioService();
+
             string ClaveOrden = txtClave.Text;
             DetallesEnvíoModel detallesEnvío = detallesDeOrdenService.GetDetallesOrden(ClaveOrden)[0];
 
@@ -276,26 +293,63 @@ namespace EnvíosJADEE.Forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            btnActualizarEstatus.Visible = false;
+            btnImprimir.Visible = false;
+            btnReporteExcel.Visible = false;
+            btnCambiar.Visible = false;
+            btnCancelar.Location = new Point(btnMostrar.Right + 10, btnMostrar.Top);
+            cmbRepartidores.Visible = false;
+            cmbRepartidores.Enabled = false;
+            lblRepartidores.Visible = false;
+            lblClaveRepartidor.Visible = false;
+
+            cmbEstatus.DataSource = null;
+            cmbEstado.DataSource = null;
+            cmbPaís.DataSource = null;
+            cmbMunicipio.DataSource = null;
+            cmbColonia.DataSource = null;
+
+            txtClaveRepartidor.Text = "";
+            txtClaveRepartidor.Visible = false;
+            txtFechaSalida.Text = "";
+            txtFechaEntrega.Text = "";
+            txtClave.Text = "";
+            txtCostoTotal.Text = "";
+            txtPeso.Text = "";
+            txtCalle.Text = "";
+            txtNoCasa.Text = "";
+            txtNombreDestinatario.Text = "";
+            txtApellidoPatDestinatario.Text = "";
+            txtApellidoMatDestinatario.Text = "";
+            txtTelefonoDestinatario.Text = "";
+            txtNombreEmisor.Text = "";
+            txtCodigoPostal.Text = "";
+
+            dgvProductos.DataSource = null;
+            txtClave.Focus();
 
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            #region filepath
-            string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = Path.Combine(documentosPath, $"Reporte {txtClave.Text}.pdf");
-            #endregion
 
-            PdfWriter writer = new PdfWriter(filePath);
-            PdfDocument pdf = new PdfDocument(writer);
-            Document doc = new Document(pdf, iText.Kernel.Geom.PageSize.LETTER);
             try
             {
-                ImageData imageFile = ImageDataFactory.Create("C:\\Users\\Lab-A\\Documents\\GitHub\\EnviosJADEE\\EnvíosJADEE\\Resources\\package_122391.png");
+                #region filepath
+                string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string filePath = Path.Combine(documentosPath, $"Reporte {txtClave.Text}.pdf");
+                #endregion
+
+                PdfWriter writer = new PdfWriter(filePath);
+                PdfDocument pdf = new PdfDocument(writer);
+                Document doc = new Document(pdf, iText.Kernel.Geom.PageSize.LETTER);
+                
+
+                ImageData imageFile = ImageDataFactory.Create("C:\\Users\\Usuario\\Documents\\GitHub\\EnviosJADEE\\EnvíosJADEE\\Resources\\package_122391.png");
 
                 iText.Layout.Element.Image logo = new iText.Layout.Element.Image(imageFile).Scale(0.25f, 0.25f).SetHorizontalAlignment(iText.Layout.Properties.HorizontalAlignment.CENTER);
                 doc.Add(logo);
- 
+
                 Paragraph header = new Paragraph("Detalles de orden").SetTextAlignment(TextAlignment.CENTER).SetFontSize(20).SetBold();
                 doc.Add(header);
                 LineSeparator ls = new LineSeparator(new SolidLine());
@@ -319,7 +373,7 @@ namespace EnvíosJADEE.Forms
                     barcodeBitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
                     byte[] barcodeBytes = ms.ToArray();
 
-                    iText.Layout.Element.Image barcodeImage = new iText.Layout.Element.Image(ImageDataFactory.Create(barcodeBytes)).Scale(0.5f,0.5f);
+                    iText.Layout.Element.Image barcodeImage = new iText.Layout.Element.Image(ImageDataFactory.Create(barcodeBytes)).Scale(0.5f, 0.5f);
                     contenido.Add(barcodeImage);
                     contenido.Add("\n");
                 }
@@ -385,7 +439,7 @@ namespace EnvíosJADEE.Forms
                 contenido.Add(new Text("Fecha de salida:\n").SetBold());
                 contenido.Add($"{txtFechaSalida.Text}\n");
                 contenido.Add(new Text("Fecha de entrega:\n").SetBold());
-                contenido.Add($"{txtFechaSalida.Text}\n");
+                contenido.Add($"{txtFechaEntrega.Text}\n");
 
                 doc.Add(contenido);
 
@@ -399,7 +453,7 @@ namespace EnvíosJADEE.Forms
 
                     contenido = new Paragraph();
                     contenido.Add(new Text("Nombre:\n").SetBold());
-                    contenido.Add($"{((RepartidorModel)cmbRepartidores.SelectedItem).Nombre}\n");
+                    contenido.Add($"{((GetRepartidorModel)cmbRepartidores.SelectedItem).Nombre}\n");
 
                     contenido.Add(new Text("Clave de repartidor\n").SetBold());
                     contenido.Add($"{txtClaveRepartidor.Text}");
@@ -436,31 +490,48 @@ namespace EnvíosJADEE.Forms
 
         private void reporteExcel_Click(object sender, EventArgs e)
         {
-            #region filepath
             string documentosPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = Path.Combine(documentosPath, $"Reporte {txtClave.Text}.xlsx");
-            #endregion
-            RegistroEnvioService datosDeOrdneService = new RegistroEnvioService();
+            string filePath = Path.Combine(documentosPath, $"Registros de Productos de la Orden {txtClave.Text} {DateTime.Today.ToString("dd-MM-yyyy")}.xlsx");
+
+
             try
             {
+                DetallesDeOrdenService service = new DetallesDeOrdenService();
                 XLWorkbook workBook = new XLWorkbook();
                 var workSheet = workBook.AddWorksheet();
 
-                workSheet.ColumnWidth = 12;
+                var tablaDeRegistros = workSheet.Cell(5, 1).InsertTable(service.GetProductosPorOrden(txtClave.Text));
 
-                workSheet.FirstCell().InsertTable(datosDeOrdneService.GetRegistroEnvios(txtClave.Text));
+                workSheet.Cell("A1").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A1").Value = "Fecha";
+                workSheet.Cell("B1").Style.Fill.SetBackgroundColor(XLColor.FromArgb(100, 220, 230, 241));
+                workSheet.Cell("B1").Value = DateTime.Now.Date;
+
+                workSheet.Cell("A2").Style.Font.SetFontColor(XLColor.White).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetBold();
+                workSheet.Cell("A2").Value = "Hora";
+                workSheet.Cell("B2").Value = DateTime.Now.TimeOfDay;
+
+                workSheet.Cell("C1").Value = "Envios JADEE";
+                var rangoNombreEmpresa = workSheet.Range("C1", "D2");
+                rangoNombreEmpresa.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 79, 129, 189)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
+
+
+                workSheet.Cell("A3").Value = "Registros de Productos";
+                var rangoTituloTabla = workSheet.Range("A3", "D4");
+                rangoTituloTabla.Merge().Style.Font.SetBold().Alignment.SetHorizontal(XLAlignmentHorizontalValues.Center).Alignment.SetVertical(XLAlignmentVerticalValues.Center).Fill.SetBackgroundColor(XLColor.FromArgb(100, 54, 96, 146)).Font.SetFontColor(XLColor.White).Font.SetFontSize(20);
+
+                workSheet.Columns().AdjustToContents();
 
                 workBook.SaveAs(filePath);
 
                 MessageBox.Show("Excel creado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }
 
-       
+

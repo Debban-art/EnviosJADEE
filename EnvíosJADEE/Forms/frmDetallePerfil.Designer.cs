@@ -36,6 +36,8 @@
             this.lblModulo = new System.Windows.Forms.Label();
             this.dgvDetallePerfil = new System.Windows.Forms.DataGridView();
             this.cmbPerfil = new System.Windows.Forms.ComboBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePerfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +71,7 @@
             // cmbModulo
             // 
             this.cmbModulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbModulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModulo.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbModulo.FormattingEnabled = true;
             this.cmbModulo.Location = new System.Drawing.Point(69, 201);
@@ -104,12 +107,14 @@
             this.dgvDetallePerfil.Name = "dgvDetallePerfil";
             this.dgvDetallePerfil.Size = new System.Drawing.Size(643, 322);
             this.dgvDetallePerfil.TabIndex = 54;
-            this.dgvDetallePerfil.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePerfil_CellContentClick);
+            this.dgvDetallePerfil.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDetallePerfil_CellBeginEdit);
             this.dgvDetallePerfil.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePerfil_CellEndEdit);
+            this.dgvDetallePerfil.SelectionChanged += new System.EventHandler(this.dgvDetallePerfil_SelectionChanged);
             // 
             // cmbPerfil
             // 
             this.cmbPerfil.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(224)))), ((int)(((byte)(166)))));
+            this.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerfil.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPerfil.FormattingEnabled = true;
             this.cmbPerfil.Location = new System.Drawing.Point(69, 273);
@@ -117,12 +122,44 @@
             this.cmbPerfil.Size = new System.Drawing.Size(228, 29);
             this.cmbPerfil.TabIndex = 55;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Brown;
+            this.btnEliminar.Enabled = false;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(575, 447);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(96, 30);
+            this.btnEliminar.TabIndex = 98;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Visible = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(360, 447);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(209, 30);
+            this.btnExportarExcel.TabIndex = 97;
+            this.btnExportarExcel.Text = "Exportar detalles a Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // frmDetallePerfil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(168)))), ((int)(((byte)(107)))));
             this.ClientSize = new System.Drawing.Size(1043, 537);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.cmbPerfil);
             this.Controls.Add(this.dgvDetallePerfil);
             this.Controls.Add(this.btnCancelar);
@@ -149,5 +186,7 @@
         private System.Windows.Forms.Label lblModulo;
         private System.Windows.Forms.DataGridView dgvDetallePerfil;
         private System.Windows.Forms.ComboBox cmbPerfil;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }

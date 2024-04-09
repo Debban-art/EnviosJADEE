@@ -1,4 +1,5 @@
-﻿using EnvíosJADEE.Models;
+﻿using EnvíosJADEE.Clases;
+using EnvíosJADEE.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,21 +16,72 @@ namespace EnvíosJADEE.Network
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
 
-        public string InsertTipo(TipoModel Tipo)
+        public int InsertTipo(TipoModel Tipo)
         {
+            int resultado = 3;
+            List<int> lista = new List<int>();
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Tipo.Tipo });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
+
 
             try
             {
-                dac.ExecuteNonQuery("InsertTipo", parametros);
-                return "Correcto";
+                DataSet ds = dac.Fill("InsertTipo", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return "Correcto";
+            return resultado;
+        }
+
+        public int UpdateTipo(TipoModel Tipo)
+        {
+            int resultado = 3;
+            List<int> lista = new List<int>();
+
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = Tipo.Id });
+            parametros.Add(new SqlParameter { ParameterName = "@pNombre", SqlDbType = System.Data.SqlDbType.VarChar, Value = Tipo.Tipo });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = Tipo.Estatus == "activo" ? 1 : 0 });
+            parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
+
+            try
+            {
+                DataSet ds = dac.Fill("UpdateTipos", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return resultado;
+
+        }
+
+        public void DeleteTipo(int id)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = id });
+
+            try
+            {
+                dac.ExecuteNonQuery("DeleteTipo", parametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public List<TipoModel> GetTipos()
@@ -47,7 +99,9 @@ namespace EnvíosJADEE.Network
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
                                          Tipo = dataRow["Nombre"].ToString(),
-                                         Estatus = dataRow["Estatus"].ToString()
+                                         Estatus = dataRow["Estatus"].ToString(),
+                                         FechaModificación = dataRow["FechaModificación"].ToString(),
+                                         Usuario = dataRow["Usuario"].ToString()
 
                                      }).ToList();
                 }

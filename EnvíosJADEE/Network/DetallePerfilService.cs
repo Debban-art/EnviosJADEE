@@ -17,8 +17,10 @@ namespace EnvíosJADEE.Network
     {
         private DataAcces dac = new DataAcces();
         private ArrayList parametros = new ArrayList();
-        public string InsertDetallePerfil(DetallePerfilModel detallePerfil)
+        public int InsertDetallePerfil(InsertDetallePerfilModel detallePerfil)
         {
+            int resultado = 3;
+            List<int> lista = new List<int>();
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pIdModulo", SqlDbType = System.Data.SqlDbType.Int, Value = detallePerfil.IdModulo });
             parametros.Add(new SqlParameter { ParameterName = "@pIdPerfil", SqlDbType = System.Data.SqlDbType.Int, Value = detallePerfil.IdPerfil });
@@ -26,20 +28,24 @@ namespace EnvíosJADEE.Network
 
             try
             {
-                dac.ExecuteNonQuery("InsertDetallePerfil", parametros);
-                return "Correcto";
+                DataSet ds = dac.Fill("InsertDetallePerfil", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return "Correcto";
+            return resultado;
         }
 
-        public List<DetallePerfilModel> GetDetallePerfil()
+        public List<GetDetallePerfilModel> GetDetallePerfil()
         {
             parametros = new ArrayList();
-            List<DetallePerfilModel> lista = new List<DetallePerfilModel>();
+            List<GetDetallePerfilModel> lista = new List<GetDetallePerfilModel>();
             //parametros.Add(new SqlParameter { ParameterName = "@pIdUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = 1 });                                                                                                                                                                                                                                              
             try
             {
@@ -47,12 +53,10 @@ namespace EnvíosJADEE.Network
                 if (ds.Tables.Count > 0)
                 {
                     lista = ds.Tables[0].AsEnumerable()
-                                     .Select(dataRow => new DetallePerfilModel
+                                     .Select(dataRow => new GetDetallePerfilModel
                                      {
                                          Id = int.Parse(dataRow["Id"].ToString()),
-                                         IdModulo = int.Parse(dataRow["IdModulo"].ToString()),
                                          Modulo = dataRow["Modulo"].ToString(),
-                                         IdPerfil = int.Parse(dataRow["IdPerfil"].ToString()),
                                          Perfil = dataRow["Perfil"].ToString(),
                                          Estatus = dataRow["Estatus"].ToString(),
                                          FechaRegistro = dataRow["FechaRegistro"].ToString(),
@@ -69,25 +73,47 @@ namespace EnvíosJADEE.Network
 
         }
 
-        public void UpdateDetallePerfil(DetallePerfilModel DetallePerfil)
+        public int UpdateDetallePerfil(GetDetallePerfilModel DetallePerfil)
         {
+            int resultado = 3;
+            List<int> lista = new List<int>();
+
             parametros = new ArrayList();
             parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.Id });
-            parametros.Add(new SqlParameter { ParameterName = "@pIdModulo", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.IdModulo });
-            parametros.Add(new SqlParameter { ParameterName = "@pIdPerfil", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.IdPerfil });
-            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.Estatus == "Activo" ? 1 : 0 });
+            parametros.Add(new SqlParameter { ParameterName = "@pModulo", SqlDbType = System.Data.SqlDbType.VarChar, Value = DetallePerfil.Modulo });
+            parametros.Add(new SqlParameter { ParameterName = "@pPerfil", SqlDbType = System.Data.SqlDbType.VarChar, Value = DetallePerfil.Perfil });
+            parametros.Add(new SqlParameter { ParameterName = "@pEstatus", SqlDbType = System.Data.SqlDbType.Int, Value = DetallePerfil.Estatus == "activo" ? 1 : 0 });
             parametros.Add(new SqlParameter { ParameterName = "@pUsuario", SqlDbType = System.Data.SqlDbType.Int, Value = SesionClass.IdUsuario });
 
             try
             {
-                dac.ExecuteNonQuery("UpdateDetallePerfil", parametros);
-                return;
+                DataSet ds = dac.Fill("UpdateDetallePerfil", parametros);
+                if (ds.Tables.Count > 0)
+                {
+                    lista = ds.Tables[0].AsEnumerable().Select(dataRow => int.Parse(dataRow["resultado"].ToString())).ToList();
+                    resultado = lista[0];
+                }              
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return;
+            return resultado;
+        }
+
+        public void DeleteDetallePerfil (int id)
+        {
+            parametros = new ArrayList();
+            parametros.Add(new SqlParameter { ParameterName = "@pId", SqlDbType = SqlDbType.Int, Value = id });
+
+            try
+            {
+                dac.ExecuteNonQuery("DeleteDetallePerfil", parametros);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

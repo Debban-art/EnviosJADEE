@@ -193,5 +193,27 @@ namespace EnvíosJADEE.Forms
                 MessageBox.Show("Error al crear el excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvPerfiles_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPerfiles.SelectedRows.Count == 1 && dgvPerfiles.SelectedCells.Count == dgvPerfiles.SelectedRows[0].Cells.Count)
+            {
+
+                btnEliminar.Visible = true;
+                btnEliminar.Enabled = true;
+            }
+            else
+            {
+                btnEliminar.Visible = false;
+                btnEliminar.Enabled = false;
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            perfilService.DeletePerfil(int.Parse(dgvPerfiles.SelectedRows[0].Cells[0].Value.ToString()));
+            dgvPerfiles.DataSource = null;
+            dgvPerfiles.DataSource = perfilService.GetPerfiles();
+        }
     }
 }
